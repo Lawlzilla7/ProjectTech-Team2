@@ -5,9 +5,10 @@
 
 }
 
-:root{
+:root {
     --Background-Colour: #4E4E4E;
     --CallToAction: #A24492;
+    --BoxColour: #D9C9D4;
 }
 
 body {
@@ -61,8 +62,8 @@ header button {
     margin: 0;
     padding: 0;
 }
-header button:active
-{
+
+header button:active {
     filter: opacity(50%);
 }
 
@@ -144,3 +145,17 @@ footer {
 }
 
 /* #endregion footer */
+
+/* #region SamenStellen */
+.CarBuild {
+    background-color: var(--BoxColour);
+    border-radius: 31px;
+    width: 95vw;
+    height: 60vh;
+    position: absolute;
+    bottom: 0;
+    
+    margin-bottom: 8em;
+}
+
+/* #endregion SamenStellen */
