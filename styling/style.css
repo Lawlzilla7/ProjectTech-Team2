@@ -165,36 +165,40 @@ footer {
 
     margin-bottom: 4em;
 
+
     display: flex;
-    justify-content: space-between;
+    gap: 2em;
+    flex-direction: column;
+    justify-content: center;
+    
 }
 
-.CarSlider1 {
+.CarSlider1, .CarSlider2  {
     color: var(--Background-Colour);
-    display: flex;
     width: 34px;
     height: 25px;
     flex-shrink: 0;
-    margin-left: 2em;
     margin-top: 3em;
 }
 
 .CarSliderCar img { 
-    display: flex;
     object-fit: contain;
     width: 10em;
     margin-top: 2em;
 }
 
-.CarSlider2 {
-    display: flex;
-    color: var(--Background-Colour);
-    width: 34px;
-    height: 25px;
-    flex-shrink: 0;
+.CarSlider1{
+    margin-left: 2em;
+}
+.CarSlider2
+{
     margin-right: 2em;
-    margin-top: 3em;
 }
 
+.CarWithButtons
+{
+    display: flex;
+    justify-content: space-between;
+}
 
 /* #endregion SamenStellen */
