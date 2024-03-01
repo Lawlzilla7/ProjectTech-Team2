@@ -164,6 +164,37 @@ footer {
     right: 0;
 
     margin-bottom: 4em;
+
+    display: flex;
+    justify-content: space-between;
 }
+
+.CarSlider1 {
+    color: var(--Background-Colour);
+    display: flex;
+    width: 34px;
+    height: 25px;
+    flex-shrink: 0;
+    margin-left: 2em;
+    margin-top: 3em;
+}
+
+.CarSliderCar img { 
+    display: flex;
+    object-fit: contain;
+    width: 10em;
+    margin-top: 2em;
+}
+
+.CarSlider2 {
+    display: flex;
+    color: var(--Background-Colour);
+    width: 34px;
+    height: 25px;
+    flex-shrink: 0;
+    margin-right: 2em;
+    margin-top: 3em;
+}
+
 
 /* #endregion SamenStellen */
