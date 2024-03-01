@@ -1,6 +1,9 @@
 # ignore
 *.log
 *.DS_Store
+*.zip
+*.rar
+
 
 # ignore ALL files in ANY directory named temp
 temp/
