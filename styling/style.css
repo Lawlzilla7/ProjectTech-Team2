@@ -82,7 +82,7 @@ header a:hover {
 /* #endregion header */
 
 /* #region ZeroState */
-.StartButton {
+.StartButton, .OpslaanKnop {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,6 +105,9 @@ header a:hover {
     font-size: larger;
     border: none;
     /* box-shadow: 0 1px 8px #000000; */
+}
+.OpslaanKnop{
+    margin-bottom: 4em;
 }
 
 .StartButton:active {
@@ -153,9 +156,14 @@ footer {
     width: 95vw;
     height: 60vh;
     position: absolute;
-    bottom: 0;
     
-    margin-bottom: 8em;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin-bottom: 4em;
 }
 
 /* #endregion SamenStellen */
