@@ -20,7 +20,7 @@ a {
 
 h1 {
     color: white;
-    font-size: 5rem;
+    font-size: 5em;
 }
 
 
@@ -129,6 +129,7 @@ header a:hover {
 
 .StartImgText>h1 {
     text-align: center;
+    font-style: italic;
 }
 
 /* #endregion ZeroState */
