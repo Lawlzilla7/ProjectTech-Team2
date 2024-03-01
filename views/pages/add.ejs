@@ -16,17 +16,22 @@
 <main> 
 
     <div class="container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" required>
+        <h2>Add new movie </h2>
+        <form id="loginForm" action="/add-movie" method="POST">
+            <label>Title:</label>
+            <input type="text" name="title">
     
-            <label for="password">Password:</label>
-            <input type="password" id="password" required>
+            <label>Plot:</label>
+            <input type="text" name="plot">
+
+            <label>Description:</label>
+            <textarea name="description"> </textarea>
     
-            <button type="button" onclick="login()">Login</button>
+            <input type="submit" value="add movie">
         </form>
     </div>
+
+  
 
 </main>
 

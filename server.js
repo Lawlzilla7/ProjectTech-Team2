@@ -1,6 +1,6 @@
 // nodemon ./server.js 
 
-// require('dotenv').config() 
+require('dotenv').config() 
 
 // const path = require('path');
 // require('dotenv').config({
@@ -17,6 +17,8 @@ app
 	.use(express.urlencoded({extended: true})) // middleware to parse form data from incoming HTTP request and add form fields to req.body
 	.use(express.static('static'))             // Allow server to serve static content such as images, stylesheets, fonts or frontend js from the directory named static
 	.get('/', onhome)
+	.get('/login', onlogin)
+	.get('/account', onaccount)
     .get('/about/:name', onabout)
 	.listen(8000)
 
@@ -49,12 +51,17 @@ function onhome(req, res) {
 	res.render('pages/index')
 }
 
-function onabout(req, res) {
-    render.render('pages/index')
-	res.send (`<h1> About ${req.params.name} </h1>`)
+function onlogin(req, res) {
+    res.render('pages/login')
 }
 
+function onaccount(req, res) {
+    res.render('pages/account')
+}
 
+function onabout(req, res) {
+	res.send (`<h1> About ${req.params.name} </h1>`)
+}
 
 
 app.get('/add', showAddForm) //middleware: parses form data
@@ -65,11 +72,11 @@ function showAddForm(req, res) {
 }
 
 function addMovie(req,res) {
-	res.send(`thanks for adding the movie with:
+	res.send(`<h1> thanks for adding the movie with:
 	title: ${req.body.title},
 	plot: ${req.body.plot},
-	and descriptrsion:  ${req.body.description}
- `)
+	and description:  ${req.body.description}
+ </h1>`)
 }
 
 
