@@ -1,0 +1,38 @@
+<!DOCTYPE ejs>
+<html lang="en">
+
+<head> 
+<%- include('../partials/head'); %> 
+</head>
+
+<body>
+
+<header> 
+
+<%- include('../partials/nav'); %> 
+
+</header>
+
+<main> 
+
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+    
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+    
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+
+</main>
+
+<footer> </footer>
+
+<script defer src="/scripts/script.js" type="text/javascript"> </script>
+
+</body>
+</html>
