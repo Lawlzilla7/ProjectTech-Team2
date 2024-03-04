@@ -1,33 +1,44 @@
+require('dotenv').config()
+
 const express = require('express');
 const app = express();
 
-
-
 app
-  .set('view engine', 'ejs') // Set EJS to be our templating engine
-  .set('views', 'views')  // And tell it the views can be found in the directory named views
-  .use(express.static('static')) // Allow server to serve static content such as images, stylesheets, fonts or frontend js from the directory named static
+  .use(express.urlencoded({ extended: true }))
+  .use(express.static('static'))
+  .set('view engine', 'ejs')
+  .set('views', 'views')
   .get('/', onHome)
-  .get('/about', onAbout)
-  // .get('/account', onAccount)
+  // .get('/about', onAbout)
   // .get('/profile/:name', onProfile)
-  .listen(8000)
+
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
+const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+})
+
+client.connect()
+  .then(() => {
+    console.log('Database connection established')
+  })
+  .catch((err) => {
+    console.log(`Database connection error - ${err}`)
+    console.log(`For uri - ${uri}`)
+  })
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 function onHome(req, res) {
   res.render('pages/index')
 }
 
-function onAbout(req, res) {
-  res.render('pages/about')
-}
-
-// function onAccount(req, res) {
-//   res.send('<h1>Log hier in!</h1>')
-// }
-
-// function onProfile(req, res) {
-//   res.send(`<h1>Profile</h1><p>name: ${req.params.name}</p>`);
-// }
 
 // Middleware to handle not found errors - error 404
 app.use((req, res) => {
@@ -47,5 +58,5 @@ app.use((err, req, res) => {
 
 // Start the webserver and listen for HTTP requests at specified port
 app.listen(process.env.PORT, () => {
-  console.log("I did not change this message and now my webserver is listening at port ${process.env.PORT}")
+  console.log(`I did not change this message and now my webserver is listening at port ${process.env.PORT}`)
 })
