@@ -1,6 +1,6 @@
 // nodemon ./server.js 
 
-require('dotenv').config() 
+// require('dotenv').config() 
 
 // const path = require('path');
 // require('dotenv').config({
@@ -25,8 +25,8 @@ app
 // Use MongoDB
 const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb')
 // Construct URL used to connect to database from info in the .env file
-// const uri = "mongodb+srv://sindy:mongo123@clustertech.5fqnsm1.mongodb.net/?retryWrites=true&w=majority&appName=ClusterTech"
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
+const uri = "mongodb+srv://sindy:mongo123@clustertech.5fqnsm1.mongodb.net/?retryWrites=true&w=majority&appName=ClusterTech"
+// const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
 // Create a MongoClient
 const client = new MongoClient(uri, {
     serverApi: {
