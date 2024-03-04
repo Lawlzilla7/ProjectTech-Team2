@@ -1,12 +1,6 @@
 // nodemon ./server.js 
 
-// require('dotenv').config() 
-
-// const path = require('path');
-// require('dotenv').config({
-//   path: path.resolve('config.env'),
-// });
-
+require('dotenv').config() 
 
 const express = require('express')
 const app = express()
@@ -20,26 +14,29 @@ app
 	.get('/login', onlogin)
 	.get('/account', onaccount)
     .get('/about/:name', onabout)
-	.listen(8000)
+
+
 
 // Use MongoDB
-const { MongoClient, ServerApiVersion, ObjectId, CommandStartedEvent } = require('mongodb')
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
 // Construct URL used to connect to database from info in the .env file
-const uri = "mongodb+srv://sindy:mongo123@clustertech.5fqnsm1.mongodb.net/?retryWrites=true&w=majority&appName=ClusterTech"
-// const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
+// const uri = "mongodb+srv://sindy:mongo123@clustertech.5fqnsm1.mongodb.net/?retryWrites=true&w=majority&appName=ClusterTech"
+const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
 // Create a MongoClient
 const client = new MongoClient(uri, {
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    }
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    }
 })
+
 
 // Try to open a database connection
 client.connect()
     .then((res) => {
         console.log('Database connection established')
+        console.log(`For uri - ${uri}`)
     })
     .catch((err) => {
         console.log(`Database connection error - ${err}`)
@@ -70,13 +67,26 @@ app.post('/add-movie', addMovie) //Route to handle the post request to /add-movi
 function showAddForm(req, res) {
   res.render('pages/add.ejs')
 }
+const db = client.db(process.env.DB_NAME)
+const collection = db.collection(process.env.DB_COLLECTION)
 
-function addMovie(req,res) {
-	res.send(`<h1> thanks for adding the movie with:
-	title: ${req.body.title},
-	plot: ${req.body.plot},
-	and description:  ${req.body.description}
- </h1>`)
+// async function addMovie(req,res) {
+// 	res.send(`<h1> thanks for adding the movie with:
+// 	title: ${req.body.title},
+// 	plot: ${req.body.plot},
+// 	and description:  ${req.body.description}
+//  </h1>`)}
+
+
+ async function addMovie(req,res) {
+	result = await collection.insertOne({
+	title: req.body.title,
+	plot: req.body.plot,
+	description:  req.body.description
+})
+
+console.log(`Added with _id: ${result.insertedID`)
+res.render('added.ejs')
 }
 
 
@@ -115,5 +125,5 @@ app.use((req, res) => {
 
   // Start the webserver and listen for HTTP requests at specified port
 app.listen(process.env.PORT, () => {
-	console.log(`I did not change this message and now my webserver is listening at port ${process.env.PORT}`)
+	console.log(`My webserver is listening at port ${process.env.PORT}`)
   })
