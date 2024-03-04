@@ -67,8 +67,6 @@ app.post('/add-movie', addMovie) //Route to handle the post request to /add-movi
 function showAddForm(req, res) {
   res.render('pages/add.ejs')
 }
-const db = client.db(process.env.DB_NAME)
-const collection = db.collection(process.env.DB_COLLECTION)
 
 // async function addMovie(req,res) {
 // 	res.send(`<h1> thanks for adding the movie with:
@@ -78,16 +76,67 @@ const collection = db.collection(process.env.DB_COLLECTION)
 //  </h1>`)}
 
 
- async function addMovie(req,res) {
-	result = await collection.insertOne({
-	title: req.body.title,
-	plot: req.body.plot,
-	description:  req.body.description
-})
 
-console.log(`Added with _id: ${result.insertedID`)
-res.render('added.ejs')
+// Functie voor toevoegen van film
+async function addMovie(req, res) {
+	res.send(`<h1> thanks for adding the movie with:
+	title: ${req.body.title},
+	plot: ${req.body.plot},
+	and description:  ${req.body.description}
+ </h1>`)
+
+	{
+	try {
+	  await client.connect();
+  
+	  const database = client.db('movielist');
+	  const collection = database.collection('movies');
+  
+	  const result = await collection.insertOne({
+		title: req.body.title,
+		plot: req.body.plot,
+		description: req.body.description
+	  });
+  
+	  console.log(`Added with _id: ${result.insertedId}`);
+	} catch (error) {
+	  console.error('Error adding movie:', error);
+	} finally {
+	  // Close the connection when done
+	  await client.close();
+	}
 }
+  }
+
+
+// async function addMovie(req, res) {
+// 	const database = client.db('sample_mflix')
+// 	const collection = database.collection('movies')
+// 	await client.connect();
+// 	{
+// 		{
+// 			res.send(`<h1> thanks for adding the movie with:
+// 		title: ${req.body.title},
+// 		plot: ${req.body.plot},
+// 		and description:  ${req.body.description}
+// 	 </h1>`)
+// 		}
+
+// 	}
+
+// 	{
+// 		result = await collection.insertOne({
+// 			title: req.body.title,
+// 			plot: req.body.plot,
+// 			description: req.body.description
+// 		})
+
+// 		console.log(`Added with _id: ${result.insertedID}`)
+// 		// res.render('added.ejs')
+		
+// 	}
+// }
+	
 
 
 async function run() {
@@ -107,6 +156,11 @@ async function run() {
   
 
 
+
+
+
+
+  
 // Middleware to handle not found errors - error 404
 app.use((req, res) => {
 	// log error to console
