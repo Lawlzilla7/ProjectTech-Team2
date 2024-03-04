@@ -1,7 +1,10 @@
 # ignore
 *.log
 *.DS_Store
+*.env
 
 # ignore ALL files in ANY directory named temp
 temp/
 node_modules/
+.DS_Store
+.env
