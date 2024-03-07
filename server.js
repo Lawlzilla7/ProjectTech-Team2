@@ -12,7 +12,6 @@ app
 	.use(express.static('static'))             // Allow server to serve static content such as images, stylesheets, fonts or frontend js from the directory named static
 	.get('/', onhome)
 	.get('/login', onlogin)
-	.get('/account', onaccount)
     .get('/about/:name', onabout)
 
 
@@ -52,13 +51,50 @@ function onlogin(req, res) {
     res.render('pages/login')
 }
 
-function onaccount(req, res) {
-    res.render('pages/account')
-}
 
 function onabout(req, res) {
 	res.send (`<h1> About ${req.params.name} </h1>`)
 }
+
+
+
+// Functie voor toevoegen van account
+app.get('/account', onaccount)
+app.post('/add-account', addAccount) //Route to handle the post request to /add-movie
+
+function onaccount(req, res) {
+    res.render('pages/account.ejs')
+}
+
+async function addAccount(req, res) {
+	res.send(`<h1> thanks for making an account with:
+	Username: ${req.body.username},
+	Password: ${req.body.password}
+ </h1>`)
+
+	{
+	try {
+	  await client.connect();
+  
+	  const database = client.db('gebruikers');
+	  const collection = database.collection('accounts');
+  
+	  const result = await collection.insertOne({
+		username: req.body.username,
+		password: req.body.password,
+	  });
+  
+	  console.log(`username ${req.body.username}`); 
+	  console.log(`Added with _id: ${result.insertedId}`);
+
+	} catch (error) {
+	  console.error('Error adding account:', error);
+	} finally {
+	  // Close the connection when done
+	  await client.close();
+	}
+}
+  }
 
 
 app.get('/add', showAddForm) //middleware: parses form data
@@ -68,14 +104,14 @@ function showAddForm(req, res) {
   res.render('pages/add.ejs')
 }
 
-// async function addMovie(req,res) {
+
+// Functie voor data formulier weergeven op pagina
+  // async function addMovie(req,res) {
 // 	res.send(`<h1> thanks for adding the movie with:
 // 	title: ${req.body.title},
 // 	plot: ${req.body.plot},
 // 	and description:  ${req.body.description}
 //  </h1>`)}
-
-
 
 // Functie voor toevoegen van film
 async function addMovie(req, res) {
@@ -138,21 +174,21 @@ async function addMovie(req, res) {
 // }
 	
 
-
-async function run() {
-	try {
-	  const database = client.db('sample_mflix');
-	  const movies = database.collection('movies');
-	  // Query for a movie that has the title 'Back to the Future'
-	  const query = { title: 'Back to the Future' };
-	  const movie = await movies.findOne(query);
-	  console.log(movie);
-	} finally {
-	  // Ensures that the client will close when you finish/error
-	  await client.close();
-	}
-  }
-  run().catch(console.dir);
+// Functie op een film op te halen uit de database
+// async function run() {
+// 	try {
+// 	  const database = client.db('sample_mflix');
+// 	  const movies = database.collection('movies');
+// 	  // Query for a movie that has the title 'Back to the Future'
+// 	  const query = { title: 'Back to the Future' };
+// 	  const movie = await movies.findOne(query);
+// 	  console.log(movie);
+// 	} finally {
+// 	  // Ensures that the client will close when you finish/error
+// 	  await client.close();
+// 	}
+//   }
+//   run().catch(console.dir);
   
 
 

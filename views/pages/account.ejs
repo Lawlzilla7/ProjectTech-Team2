@@ -20,12 +20,12 @@
 
     <div class="container">
         <h2>Account aanmaken</h2>
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" required>
+        <form id="accountForm" action="/add-account" method="POST">
+            <label> Username:</label>
+            <input type="text" name="username">
     
-            <label for="password">Password:</label>
-            <input type="password" id="password" required>
+            <label> Password: </label>
+            <input type="text" name="password">
     
             <input type="submit" value="account maken">
         </form>
