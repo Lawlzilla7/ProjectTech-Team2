@@ -16,6 +16,7 @@ body {
     background-color: var(--Background-Colour);
     background-image: url("../images/FlamingWheelsPattern.png");
     background-repeat: repeat;
+    background-size: 110%;
 }
 
 a {
