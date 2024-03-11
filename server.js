@@ -57,11 +57,11 @@ function onabout(req, res) {
 
 
 // Functie voor toevoegen van account
-app.get('/account', onaccount)
+app.get('/signup', onsignup)
 app.post('/add-account', addAccount) //Route to handle the post request to /add-movie
 
-function onaccount(req, res) {
-	res.render('pages/account.ejs')
+function onsignup(req, res) {
+	res.render('pages/signup.ejs')
 }
 
 async function addAccount(req, res) {
@@ -131,6 +131,35 @@ async function findAccount(req, res) {
 	// console.log(`User with _id: ${result.ObjectId}`);
 }
  
+
+//Functie voor mijn account
+app.get('/myaccount', onaccount)
+
+function onaccount (req, res) {
+	
+	const username = xss(req.body.username)
+
+	const database = client.db('gebruikers');
+	const collection = database.collection('accounts');
+
+	const
+
+	{
+	const result = await collection.findOne({
+		username: username
+	}
+
+	res.render('pages/myaccount', {username: result)
+	
+	}
+
+}
+
+
+
+
+
+
 
 
 
