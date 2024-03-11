@@ -2,6 +2,7 @@
 
 require('dotenv').config()
 
+const { render } = require('ejs')
 const express = require('express')
 const app = express()
 
@@ -138,42 +139,39 @@ async function findAccount(req, res) {
 
 
 // Functie voor toevoegen van film
-app.get('/add', showAddForm) //middleware: parses form data
-app.post('/add-movie', addMovie) //Route to handle the post request to /add-movie
+app.get('/addmovie', showAddForm) //middleware: parses form data
+app.post('/movies', addMovie) //Route to handle the post request to /add-movie
 
 function showAddForm(req, res) {
-	res.render('pages/add.ejs')
+	res.render('pages/addmovie.ejs')
 }
 
-
-// Functie voor data formulier weergeven op pagina
-// async function addMovie(req,res) {
-// 	res.send(`<h1> thanks for adding the movie with:
-// 	title: ${req.body.title},
-// 	plot: ${req.body.plot},
-// 	and description:  ${req.body.description}
-//  </h1>`)}
-
 async function addMovie(req, res) {
-	res.send(`<h1> thanks for adding the movie with:
-	title: ${req.body.title},
-	plot: ${req.body.plot},
-	and description:  ${req.body.description}
- </h1>`)
 
 	{
-			const database = client.db('movielist');
-			const collection = database.collection('movies');
 
-			const result = await collection.insertOne({
-				title: req.body.title,
-				plot: req.body.plot,
-				description: req.body.description
-			});
+		const database = client.db('movielist');
+		const collection = database.collection('movies');
 
-			console.log(`Added with _id: ${result.insertedId}`);
-	
+		const result = await collection.insertOne({
+			title: req.body.title,
+			plot: req.body.plot,
+			description: req.body.description
+		});
+
+		console.log(`Added with _id: ${result.insertedId}`);
+
+		const addedMovie = {
+            title: req.body.title,
+            plot: req.body.plot,
+            description: req.body.description
+        };
+
+		const movieList = await collection.find().toArray()
+		res.render('pages/movies.ejs', {movies: movieList, addedMovie: addedMovie})
+
 	}
+
 }
 
 
