@@ -5,6 +5,8 @@ require('dotenv').config()
 const { render } = require('ejs')
 const express = require('express')
 const app = express()
+const xss = require('xss')
+const bcrypt = require('bcryptjs')
 
 app
 	.set('view engine', 'ejs') // Set EJS to be our templating engine
@@ -68,20 +70,26 @@ async function addAccount(req, res) {
 	username: ${req.body.username}
  </h1>`)
 
+ const username = xss(req.body.username)
+ const password = xss(req.body.password)
+
+ bcrypt.hash(password, 10, async (err, hashedPassword) => {
+
 	{
 			const database = client.db('gebruikers');
 			const collection = database.collection('accounts');
 
 			const result = await collection.insertOne({
-				username: req.body.username,
-				password: req.body.password,
+				username: username,
+				password: xss(hashedPassword),
 			});
 
-			console.log(`username ${req.body.username}`);
-			console.log(`password ${req.body.password}`);
+			console.log(`username ${xss(req.body.username)}`);
+			console.log(`hashed password ${xss(hashedPassword)}`);
 			console.log(`Added with _id: ${result.insertedId}`);
+		}
 
-	}
+	});
 }
 
 
@@ -96,19 +104,23 @@ function onlogin(req, res) {
 
 async function findAccount(req, res) {
 
+	const username = xss(req.body.username)
+	const password = xss(req.body.password)
+
+
 {
 	const database = client.db('gebruikers');
 	const collection = database.collection('accounts');
 
 	const result = await collection.findOne({
-		username: req.body.username,
-		password: req.body.password,
+		username: username
 	});
 	
-		if (result) {
+		if (result && await bcrypt.compare(password, result.password)) {
 			res.send(`<h1> You have logged in with
-			username: ${req.body.username}
+			username: ${xss(req.body.username)}
 		 </h1>`)
+		 console.log(`Logged in with username ${xss(req.body.username)}`);
 		} 
 		else {
 			res.send(`<h1> Fout bij inloggen. 
@@ -116,8 +128,6 @@ async function findAccount(req, res) {
 		 </h1>`)
 		}
 	};
-
-	console.log(`Username ${req.body.username}`);
 	// console.log(`User with _id: ${result.ObjectId}`);
 }
  
