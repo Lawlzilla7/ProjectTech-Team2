@@ -86,7 +86,6 @@ async function addAccount(req, res) {
 
 
 
-
 // Functie voor ophalen van account
 app.get('/login', onlogin)
 app.post('/loggedin', findAccount)
@@ -95,17 +94,7 @@ function onlogin(req, res) {
 	res.render('pages/login')
 }
 
-// async function findAccount(req,res) {
-// 	res.send(`<h1> You have logged in with
-// 	username: ${req.body.username}
-//  </h1>`)}
-
-
 async function findAccount(req, res) {
-
-// 	res.send(`<h1> You have logged in with
-// 	username: ${req.body.username}
-//  </h1>`)
 
 {
 	const database = client.db('gebruikers');
@@ -122,17 +111,14 @@ async function findAccount(req, res) {
 		 </h1>`)
 		} 
 		else {
-			res.send(`<h1> ERROR
+			res.send(`<h1> Fout bij inloggen. 
+			Verkeerde gebruikersnaam of wachtwoord ingevoerd
 		 </h1>`)
 		}
-
 	};
-
-	// console.log(result)
 
 	console.log(`Username ${req.body.username}`);
 	// console.log(`User with _id: ${result.ObjectId}`);
-
 }
  
 
