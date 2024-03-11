@@ -19,14 +19,14 @@
 
     <div class="container">
         <h2>Login</h2>
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" required>
+        <form id="loginForm" action="/loggedin" method="POST">
+            <label>Username: </label>
+            <input type="text" name="username">
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" required>
+            <label>Password:</label>
+            <input type="password" name="password">
     
-            <button type="button" onclick="login()">Login</button>
+            <input type="submit" value="Login">
         </form>
     </div>
 

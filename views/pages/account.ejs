@@ -1,42 +1,44 @@
 <!DOCTYPE ejs>
 <html lang="en">
 
-<head> 
-<%- include('../partials/head'); %> 
+<head>
+    <%- include('../partials/head'); %>
 
 
 </head>
 
 <body>
 
-<header> 
+    <header>
 
-<%- include('../partials/nav'); %> 
+        <%- include('../partials/nav'); %>
 
-</header>
+    </header>
 
-<main> 
-
-
-    <div class="container">
-        <h2>Account aanmaken</h2>
-        <form id="accountForm" action="/add-account" method="POST">
-            <label> Username:</label>
-            <input type="text" name="username">
-    
-            <label> Password: </label>
-            <input type="text" name="password">
-    
-            <input type="submit" value="account maken">
-        </form>
-    </div>
+    <main>
 
 
-</main>
 
-<footer> </footer>
+        <div class="container">
+            <h2>Account aanmaken</h2>
+            <form id="accountForm" action="/add-account" method="POST">
+                <label> Username:</label>
+                <input type="text" name="username" required>
 
-<script defer src="/scripts/script.js"> </script>
+                <label> Password: </label>
+                <input type="password" name="password" required>
+
+                <input type="submit" value="account maken">
+            </form>
+        </div>
+
+
+    </main>
+
+    <footer> </footer>
+
+    <script defer src="/scripts/script.js"> </script>
 
 </body>
+
 </html>
