@@ -1,3 +1,4 @@
+# Wat moet er in een ReadMe
 # Procesverslag Project Tech
 Markdown is een simpele manier om HTML te schrijven.  
 Markdown cheat cheet: [Hulp bij het schrijven van Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
@@ -5,10 +6,6 @@ Markdown cheat cheet: [Hulp bij het schrijven van Markdown](https://github.com/a
 Nb. De standaardstructuur en de spartaanse opmaak van de README.md zijn helemaal prima. Het gaat om de inhoud van je procesverslag. Besteedt de tijd voor pracht en praal aan je website.
 
 Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard open zetten. Fijn om dat steeds voor de relevante stuk(ken) te doen.
-
-
-
-## Wat moet er in een ReadMe
 
 - Titel van project
   - de
@@ -22,7 +19,6 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
 ## License
   https://choosealicense.com/ 
-
 
   ### Auteur:
   Sanne 't Hooft (vervangen door jouw naam)
