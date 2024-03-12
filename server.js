@@ -7,6 +7,7 @@ const express = require('express')
 const app = express()
 const xss = require('xss')
 const bcrypt = require('bcryptjs')
+const session = require('express-session')
 
 app
 	.set('view engine', 'ejs') // Set EJS to be our templating engine
@@ -15,6 +16,11 @@ app
 	.use(express.static('static'))             // Allow server to serve static content such as images, stylesheets, fonts or frontend js from the directory named static
 	.get('/', onhome)
 	.get('/about/:name', onabout)
+	.use(session({
+		resave: false,
+		saveUninitialized: true,
+		secret: process.env.SESSION_SECRET
+	}))
 
 
 
@@ -107,7 +113,6 @@ async function findAccount(req, res) {
 	const username = xss(req.body.username)
 	const password = xss(req.body.password)
 
-
 {
 	const database = client.db('gebruikers');
 	const collection = database.collection('accounts');
@@ -137,23 +142,19 @@ app.get('/myaccount', onaccount)
 
 function onaccount (req, res) {
 	
+	// const username = xss(req.body.username)
+
+	// const database = client.db('gebruikers');
+	// const collection = database.collection('accounts');
+
+	// const result = await collection.findOne({
+	// 	username: username
+	// })
 	const username = xss(req.body.username)
-
-	const database = client.db('gebruikers');
-	const collection = database.collection('accounts');
-
-	const
-
-	{
-	const result = await collection.findOne({
-		username: username
+	res.render('pages/myaccount')
+	console.log(`Logged in with username ${xss(req.body.username)}`)
 	}
 
-	res.render('pages/myaccount', {username: result)
-	
-	}
-
-}
 
 
 
