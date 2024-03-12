@@ -78,6 +78,7 @@ async function addAccount(req, res) {
 
  const username = xss(req.body.username)
  const password = xss(req.body.password)
+ const email = xss(req.body.email)
 
  bcrypt.hash(password, 10, async (err, hashedPassword) => {
 
@@ -88,6 +89,7 @@ async function addAccount(req, res) {
 			const result = await collection.insertOne({
 				username: username,
 				password: xss(hashedPassword),
+				email: email
 			});
 
 			console.log(`username ${xss(req.body.username)}`);
@@ -104,6 +106,7 @@ async function addAccount(req, res) {
 app.get('/login', onlogin)
 app.post('/loggedin', findAccount)
 
+
 function onlogin(req, res) {
 	res.render('pages/login')
 }
@@ -113,19 +116,15 @@ async function findAccount(req, res) {
 	const username = xss(req.body.username)
 	const password = xss(req.body.password)
 
-{
 	const database = client.db('gebruikers');
 	const collection = database.collection('accounts');
 
-	const result = await collection.findOne({
-		username: username
-	});
+	const result = await collection.findOne({username: username});
 	
 		if (result && await bcrypt.compare(password, result.password)) {
-			res.send(`<h1> You have logged in with
-			username: ${xss(req.body.username)}
-		 </h1>`)
-		 console.log(`Logged in with username ${xss(req.body.username)}`);
+			req.session.username = username;
+			res.redirect('/myaccount');
+			console.log(`Logged in with username ${xss(req.body.username)}`);
 		} 
 		else {
 			res.send(`<h1> Fout bij inloggen. 
@@ -134,25 +133,30 @@ async function findAccount(req, res) {
 		}
 	};
 	// console.log(`User with _id: ${result.ObjectId}`);
-}
  
 
 //Functie voor mijn account
 app.get('/myaccount', onaccount)
 
-function onaccount (req, res) {
+async function onaccount (req, res) {
 	
-	// const username = xss(req.body.username)
+        // Haal de gebruikersnaam op uit de sessie
+        const username = req.session.username;
 
-	// const database = client.db('gebruikers');
-	// const collection = database.collection('accounts');
+        // Als de gebruikersnaam niet in de sessie is opgeslagen, doorsturen naar de inlogpagina
+        if (!username) {
+            res.redirect('/login');
+            return;
+        }
 
-	// const result = await collection.findOne({
-	// 	username: username
-	// })
-	const username = xss(req.body.username)
-	res.render('pages/myaccount')
-	console.log(`Logged in with username ${xss(req.body.username)}`)
+		const database = client.db('gebruikers');
+        const collection = database.collection('accounts');
+
+        const result = await collection.findOne({username: username});
+
+        res.render('pages/myaccount', {user: result});
+
+	console.log(`Jouw account met username: ${req.session.username}`)
 	}
 
 
