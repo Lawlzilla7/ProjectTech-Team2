@@ -1,11 +1,14 @@
 let KleurWaarde = 1;
 console.log("Kleurwaarde = " + KleurWaarde);
 
+
 let VelgenWaarde = 1;
 console.log("velgen waarde = " + VelgenWaarde);
 
+
 let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const ScrollSpeed = 200;
@@ -46,34 +49,87 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const KleurKnopPrev = () => {
     KleurWaarde -= 1;
+    ChangeKleur(KleurWaarde);
+
     console.log("Kleurwaarde = " + KleurWaarde);
 }
 
 const KleurKnopNext = () => {
     KleurWaarde += 1;
+    ChangeKleur(KleurWaarde);
+
     console.log("Kleurwaarde = " + KleurWaarde);
 }
 
 const VelgKnopPrev = () => {
     VelgenWaarde -= 1;
+    ChangeVelg(VelgenWaarde);
+
     console.log("velgen waarde = " + VelgenWaarde);
 }
 
 const VelgKnopNext = () => {
     VelgenWaarde += 1;
+    ChangeVelg(VelgenWaarde);
+
     console.log("velgen waarde = " + VelgenWaarde);
 }
 const BodyKnopPrev = () => {
-    BodyWaarde += 1;
+    BodyWaarde -= 1;
+    ChangeBody(BodyWaarde);
+
     console.log("body waarde = " + BodyWaarde);
 }
 
 const BodyKnopNext = () => {
     BodyWaarde += 1;
+    ChangeBody(BodyWaarde);
+
     console.log("body waarde = " + BodyWaarde);
 }
 
 
+const ChangeBody = (BodyWaarde) => {
+    let image = document.querySelector('#CarBody');
+
+    if (BodyWaarde === 1) {
+        image.src = '/images/green.png';
+    } else if (BodyWaarde === 2) {
+        image.src = '';
+    } else if (BodyWaarde === 3) {
+        image.src = '';
+    }
+
+}
+
+const ChangeVelg = (VelgenWaarde) => {
+    let image = document.querySelector('#CarVelgen');
+
+    if (VelgenWaarde === 1) {
+        image.src = '/images/blue.png';
+    } else if (VelgenWaarde === 2) {
+        image.src = '';
+    } else if (VelgenWaarde === 3) {
+        image.src = '';
+    }
+}
+
+const ChangeKleur = (KleurWaarde) => {
+    let image = document.querySelector('#CarKleur');
+
+    if (KleurWaarde === 1) {
+        image.src = '/images/red.png';
+    } else if (KleurWaarde === 2) {
+        image.src = '';
+    } else if (KleurWaarde === 3) {
+        image.src = '';
+    }
+
+}
+
+ChangeKleur(KleurWaarde);
+ChangeVelg(VelgenWaarde);
+ChangeBody(BodyWaarde);
 // var options = {
 //     direction: 'horizontal',
 //     loop: 'true',
