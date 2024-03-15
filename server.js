@@ -9,11 +9,12 @@ app
   .set('view engine', 'ejs')
   .set('views', 'views')
   .get('/', onHome)
+  .use('/api/auto', require('./routes/api/auto'))
   // .get('/about', onAbout)
   // .get('/profile/:name', onProfile)
 
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
+const uri = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}`
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
