@@ -10,6 +10,8 @@
     --Background-Colour: #4E4E4E;
     --CallToAction: #FFA800;
     --BoxColour: #D9C9D4;
+    --swiper-theme-color: #000 !important;
+    --swiper-navigation-size: 2rem !important;
 }
 
 body {
@@ -25,7 +27,7 @@ a {
 
 h1 {
     color: white;
-    font-size: 5em;
+    font-size: 5rem;
 }
 
 
@@ -38,8 +40,8 @@ header {
 header ul {
     display: flex;
     flex-direction: row;
-    padding: 1em;
-    margin-top: 1em;
+    padding: 1rem;
+    margin-top: 1rem;
 }
 
 header li {
@@ -55,11 +57,11 @@ header li:first-child {
 
 header img {
     object-fit: contain;
-    height: clamp(2em, 30vw, 4em);
+    height: clamp(2rem, 30vw, 4rem);
 }
 
 header button {
-    padding: 1em;
+    padding: 1rem;
     align-self: center;
     background-color: transparent;
     border: none;
@@ -73,7 +75,7 @@ header button:active {
 
 header a {
     /* background-color: rgb(211, 211, 211); */
-    padding: 1em;
+    padding: 1rem;
 
     font-size: clamp(0.9375rem, 0.738rem + 0.8511vw, 1.3125rem);
     word-break: break-all;
@@ -91,14 +93,14 @@ header a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.625em 3.75em;
+    padding: 0.625rem 3.75rem;
 
     z-index: 99;
 
     position: fixed;
     width: 50%;
-    border-radius: 4.0625em;
-    margin-bottom: 8em;
+    border-radius: 4.0625rem;
+    margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
     bottom: 0;
@@ -113,7 +115,7 @@ header a:hover {
 }
 
 /* .OpslaanKnop {
-    margin-bottom: 4em;
+    margin-bottom: 4rem;
 } */
 
 .StartButton:active {
@@ -123,18 +125,18 @@ header a:hover {
 .StartImgText {
     display: flex;
     flex-direction: column;
-    margin: 1em;
+    margin: 1rem;
     position: relative;
-    margin-top: 5em;
+    margin-top: 5rem;
 }
 
 .StartImgText img {
     position: relative;
     object-fit: contain;
-    width: 20em;
+    width: 20rem;
     margin-left: auto;
     margin-right: auto;
-    top: -4em;
+    top: -4rem;
 }
 
 .StartImgText>h1 {
@@ -164,12 +166,12 @@ header a:hover {
     /* Changed to auto */
     position: relative;
     /* Changed to relative */
-    margin: 4em auto 0;
+    margin: 4rem auto 0;
     display: flex;
-    gap: 2em;
+    gap: 2rem;
     flex-direction: column;
     justify-content: center;
-    padding: 2em;
+    padding: 2rem;
     /* Added padding */
 }
 
@@ -221,6 +223,10 @@ li {
     list-style: none;
 }
 
+.swiper-container {
+    overflow: hidden;
+}
+
 .swiper-slide img {
     max-width: 70%;
     /* Changed to max-width */
@@ -231,10 +237,23 @@ li {
     margin: 0 auto;
     /* Center the image */
 }
-.swiper-slide .swiper-slide-active{
+
+.swiper-slide .swiper-slide-active {
     display: flex;
     align-self: center;
 }
 
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    content: "";
+    align-self: center;
+}
+
+.BuildImg>img {
+    object-fit: contain;
+    height: 10rem;
+    margin: auto;
+    display: block;
+}
 
 /* #endregion SamenStellen */
