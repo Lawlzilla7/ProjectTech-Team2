@@ -8,6 +8,8 @@ const app = express()
 const xss = require('xss')
 const bcrypt = require('bcryptjs')
 const session = require('express-session')
+const multer  = require('multer')
+const upload = multer({ dest: 'static/uploads/' }) 
 
 app
 	.set('view engine', 'ejs') // Set EJS to be our templating engine
@@ -160,6 +162,46 @@ async function onaccount (req, res) {
 	console.log(`Jouw account met username: ${req.session.username}`)
 	}
 
+ // functie voor avatar opslaan
+	app.post('/myaccount', upload.single('avatar'), addAvatar)
+	
+async function addAvatar(req, res) {
+	// console.log(req.file.filename)
+
+	const username = req.session.username;
+
+	const pathAvatar = req.file.avatar
+	const database = client.db('gebruikers');
+	const collection = database.collection('accounts');
+
+
+	const result = await collection.updateOne({username: username}, 
+		{$set: {avatar: pathAvatar} });
+
+if (result.modifiedCount === 1) {
+	console.log('Avatar toegevoegd aan het account van', username);
+	res.send('Avatar succesvol toegevoegd aan het account');
+} 
+}
+		
+
+			
+
+
+
+	app.get('/logout', (req, res) => {
+		// Vernietig de sessie
+		req.session.destroy(err => {
+			if (err) {
+				console.error('Fout bij het uitloggen:', err);
+				res.status(500).send('Er is een fout opgetreden bij het uitloggen.');
+			} else {
+				// Redirect de gebruiker naar de inlogpagina
+				res.redirect('/login');
+				console.log(`Er is uitgelogd.`)
+			}
+		});
+	});
 
 
 
