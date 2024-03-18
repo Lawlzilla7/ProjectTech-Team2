@@ -130,6 +130,13 @@ const ChangeKleur = (KleurWaarde) => {
 ChangeKleur(KleurWaarde);
 ChangeVelg(VelgenWaarde);
 ChangeBody(BodyWaarde);
+
+const SendBuildData = () => {
+    console.log("body waarde = " + BodyWaarde + " Velgen waarde = " +
+        VelgenWaarde + " Kleur waarde = " + KleurWaarde);
+    
+        return KleurWaarde + VelgenWaarde + BodyWaarde;
+}
 // var options = {
 //     direction: 'horizontal',
 //     loop: 'true',

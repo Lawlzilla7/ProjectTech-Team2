@@ -16,9 +16,19 @@
 
 body {
     background-color: var(--Background-Colour);
-    background-image: url("../images/FlamingWheelsPattern.png");
+    /* background-image: url("../images/FlamingWheelsPattern.png");
     background-repeat: repeat;
-    background-size: 110%;
+    background-size: 110%; */
+
+    background:
+        linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+        linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+        linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+        linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+        linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+        linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
 }
 
 a {
@@ -122,6 +132,9 @@ header a:hover {
     background-color: #db5bc6;
 }
 
+.StartButton{
+    margin-bottom: 5rem;
+}
 .StartImgText {
     display: flex;
     flex-direction: column;
@@ -166,7 +179,7 @@ header a:hover {
     /* Changed to auto */
     position: relative;
     /* Changed to relative */
-    margin: 4rem auto 0;
+    margin: 2rem auto 0;
     display: flex;
     gap: 2rem;
     flex-direction: column;
@@ -175,9 +188,10 @@ header a:hover {
     /* Added padding */
 }
 
-.CarBuild > h2{
+.CarBuild>h2 {
     text-align: center;
 }
+
 .CarWithButtons {
     position: relative;
     /* Added position */
@@ -266,7 +280,7 @@ li {
     align-items: center;
 }
 
-.BuildImg > img {
+.BuildImg>img {
 
     position: absolute;
     object-fit: contain;
@@ -276,14 +290,17 @@ li {
 
 
 @media screen and (min-width: 480px) {
-    .CarBuild{
+    .CarBuild {
         width: 30rem;
     }
-    .OpslaanKnop{
+
+    .OpslaanKnop, .StartButton {
         width: 15rem;
     }
-    body{
+
+    /* body {
         background-size: 10%;
-    }
-  }
+    } */
+}
+
 /* #endregion SamenStellen */
