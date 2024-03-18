@@ -107,7 +107,7 @@ header a:hover {
 
     z-index: 99;
 
-    position: fixed;
+    /* position: fixed; */
     width: 50%;
     border-radius: 4.0625rem;
     margin-bottom: 1rem;
@@ -176,16 +176,13 @@ header a:hover {
     border-radius: 31px;
     width: 80vw;
     height: auto;
-    /* Changed to auto */
     position: relative;
-    /* Changed to relative */
     margin: 2rem auto 0;
     display: flex;
     gap: 2rem;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem;
-    /* Added padding */
+    padding: 2rem 2rem 0rem 2rem;
 }
 
 .CarBuild>h2 {
@@ -194,9 +191,7 @@ header a:hover {
 
 .CarWithButtons {
     position: relative;
-    /* Added position */
     width: 100%;
-    /* Added width */
 }
 
 .swiper-button-prev,

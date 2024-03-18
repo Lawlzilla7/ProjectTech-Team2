@@ -134,8 +134,8 @@ ChangeBody(BodyWaarde);
 const SendBuildData = () => {
     console.log("body waarde = " + BodyWaarde + " Velgen waarde = " +
         VelgenWaarde + " Kleur waarde = " + KleurWaarde);
-    
-        return KleurWaarde + VelgenWaarde + BodyWaarde;
+
+    return KleurWaarde + VelgenWaarde + BodyWaarde;
 }
 // var options = {
 //     direction: 'horizontal',
