@@ -175,6 +175,9 @@ header a:hover {
     /* Added padding */
 }
 
+.CarBuild > h2{
+    text-align: center;
+}
 .CarWithButtons {
     position: relative;
     /* Added position */
@@ -249,11 +252,38 @@ li {
     align-self: center;
 }
 
-.BuildImg>img {
-    object-fit: contain;
-    height: 10rem;
-    margin: auto;
-    display: block;
+#BuildPage {
+    display: flex;
+    flex-direction: column;
 }
 
+.BuildImg {
+    margin-top: 2rem;
+    position: relative;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BuildImg > img {
+
+    position: absolute;
+    object-fit: contain;
+    height: 100%;
+    opacity: 30%;
+}
+
+
+@media screen and (min-width: 480px) {
+    .CarBuild{
+        width: 30rem;
+    }
+    .OpslaanKnop{
+        width: 15rem;
+    }
+    body{
+        background-size: 10%;
+    }
+  }
 /* #endregion SamenStellen */

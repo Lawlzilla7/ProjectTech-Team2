@@ -95,9 +95,9 @@ const ChangeBody = (BodyWaarde) => {
     if (BodyWaarde === 1) {
         image.src = '/images/green.png';
     } else if (BodyWaarde === 2) {
-        image.src = '';
+        image.src = '/images/red.png';
     } else if (BodyWaarde === 3) {
-        image.src = '';
+        image.src = '/images/blue.png';
     }
 
 }
@@ -108,9 +108,9 @@ const ChangeVelg = (VelgenWaarde) => {
     if (VelgenWaarde === 1) {
         image.src = '/images/blue.png';
     } else if (VelgenWaarde === 2) {
-        image.src = '';
+        image.src = '/images/red.png';
     } else if (VelgenWaarde === 3) {
-        image.src = '';
+        image.src = '/images/green.png';
     }
 }
 
@@ -120,9 +120,9 @@ const ChangeKleur = (KleurWaarde) => {
     if (KleurWaarde === 1) {
         image.src = '/images/red.png';
     } else if (KleurWaarde === 2) {
-        image.src = '';
+        image.src = '/images/green.png';
     } else if (KleurWaarde === 3) {
-        image.src = '';
+        image.src = '/images/blue.png';
     }
 
 }
