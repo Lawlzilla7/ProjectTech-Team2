@@ -365,3 +365,53 @@ footer {
 }
 
 /* #endregion InlogPagina */
+
+
+/* #region SignInPagina */
+
+.BodySignIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(4px);
+}
+
+/* #endregion SignInPagina */
+
+
+/* #region PasswordPagina */
+
+.BodyPassword {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(4px);
+}
+
+.LogInWrapper .register-link-password-page {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 10px 0 15px;
+    margin-top: 10px;
+}
+
+.register-link-password-page p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: -500px;
+}
+
+.register-link-password-page p a:hover {
+    text-decoration: underline;
+}
+
+/* #endregion PasswordPagina */
