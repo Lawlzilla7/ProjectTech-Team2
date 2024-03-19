@@ -10,6 +10,7 @@ const bcrypt = require('bcryptjs')
 const session = require('express-session')
 const multer  = require('multer')
 const upload = multer({ dest: 'static/uploads/' }) 
+const path = require('node:path'); 
 
 app
 	.set('view engine', 'ejs') // Set EJS to be our templating engine
@@ -159,30 +160,35 @@ async function onaccount (req, res) {
 
         res.render('pages/myaccount', {user: result});
 
-	console.log(`Jouw account met username: ${req.session.username}`)
+	console.log(`Sessie gestart met username: ${req.session.username}`)
 	}
 
  // functie voor avatar opslaan
 	app.post('/myaccount', upload.single('avatar'), addAvatar)
-	
+
 async function addAvatar(req, res) {
 	// console.log(req.file.filename)
 
 	const username = req.session.username;
 
-	const pathAvatar = req.file.avatar
+	const avatarPath = req.file.path;
+	const cleanAvatarPath = avatarPath.replace('static/', '');
+	
 	const database = client.db('gebruikers');
 	const collection = database.collection('accounts');
 
+	const result = await collection.updateOne({ username: username },
+		{ $set: { avatar: cleanAvatarPath } });
 
-	const result = await collection.updateOne({username: username}, 
-		{$set: {avatar: pathAvatar} });
-
-if (result.modifiedCount === 1) {
-	console.log('Avatar toegevoegd aan het account van', username);
-	res.send('Avatar succesvol toegevoegd aan het account');
+	if (result.modifiedCount === 1) {
+		console.log('Avatar succesvol toegevoegd aan het account van', username);
+		res.redirect('/myaccount');
+	} else {
+		console.log('Avatar NIET toegevoegd aan het account van', username);
+		res.status(404).send('Avatar niet toegevoegd.');
+	}
 } 
-}
+
 		
 
 			

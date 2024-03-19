@@ -9,12 +9,14 @@
 
     </header>
 
+    
     <main>
 
         <h1> Mijn account </h1>
 
         <h2> Welkom, <%= user.username %>  </h2>
-        
+        <img src="<%= user.avatar %>">
+
         <form id="uploadpicture" action="/myaccount" method="POST" enctype="multipart/form-data"> 
             <label>Voeg een profielfoto toe:</label>
             <input type="file" name="avatar" accept="image/*">
