@@ -253,25 +253,13 @@ li {
 
 .swiper-slide img {
     max-width: 70%;
-    /* Changed to max-width */
     height: auto;
-    /* Added height auto */
     object-fit: contain;
     display: block;
     margin: 0 auto;
-    /* Center the image */
 }
 
 .swiper-slide .swiper-slide-active {
-
-    margin-left: auto;
-    margin-right: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    margin-bottom: 4em;
-
     display: flex;
     align-self: center;
 }
@@ -291,14 +279,6 @@ li {
     margin-top: 2rem;
     position: relative;
     height: 10rem;
-    width: 34px;
-    height: 25px;
-    flex-shrink: 0;
-    margin-left: 2em;
-    margin-top: 3em;
-}
-
-.CarSliderCar img {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -308,21 +288,24 @@ li {
 
     position: absolute;
     object-fit: contain;
-    width: 10em;
-    margin-top: 2em;
-}
-
-.CarSlider2 {
-    display: flex;
-    color: var(--Background-Colour);
-    width: 34px;
-    height: 25px;
-    flex-shrink: 0;
-    margin-right: 2em;
-    margin-top: 3em;
+    height: 100%;
+    opacity: 30%;
 }
 
 
+@media screen and (min-width: 480px) {
+    .CarBuild {
+        width: 30rem;
+    }
+
+    .OpslaanKnop, .StartButton {
+        width: 15rem;
+    }
+
+    /* body {
+        background-size: 10%;
+    } */
+}
 /* #endregion SamenStellen */
 
 /* #region DetailPagina */
