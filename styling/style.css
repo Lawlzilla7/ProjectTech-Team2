@@ -241,13 +241,10 @@ li {
 
 .swiper-slide img {
     max-width: 70%;
-    /* Changed to max-width */
     height: auto;
-    /* Added height auto */
     object-fit: contain;
     display: block;
     margin: 0 auto;
-    /* Center the image */
 }
 
 .swiper-slide .swiper-slide-active {
