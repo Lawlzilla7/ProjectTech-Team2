@@ -40,6 +40,11 @@ h1 {
     font-size: 5rem;
 }
 
+.sonsie-one-regular {
+    font-family: "Sonsie One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }  
 
 
 /* #region header */
@@ -58,6 +63,8 @@ header li {
     text-decoration: none;
     list-style: none;
     align-self: center;
+    color: var(--CallToAction);
+    z-index: 1;
 }
 
 header li:first-child {
@@ -87,6 +94,7 @@ header a {
     /* background-color: rgb(211, 211, 211); */
     padding: 1rem;
 
+    padding: 1em;
     font-size: clamp(0.9375rem, 0.738rem + 0.8511vw, 1.3125rem);
     word-break: break-all;
 }
@@ -127,6 +135,10 @@ header a:hover {
 /* .OpslaanKnop {
     margin-bottom: 4rem;
 } */
+
+.OpslaanKnop {
+    margin-bottom: 4em;
+}
 
 .StartButton:active {
     background-color: #db5bc6;
@@ -251,6 +263,15 @@ li {
 }
 
 .swiper-slide .swiper-slide-active {
+
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin-bottom: 4em;
+
     display: flex;
     align-self: center;
 }
@@ -270,6 +291,14 @@ li {
     margin-top: 2rem;
     position: relative;
     height: 10rem;
+    width: 34px;
+    height: 25px;
+    flex-shrink: 0;
+    margin-left: 2em;
+    margin-top: 3em;
+}
+
+.CarSliderCar img {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -279,23 +308,228 @@ li {
 
     position: absolute;
     object-fit: contain;
-    height: 100%;
-    opacity: 30%;
+    width: 10em;
+    margin-top: 2em;
 }
 
-
-@media screen and (min-width: 480px) {
-    .CarBuild {
-        width: 30rem;
-    }
-
-    .OpslaanKnop, .StartButton {
-        width: 15rem;
-    }
-
-    /* body {
-        background-size: 10%;
-    } */
+.CarSlider2 {
+    display: flex;
+    color: var(--Background-Colour);
+    width: 34px;
+    height: 25px;
+    flex-shrink: 0;
+    margin-right: 2em;
+    margin-top: 3em;
 }
+
 
 /* #endregion SamenStellen */
+
+/* #region DetailPagina */
+.AutoAchtergrond {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('../images/auditt3.png'), lightgray 50%;
+    margin-top: -9em;
+    height: 400px;
+}
+
+.InfoBox {
+    display: flex;
+    width: 336px;
+    height: 132px;
+    border-radius: 29px;
+    flex-shrink: 0;
+    background: #E7E7E7;
+    margin-top: 25rem;
+}
+
+.InfoBox ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.InfoBox li {
+    display: flex;
+    margin: 10px;
+    padding: 1em;
+}
+
+/* #endregion DetailPagina */
+
+/* #region InlogPagina */
+
+.BodyLogIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(4px);
+}
+
+.LogInWrapper {
+    width: 380px;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px 10px;
+    margin-top: 180px;
+    margin-left: 3.5%;
+}
+
+.LogInWrapper h1 {
+    color: #FFF;
+    text-align: center;
+    font-family: "Sonsie One", system-ui;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.LogInWrapper .input-box {
+    width: 83.5%;
+    height: 50px;
+    margin: 20px 0;
+}
+
+.LogInWrapper input::placeholder {
+    opacity: 60%;
+    color: #4E4E4E;
+}
+
+.input-box input {
+    width: 65%;
+    height: 40%;
+    background: #E7E7E7;
+    color: #4E4E4E;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+    margin-left: 17.2%;
+}
+
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50);
+    font-size: 20px;
+}
+
+.LogInWrapper .remember-forgot {
+    display: flex;
+    justify-content: center;
+    font-size: 14.5px;
+    margin: -2px 0 15px;
+    font-weight: 600;
+}
+
+.remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.LogInWrapper .btn {
+    width: 71.5%;
+    height: 45px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 600;
+    margin-left: 14.5%;
+    margin-bottom: 14px;
+    margin-top: 10px;
+}
+
+.LogInWrapper .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 10px 0 15px;
+    margin-top: 40px;
+}
+
+.register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: -500px;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+/* #endregion InlogPagina */
+
+
+/* #region SignInPagina */
+
+.BodySignIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(4px);
+}
+
+/* #endregion SignInPagina */
+
+
+/* #region PasswordPagina */
+
+.BodyPassword {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(4px);
+}
+
+.LogInWrapper .register-link-password-page {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 10px 0 15px;
+    margin-top: 10px;
+}
+
+.register-link-password-page p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: -500px;
+}
+
+.register-link-password-page p a:hover {
+    text-decoration: underline;
+}
+
+/* #endregion PasswordPagina */
