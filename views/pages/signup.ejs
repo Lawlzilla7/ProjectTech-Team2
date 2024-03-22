@@ -2,49 +2,39 @@
 <html lang="en">
 
 <head>
-    <%- include('../partials/head'); %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn</title>
 
+    <link href="styles/style.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap" rel="stylesheet">
 </head>
 
-<body>
-
-    <header>
-
-        <%- include('../partials/nav'); %>
-
-    </header>
-
+<body class="BodySignIn">
     <main>
+        <section class="LogInWrapper">
+            <form action="">
+                <h1>Maak hier je account aan!</h1>
+                <div class="input-box">
+           <form id="accountForm" action="/add-account" method="POST">                    
+            
+            <input type="text" name="username" placeholder="Gebruikersnaam" required>
+            
+                    <input type="text" name="email" placeholder="Email" required>
 
-    <h1> Maak hier je account aan </h1>
+                    <input type="password" name="password" placeholder="Wachtwoord" required>
 
-        <section> 
-
-        <div class="container">
-            <h2>Account aanmaken</h2>
-            <form id="accountForm" action="/add-account" method="POST">
-                <label> Username:</label>
-                <input type="text" name="username" required>
-
-                <label> Password: </label>
-                <input type="password" name="password" required>
-
-                <label> Email: </label>
-                <input type="email" name="email" required>
-
-                <input type="submit" value="account maken">
+                <input type="submit" value="account aamaken" class="btn">
             </form>
         </div>
-
-    </section>
-
+        </section>
+        <img src="./images/flamingwheelspink2.png" alt="" width="430">
     </main>
-
-    <footer> </footer>
-
-    <script defer src="/scripts/script.js"> </script>
-
 </body>
 
 </html>

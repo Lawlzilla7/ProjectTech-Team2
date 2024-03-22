@@ -1,32 +1,37 @@
-
 <!DOCTYPE ejs>
 <html lang="en">
 
-<head> 
-<%- include('../partials/head'); %> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChooseCar</title>
+
+    <link href="/styles/style.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
 </head>
 
 <body>
+    <header>
+        <ul>
+            <li>
+                <button onclick=""><img src="./images/Heart.svg" alt=""></a></button>
+            </li>
+            <li>
+                <button onclick=""><img src="./images/Profile.svg" alt=""></a></button>
+            </li>
+        </ul>
+    </header>
 
-<header> 
+    <main>
+        <section class="StartImgText">
+            <h1>Flaming Wheels</h1>
+            <img src="./images/project tech logo 1.png" alt="FlamingWHeels logo">
+        </section>
+        <button class="StartButton" onclick="location.href = 'login';">Start</button>
+    </main>
 
-<%- include('../partials/nav'); %> 
-
-</header>
-
-<main> 
-
-<h1> Hallo daar </h1>
-<p> dit gaat goed </p>
-
-
-
-
-</main>
-
-<footer> </footer>
-
-<script defer src="/scripts/script.js" type="text/javascript"> </script>
-
+    <footer></footer>
 </body>
+
 </html>

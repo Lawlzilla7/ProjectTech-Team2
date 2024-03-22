@@ -109,11 +109,26 @@ async function addAccount(req, res) {
 app.get('/login', onlogin)
 app.post('/loggedin', findAccount)
 
-
 function onlogin(req, res) {
 	res.render('pages/login')
-
 }
+
+// app.get ('/start', start)
+
+// function start(req, res) {
+
+// 	if (!username) {
+// 		res.redirect('/login', onlogin);
+// 		return;
+// 	}
+
+// 	else {
+// 		res.render('pages/build')
+// 	}
+// }
+
+
+
 
 async function findAccount(req, res) {
 
@@ -125,9 +140,10 @@ async function findAccount(req, res) {
 
 	const result = await collection.findOne({username: username});
 	
-		if (result && await bcrypt.compare(password, result.password)) {
+
+	if (result && await bcrypt.compare(password, result.password)) {
 			req.session.username = username;
-			res.redirect('/myaccount');
+			res.render('pages/login')
 			console.log(`Logged in with username ${xss(req.body.username)}`);
 		} 
 		else {
@@ -135,9 +151,19 @@ async function findAccount(req, res) {
 			Verkeerde gebruikersnaam of wachtwoord ingevoerd
 		 </h1>`)
 		}
+		
 	};
 	// console.log(`User with _id: ${result.ObjectId}`);
  
+
+
+// Functie voor wachtwoord vergeten
+app.get('/password', onpassword)
+
+function onpassword(req, res) {
+	res.render('pages/password')
+
+}
 
 //Functie voor mijn account
 app.get('/myaccount', onaccount)
