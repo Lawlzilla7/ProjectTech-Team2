@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { MongoClient, ServerApiVersion } = require('mongodb')
-const uri = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT??27017}`
+const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
 exports.client = new MongoClient(uri)
 
 exports.connect = async (client) => {

@@ -13,8 +13,9 @@ app
   // .get('/about', onAbout)
   // .get('/profile/:name', onProfile)
 
+
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
-const uri = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}`
+const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -61,3 +62,4 @@ app.use((err, req, res) => {
 app.listen(process.env.PORT, () => {
   console.log(`I did not change this message and now my webserver is listening at port ${process.env.PORT}`)
 })
+
