@@ -304,8 +304,6 @@ async function addMovie(req, res) {
 
 
 
-
-
 // Middleware to handle not found errors - error 404
 app.use((req, res) => {
 	// log error to console
