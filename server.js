@@ -109,10 +109,33 @@ async function addAccount(req, res) {
 app.get('/login', onlogin)
 app.post('/loggedin', findAccount)
 
-
 function onlogin(req, res) {
 	res.render('pages/login')
+}
 
+
+app.get('/build', onbuild) 
+
+function onbuild(req,res) {
+	res.render('pages/build')
+}
+
+
+app.get('/start', onstart)
+
+function onstart(req, res) {
+
+	//Haal de gebruikersnaam op uit de sessie
+	const username = req.session.username;
+
+	// Als de gebruikersnaam niet in de sessie is opgeslagen, doorsturen naar de inlogpagina
+	if (!username) {
+		res.redirect('/login');
+		return;
+	}
+	else {
+	res.redirect('/build')
+	}
 }
 
 async function findAccount(req, res) {
@@ -138,6 +161,15 @@ async function findAccount(req, res) {
 	};
 	// console.log(`User with _id: ${result.ObjectId}`);
  
+
+
+// Functie voor wachtwoord vergeten
+app.get('/password', onpassword)
+
+function onpassword(req, res) {
+	res.render('pages/password')
+
+}
 
 //Functie voor mijn account
 app.get('/myaccount', onaccount)
