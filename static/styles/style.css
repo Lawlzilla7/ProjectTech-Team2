@@ -1,58 +1,518 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+
+}
+
+:root {
+    --Background-Colour: #4E4E4E;
+    --CallToAction: #FFA800;
+    --BoxColour: #D9C9D4;
+    --swiper-theme-color: #000 !important;
+    --swiper-navigation-size: 2rem !important;
+}
 
 body {
-    background-color: rgb(152, 152, 255);
+    background-color: var(--Background-Colour);
+    /* background-image: url("../images/FlamingWheelsPattern.png");
+    background-repeat: repeat;
+    background-size: 110%; */
+
+    background:
+        linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+        linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+        linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+        linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+        linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+        linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
 }
 
-nav {
-    background-color: rgb(255, 255, 255);
-}
-
-main {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    height: 100vh;
-    text-align: center;
+a {
+    text-decoration: none;
 }
 
 h1 {
-    color: red;
-    text-align: center;
-    margin-top: 2em;
+    color: white;
+    font-size: 5rem;
 }
 
-section {
+.sonsie-one-regular {
+    font-family: "Sonsie One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }  
+
+
+/* #region header */
+header {
+    background-color: transparent;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+header li {
+    text-decoration: none;
+    list-style: none;
+    align-self: center;
+    color: var(--CallToAction);
+    z-index: 1;
+}
+
+header li:first-child {
+    margin-right: auto;
+    align-self: flex-end;
+}
+
+header img {
+    object-fit: contain;
+    height: clamp(2rem, 30vw, 4rem);
+}
+
+header button {
+    padding: 1rem;
+    align-self: center;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+header button:active {
+    filter: opacity(50%);
+}
+
+header a {
+    /* background-color: rgb(211, 211, 211); */
+    padding: 1rem;
+
+    padding: 1em;
+    font-size: clamp(0.9375rem, 0.738rem + 0.8511vw, 1.3125rem);
+    word-break: break-all;
+}
+
+header a:hover {
+    background-color: aquamarine;
+}
+
+/* #endregion header */
+
+/* #region ZeroState */
+.StartButton,
+.OpslaanKnop {
     display: flex;
     justify-content: center;
-    text-align:start;
+    align-items: center;
+    padding: 0.625rem 3.75rem;
+
+    z-index: 99;
+
+    /* position: fixed; */
+    width: 50%;
+    border-radius: 4.0625rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: var(--CallToAction);
+    color: white;
+    font-size: larger;
+    border: none;
+    /* box-shadow: 0 1px 8px #000000; */
 }
 
-.container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* .OpslaanKnop {
+    margin-bottom: 4rem;
+} */
+
+.OpslaanKnop {
+    margin-bottom: 4em;
 }
 
-label {
-    display: block;
-    margin-bottom: 8px;
+.StartButton:active {
+    background-color: #db5bc6;
 }
 
-input {
+.StartButton{
+    margin-bottom: 5rem;
+}
+.StartImgText {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    position: relative;
+    margin-top: 5rem;
+}
+
+.StartImgText img {
+    position: relative;
+    object-fit: contain;
+    width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    top: -4rem;
+}
+
+.StartImgText>h1 {
+    text-align: center;
+    font-style: italic;
+}
+
+/* #endregion ZeroState */
+
+/* #region footer*/
+/* footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:50px; 
+    background-color: whitesmoke;
+} */
+
+/* #endregion footer */
+
+/* #region SamenStellen */
+.CarBuild {
+    background-color: var(--BoxColour);
+    border-radius: 31px;
+    width: 80vw;
+    height: auto;
+    position: relative;
+    margin: 2rem auto 0;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 2rem 0rem 2rem;
+}
+
+.CarBuild>h2 {
+    text-align: center;
+}
+
+.CarWithButtons {
+    position: relative;
     width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #000000;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.CarSliderCar img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
+
+button:focus {
+    outline: none;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.swiper-container {
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    max-width: 70%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.swiper-slide .swiper-slide-active {
+    display: flex;
+    align-self: center;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    content: "";
+    align-self: center;
+}
+
+#BuildPage {
+    display: flex;
+    flex-direction: column;
+}
+
+.BuildImg {
+    margin-top: 2rem;
+    position: relative;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BuildImg>img {
+
+    position: absolute;
+    object-fit: contain;
+    height: 100%;
+    opacity: 30%;
+}
+
+
+@media screen and (min-width: 480px) {
+    .CarBuild {
+        width: 30rem;
+    }
+
+    .OpslaanKnop, .StartButton {
+        width: 15rem;
+    }
+
+    /* body {
+        background-size: 10%;
+    } */
+}
+/* #endregion SamenStellen */
+
+/* #region DetailPagina */
+.AutoAchtergrond {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('../images/auditt3.png'), lightgray 50%;
+    margin-top: -9em;
+    height: 400px;
+}
+
+.InfoBox {
+    display: flex;
+    width: 336px;
+    height: 132px;
+    border-radius: 29px;
+    flex-shrink: 0;
+    background: #E7E7E7;
+    margin-top: 25rem;
+}
+
+.InfoBox ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.InfoBox li {
+    display: flex;
+    margin: 10px;
+    padding: 1em;
+}
+
+/* #endregion DetailPagina */
+
+/* #region InlogPagina */
+
+.BodyLogIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(4px);
+}
+
+.LogInWrapper {
+    width: 380px;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px 10px;
+    margin-top: 180px;
+    margin-left: 3.5%;
+}
+
+.LogInWrapper h1 {
+    color: #FFF;
+    text-align: center;
+    font-family: "Sonsie One", system-ui;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.LogInWrapper .input-box {
+    width: 83.5%;
+    height: 50px;
+    margin: 20px 0;
+}
+
+.LogInWrapper input::placeholder {
+    opacity: 60%;
+    color: #4E4E4E;
+}
+
+.input-box input {
+    width: 65%;
+    height: 40%;
+    background: #E7E7E7;
+    color: #4E4E4E;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+    margin-left: 17.2%;
+}
+
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50);
+    font-size: 20px;
+}
+
+.LogInWrapper .remember-forgot {
+    display: flex;
+    justify-content: center;
+    font-size: 14.5px;
+    margin: -2px 0 15px;
+    font-weight: 600;
+}
+
+.remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.LogInWrapper .btn {
+    width: 71.5%;
+    height: 45px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 600;
+    margin-left: 14.5%;
+    margin-bottom: 14px;
+    margin-top: 10px;
+}
+
+.LogInWrapper .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 10px 0 15px;
+    margin-top: 40px;
+}
+
+.register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: -500px;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+/* #endregion InlogPagina */
+
+
+/* #region SignInPagina */
+
+.BodySignIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(4px);
+}
+
+/* #endregion SignInPagina */
+
+
+/* #region PasswordPagina */
+
+.BodyPassword {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(4px);
+}
+
+.LogInWrapper .register-link-password-page {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 10px 0 15px;
+    margin-top: 10px;
+}
+
+.register-link-password-page p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: -500px;
+}
+
+.register-link-password-page p a:hover {
+    text-decoration: underline;
+}
+
+/* #endregion PasswordPagina */

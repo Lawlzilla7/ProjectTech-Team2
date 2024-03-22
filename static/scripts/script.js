@@ -1,51 +1,155 @@
-// async function getUsers() {
-//     try {
-//       const response = await fetch('http://localhost:8000/scripts/gebruikers.json')
-  
-//       if (!response.ok) {
-//         throw new Error('Netwerkfout bij het ophalen van gegevens')
-//       }
-  
-//       const data = await response.json()
-//       const users = data.users
-//       console.log('Lijst van gebruikers: ', users)
-//       return users
-      
-//     } catch (error) {
-//       console.error('Er is een fout opgetreden:', error)
+let KleurWaarde = 1;
+console.log("Kleurwaarde = " + KleurWaarde);
+
+
+let VelgenWaarde = 1;
+console.log("velgen waarde = " + VelgenWaarde);
+
+
+let BodyWaarde = 1;
+console.log("body waarde = " + BodyWaarde);
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const ScrollSpeed = 200;
+    const CssSetting = false;
+
+
+
+    var swiper1 = new Swiper('#swiper1', {
+        speed: ScrollSpeed,
+        cssMode: CssSetting,
+        allowTouchMove: false,
+        navigation: {
+            nextEl: '#swiper1 .swiper-button-next',
+            prevEl: '#swiper1 .swiper-button-prev',
+        },
+    });
+
+    var swiper2 = new Swiper('#swiper2', {
+        speed: ScrollSpeed,
+        cssMode: CssSetting,
+        allowTouchMove: false,
+        navigation: {
+            nextEl: '#swiper2 .swiper-button-next',
+            prevEl: '#swiper2 .swiper-button-prev',
+        },
+    });
+
+    var swiper3 = new Swiper('#swiper3', {
+        speed: ScrollSpeed,
+        cssMode: CssSetting,
+        navigation: {
+            nextEl: '#swiper3 .swiper-button-next',
+            prevEl: '#swiper3 .swiper-button-prev',
+        },
+    });
+});
+
+
+const KleurKnopPrev = () => {
+    KleurWaarde -= 1;
+    ChangeKleur(KleurWaarde);
+
+    console.log("Kleurwaarde = " + KleurWaarde);
+}
+
+const KleurKnopNext = () => {
+    KleurWaarde += 1;
+    ChangeKleur(KleurWaarde);
+
+    console.log("Kleurwaarde = " + KleurWaarde);
+}
+
+const VelgKnopPrev = () => {
+    VelgenWaarde -= 1;
+    ChangeVelg(VelgenWaarde);
+
+    console.log("velgen waarde = " + VelgenWaarde);
+}
+
+const VelgKnopNext = () => {
+    VelgenWaarde += 1;
+    ChangeVelg(VelgenWaarde);
+
+    console.log("velgen waarde = " + VelgenWaarde);
+}
+const BodyKnopPrev = () => {
+    BodyWaarde -= 1;
+    ChangeBody(BodyWaarde);
+
+    console.log("body waarde = " + BodyWaarde);
+}
+
+const BodyKnopNext = () => {
+    BodyWaarde += 1;
+    ChangeBody(BodyWaarde);
+
+    console.log("body waarde = " + BodyWaarde);
+}
+
+
+const ChangeBody = (BodyWaarde) => {
+    let image = document.querySelector('#CarBody');
+
+    if (BodyWaarde === 1) {
+        image.src = '/images/green.png';
+    } else if (BodyWaarde === 2) {
+        image.src = '/images/red.png';
+    } else if (BodyWaarde === 3) {
+        image.src = '/images/blue.png';
+    }
+
+}
+
+const ChangeVelg = (VelgenWaarde) => {
+    let image = document.querySelector('#CarVelgen');
+
+    if (VelgenWaarde === 1) {
+        image.src = '/images/blue.png';
+    } else if (VelgenWaarde === 2) {
+        image.src = '/images/red.png';
+    } else if (VelgenWaarde === 3) {
+        image.src = '/images/green.png';
+    }
+}
+
+const ChangeKleur = (KleurWaarde) => {
+    let image = document.querySelector('#CarKleur');
+
+    if (KleurWaarde === 1) {
+        image.src = '/images/red.png';
+    } else if (KleurWaarde === 2) {
+        image.src = '/images/green.png';
+    } else if (KleurWaarde === 3) {
+        image.src = '/images/blue.png';
+    }
+
+}
+
+ChangeKleur(KleurWaarde);
+ChangeVelg(VelgenWaarde);
+ChangeBody(BodyWaarde);
+
+const SendBuildData = () => {
+    console.log("body waarde = " + BodyWaarde + " Velgen waarde = " +
+        VelgenWaarde + " Kleur waarde = " + KleurWaarde);
+
+    return KleurWaarde + VelgenWaarde + BodyWaarde;
+}
+// var options = {
+//     direction: 'horizontal',
+//     loop: 'true',
+//     speed: 300,
+//     cssMode: true,
+
+//     pagination: {
+//         el: '.swiper-pagination',
+//         type: 'fraction'
+//     },
+//     navigation: {
+//         nextEl: '.swiper-button-next',
+//         prevEl: '.swiper-button-prev'
 //     }
-//   }
-  
-  
-//   async function login() {
-      
-//       const usernameInput = document.getElementById('username')
-//       const passwordInput = document.getElementById('password')
-      
-//       // haal de wachtwoorden op uit het JSON-bestand
-//       // gebruik await omdat getCredentials async functie is
-//        try {
-//           // haal de wachtwoorden op uit het JSON-bestand
-//           const users = await getUsers()
-  
-//           // probeer de gebruiker met de opgegeven gebruikersnaam te vinden in de array met gebruikers
-//           // als deze gebruiker niet bestaat zal myUser undefined zijn
-//           const myUser = users.find(x => x.name === usernameInput.value)
-//           if (myUser) {
-//               console.log('Gebruiker gevonden: ', myUser)
-//           } else {
-//               console.log('Gebruiker niet gevonden')
-//           }
-          
-//           // controleer of we een gebruiker met deze gebruikersnaam hebben gevonden en zo ja, 
-//           // of het wachtwoord overeenkomt
-//           if (myUser && myUser.password === passwordInput.value) {
-//               alert('Login successful!')
-//           } else {
-//               alert('Invalid username or password')
-//           }
-//       } catch (error) {
-//           console.error('Er is een fout opgetreden bij het inloggen:', error)
-//       }
-//   }
-  
+
+// };
