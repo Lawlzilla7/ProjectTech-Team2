@@ -1,0 +1,48 @@
+<!DOCTYPE ejs>
+<html lang="en">
+
+<!-- <head> 
+<%- include('../partials/head'); %> 
+</head> -->
+
+<body>
+
+<header> 
+
+<%- include('../partials/nav'); %> 
+
+</header>
+
+<main> 
+
+<h1> Thanks for adding the movie with: </h1>
+
+<ul>
+<li> Title: <%= addedMovie.title %> </li>
+<li> Plot: <%= addedMovie.plot %> </li>
+<li> Description: <%= addedMovie.description %> </li>
+</ul>
+
+</h1> 
+    
+    <h2> Movielist:</h2>
+<% if(movies[0]){
+    for (movie of movies) { %>
+        <ul> 
+            <li> <%= movie.title %> </li>
+        </ul>
+    <% } %>
+           
+<% } else {%>  
+    <p>No movies found &#128531;</p>
+<% } %>  
+
+
+</main>
+
+<footer> </footer>
+
+<script defer src="/scripts/script.js" type="text/javascript"> </script>
+
+</body>
+</html>
