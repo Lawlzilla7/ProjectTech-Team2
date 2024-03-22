@@ -1,22 +1,18 @@
 let KleurWaarde = 1;
 console.log("Kleurwaarde = " + KleurWaarde);
 
-
 let VelgenWaarde = 1;
 console.log("velgen waarde = " + VelgenWaarde);
 
-
 let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
-
 
 document.addEventListener('DOMContentLoaded', function () {
     const ScrollSpeed = 200;
     const CssSetting = false;
 
-
-
     var swiper1 = new Swiper('#swiper1', {
+        effect: "coverflow",
         speed: ScrollSpeed,
         cssMode: CssSetting,
         allowTouchMove: false,
@@ -27,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     var swiper2 = new Swiper('#swiper2', {
+        effect: "coverflow",
         speed: ScrollSpeed,
         cssMode: CssSetting,
         allowTouchMove: false,
@@ -37,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     var swiper3 = new Swiper('#swiper3', {
+        effect: "coverflow",
         speed: ScrollSpeed,
         cssMode: CssSetting,
         navigation: {
@@ -45,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
         },
     });
 });
-
 
 const KleurKnopPrev = () => {
     KleurWaarde -= 1;
@@ -87,7 +84,6 @@ const BodyKnopNext = () => {
 
     console.log("body waarde = " + BodyWaarde);
 }
-
 
 const ChangeBody = (BodyWaarde) => {
     let image = document.querySelector('#CarBody');
