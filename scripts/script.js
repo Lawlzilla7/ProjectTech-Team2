@@ -124,7 +124,6 @@ const ChangeKleur = (KleurWaarde) => {
     } else if (KleurWaarde === 3) {
         image.src = '/images/blue.png';
     }
-
 }
 
 ChangeKleur(KleurWaarde);

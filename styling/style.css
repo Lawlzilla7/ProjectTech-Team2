@@ -5,6 +5,10 @@
 
 
 }
+@font-face {
+    font-family: "Sonsie One";
+    src: url(../fonts/SonsieOne-Regular.ttf);
+}
 
 :root {
     --Background-Colour: #4E4E4E;
@@ -135,10 +139,6 @@ header a:hover {
 /* .OpslaanKnop {
     margin-bottom: 4rem;
 } */
-
-.OpslaanKnop {
-    margin-bottom: 4em;
-}
 
 .StartButton:active {
     background-color: #db5bc6;
@@ -349,10 +349,10 @@ li {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat;
-    background-size: cover;
+    /* background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat; */
+    /* background-size: cover;
     background-position: center;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px); */
 }
 
 .LogInWrapper {
@@ -475,10 +475,10 @@ li {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat;
-    background-size: cover;
+    /* background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat; */
+    /* background-size: cover;
     background-position: center;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px); */
 }
 
 /* #endregion SignInPagina */
@@ -491,10 +491,10 @@ li {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat;
-    background-size: cover;
+    /* background: url(../images/FlamingWheelsPattern2.png) lightgray 50% / cover no-repeat; */
+    /* background-size: cover;
     background-position: center;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px); */
 }
 
 .LogInWrapper .register-link-password-page {
