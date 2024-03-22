@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE ejs>
 <html lang="en">
 
 <head>
@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Build pagina</title>
 
-  <link href="styling/style.css" rel="stylesheet">
+  <link href="/styles/style.css" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -16,19 +16,19 @@
   <header>
     <ul>
       <li>
-        <button onclick=""><img src="./images/Heart.svg" alt=""></a></button>
+        <button onclick=""><img src="/images/Heart.svg" alt=""></a></button>
       </li>
       <li>
-        <button onclick=""><img src="./images/Profile.svg" alt=""></a></button>
+        <button onclick=""><img src="/images/Profile.svg" alt="" href='/myaccount'></a></button>
       </li>
     </ul>
   </header>
 
   <main id="BuildPage">
     <section class="BuildImg">
-      <img src="./images/auditt.png" alt="" id="CarBody">
-      <img src="./images/auditt.png" alt="" id="CarVelgen">
-      <img src="./images/auditt.png" alt="" id="CarKleur">
+      <img src="/images/auditt.png" alt="" id="CarBody">
+      <img src="/images/auditt.png" alt="" id="CarVelgen">
+      <img src="/images/auditt.png" alt="" id="CarKleur">
     </section>
 
     <section class="CarBuild">
@@ -37,13 +37,13 @@
         <div class="swiper-container swiper-no-swiping" id="swiper1">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <img src="./images/green.png" alt="A picture of a green Audi TT">
+              <img src="/images/green.png" alt="A picture of a green Audi TT">
             </div>
             <div class="swiper-slide">
-              <img src="./images/red.png" alt="A picture of a red Audi TT">
+              <img src="/images/red.png" alt="A picture of a red Audi TT">
             </div>
             <div class="swiper-slide">
-              <img src="./images/blue.png" alt="A picture of a blue Audi TT">
+              <img src="/images/blue.png" alt="A picture of a blue Audi TT">
             </div>
           </div>
           <div class="swiper-button-prev" onclick="BodyKnopPrev()"></div>
@@ -55,13 +55,13 @@
         <div class="swiper-container swiper-no-swiping" id="swiper2">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <img src="./images/blue.png" alt="A picture of a blue Audi TT">
+              <img src="/images/blue.png" alt="A picture of a blue Audi TT">
             </div>
             <div class="swiper-slide">
-              <img src="./images/red.png" alt="A picture of a red Audi TT">
+              <img src="/images/red.png" alt="A picture of a red Audi TT">
             </div>
             <div class="swiper-slide">
-              <img src="./images/green.png" alt="A picture of a green Audi TT">
+              <img src="/images/green.png" alt="A picture of a green Audi TT">
             </div>
           </div>
           <div class="swiper-button-prev" onclick="VelgKnopPrev()"></div>
@@ -73,13 +73,13 @@
         <div class="swiper-container swiper-no-swiping" id="swiper3">
           <div class="swiper-wrapper ">
             <div class="swiper-slide">
-              <img src="./images/red.png" alt="A picture of a red Audi TT">
+              <img src="/images/red.png" alt="A picture of a red Audi TT">
             </div>
             <div class="swiper-slide">
-              <img src="./images/green.png" alt="A picture of a green Audi TT">
+              <img src="/images/green.png" alt="A picture of a green Audi TT">
             </div>
             <div class="swiper-slide">
-              <img src="./images/blue.png" alt="A picture of a blue Audi TT">
+              <img src="/images/blue.png" alt="A picture of a blue Audi TT">
             </div>
           </div>
           <div class="swiper-button-prev" onclick="KleurKnopPrev()"></div>
@@ -95,7 +95,7 @@
   <footer>
 
   </footer>
-  <script src="./scripts/script.js"></script>
+  <script src="/scripts/script.js"></script>
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>

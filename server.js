@@ -113,22 +113,30 @@ function onlogin(req, res) {
 	res.render('pages/login')
 }
 
-// app.get ('/start', start)
 
-// function start(req, res) {
+app.get('/build', onbuild) 
 
-// 	if (!username) {
-// 		res.redirect('/login', onlogin);
-// 		return;
-// 	}
-
-// 	else {
-// 		res.render('pages/build')
-// 	}
-// }
+function onbuild(req,res) {
+	res.render('pages/build')
+}
 
 
+app.get('/start', onstart)
 
+function onstart(req, res) {
+
+	//Haal de gebruikersnaam op uit de sessie
+	const username = req.session.username;
+
+	// Als de gebruikersnaam niet in de sessie is opgeslagen, doorsturen naar de inlogpagina
+	if (!username) {
+		res.redirect('/login');
+		return;
+	}
+	else {
+	res.redirect('/build')
+	}
+}
 
 async function findAccount(req, res) {
 
@@ -140,10 +148,9 @@ async function findAccount(req, res) {
 
 	const result = await collection.findOne({username: username});
 	
-
-	if (result && await bcrypt.compare(password, result.password)) {
+		if (result && await bcrypt.compare(password, result.password)) {
 			req.session.username = username;
-			res.render('pages/login')
+			res.redirect('/myaccount');
 			console.log(`Logged in with username ${xss(req.body.username)}`);
 		} 
 		else {
@@ -151,7 +158,6 @@ async function findAccount(req, res) {
 			Verkeerde gebruikersnaam of wachtwoord ingevoerd
 		 </h1>`)
 		}
-		
 	};
 	// console.log(`User with _id: ${result.ObjectId}`);
  
