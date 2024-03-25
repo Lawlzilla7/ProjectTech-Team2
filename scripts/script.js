@@ -126,9 +126,6 @@ ChangeKleur(KleurWaarde);
 ChangeVelg(VelgenWaarde);
 ChangeBody(BodyWaarde);
 
-
-
-
 const SendBuildData = () => {
     console.log("body waarde = " + BodyWaarde + " Velgen waarde = " +
         VelgenWaarde + " Kleur waarde = " + KleurWaarde);
@@ -150,8 +147,6 @@ const ClickFunction = () => {
 }
 
 const OnLoadResults = () => {
-    console.log("Loaded");
-
     let image = document.querySelector('#CarBody');
     let image2 = document.querySelector('#CarVelgen');
     let image3 = document.querySelector('#CarKleur');
