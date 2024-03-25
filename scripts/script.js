@@ -126,6 +126,9 @@ ChangeKleur(KleurWaarde);
 ChangeVelg(VelgenWaarde);
 ChangeBody(BodyWaarde);
 
+
+
+
 const SendBuildData = () => {
     console.log("body waarde = " + BodyWaarde + " Velgen waarde = " +
         VelgenWaarde + " Kleur waarde = " + KleurWaarde);
@@ -151,19 +154,40 @@ const OnLoadResults = () => {
     let image2 = document.querySelector('#CarVelgen');
     let image3 = document.querySelector('#CarKleur');
 
-    let items = ["Body", "Velgen", "Kleur"];
-    let images = [image, image2, image3];
-    let colors = ['/images/green.png', '/images/red.png', '/images/blue.png'];
-
-    for (let i = 0; i < items.length; i++) {
-        let itemValue = sessionStorage.getItem(items[i]);
-        if (itemValue >= 1 && itemValue <= 3) {
-            images[i].src = colors[itemValue - 1];
-        }
+    if (sessionStorage.getItem("Body") == 1) {
+        image.src = '/images/green.png';
+    } else if (sessionStorage.getItem("Body") == 2) {
+        image.src = '/images/red.png';
+    } else if (sessionStorage.getItem("Body") == 3) {
+        image.src = '/images/blue.png';
     }
 
+    if (sessionStorage.getItem("Velgen") == 1) {
+        image2.src = '/images/blue.png';
+    } else if (sessionStorage.getItem("Velgen") == 2) {
+        image2.src = '/images/red.png';
+    } else if (sessionStorage.getItem("Velgen") == 3) {
+        image2.src = '/images/green.png';
+    }
 
-    console.log(image, image2, image3);
+    if (sessionStorage.getItem("Kleur") == 1) {
+        image3.src = '/images/red.png';
+    } else if (sessionStorage.getItem("Kleur") == 2) {
+        image3.src = '/images/green.png';
+    } else if (sessionStorage.getItem("Kleur") == 3) {
+        image3.src = '/images/green.png';
+    }
+    
+    // let items = ["Body", "Velgen", "Kleur"];
+    // let images = [image, image2, image3];
+    // let colors = ['/images/green.png', '/images/red.png', '/images/blue.png'];
+
+    // for (let i = 0; i < items.length; i++) {
+    //     let itemValue = sessionStorage.getItem(items[i]);
+    //     if (itemValue >= 1 && itemValue <= 3) {
+    //         images[i].src = colors[itemValue - 1];
+    //     }
+    // }
 }
 // var options = {
 //     direction: 'horizontal',
