@@ -3,13 +3,14 @@
 
 <body>
 
-    <%- include('../partials/nav'); %> 
+    <%- include('../partials/header'); %> 
     
     <main>
 
         <h1> Mijn account </h1>
 
         <h2> Welkom, <%= user.username %>  </h2>
+        <button onclick="location.href = 'update_username';">Wijzig gebruikersnaam</button>
         <img src="<%= user.avatar %>">
 
         <form id="uploadpicture" action="/myaccount" method="POST" enctype="multipart/form-data"> 

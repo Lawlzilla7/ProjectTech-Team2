@@ -1,0 +1,24 @@
+<!DOCTYPE ejs>
+<html lang="en">
+
+<body>
+
+    <%- include('../partials/header'); %> 
+    
+    <main>
+
+<form id="updateUsername" action="/updated_username" method="POST" enctype="multipart/form-data"> 
+    <label>Wijzig jouw gebruikersnaam:</label>
+    <input type="text" name="username" placeholder="Gebruikersnaam" required>
+<input type="submit" value="Wijzig gebruikersnaam">
+</form>
+
+</main>
+
+<footer> </footer>
+
+<script defer src="/scripts/script.js"> </script>
+
+</body>
+
+</html>

@@ -12,6 +12,7 @@ const multer  = require('multer')
 const upload = multer({ dest: 'static/uploads/' }) 
 const path = require('node:path'); 
 
+
 app
 	.set('view engine', 'ejs') // Set EJS to be our templating engine
 	.set('views', 'views')  // And tell it the views can be found in the directory named views
@@ -62,6 +63,7 @@ function onhome(req, res) {
 function onabout(req, res) {
 	res.send(`<h1> About ${req.params.name} </h1>`)
 }
+
 
 
 
@@ -150,7 +152,8 @@ async function findAccount(req, res) {
 	
 		if (result && await bcrypt.compare(password, result.password)) {
 			req.session.username = username;
-			res.redirect('/myaccount');
+			res.redirect('/');
+				console.log(`User with _id: ${result._id}`);
 			console.log(`Logged in with username ${xss(req.body.username)}`);
 		} 
 		else {
@@ -159,7 +162,7 @@ async function findAccount(req, res) {
 		 </h1>`)
 		}
 	};
-	// console.log(`User with _id: ${result.ObjectId}`);
+
  
 
 
@@ -222,13 +225,40 @@ async function addAvatar(req, res) {
 } 
 
 		
+//Functie voor gebruikersnaam wijzigen
+app.get('/update_username', (req, res) => {
+    res.render('pages/update_username');
+});
+app.post('/updated_username',updateUsername)
 
+async function updateUsername(req,res) {
+	
+	const database = client.db('gebruikers');
+	const collection = database.collection('accounts');
+
+	const username = req.session.username;
+
+	const result = await collection.updateOne(
+        { _id: ObjectId(req.body.id) },
+        { $set: { username: req.body.username } }
+    );
+
+    if (result.modifiedCount === 1) {
+        console.log('Gebruikersnaam succesvol bijgewerkt naar:', req.body.username);
+		res.redirect('/myaccount');
+    } else {
+        console.log('Gebruikersnaam niet bijgewerkt.');
+    }
+}
+
+//Functie voor wachtwoord wijzigen
+//Functie voor email wijzigen
 			
 
 
-
+ // functie voor uitloggen
 	app.get('/logout', (req, res) => {
-		// Vernietig de sessie
+		// stop de sessie
 		req.session.destroy(err => {
 			if (err) {
 				console.error('Fout bij het uitloggen:', err);
