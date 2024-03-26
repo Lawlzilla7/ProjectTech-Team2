@@ -55,6 +55,7 @@ client.connect()
 	})
 
 
+
 function onhome(req, res) {
 	res.render('pages/index')
 }
@@ -229,6 +230,7 @@ async function addAvatar(req, res) {
 app.get('/update_username', (req, res) => {
     res.render('pages/update_username');
 });
+
 app.post('/updated_username',updateUsername)
 
 async function updateUsername(req,res) {
@@ -237,24 +239,57 @@ async function updateUsername(req,res) {
 	const collection = database.collection('accounts');
 
 	const username = req.session.username;
+	const updatedUsername = req.body.updatedUsername;
 
 	const result = await collection.updateOne(
-        { _id: new ObjectId(req.body.id) },
-        { $set: { username: req.body.username } }
+        { username: username},
+        { $set: { username: updatedUsername } }
     );
 
-	// const result = await collection.updateOne({ username: username },
-	// 	{ $set: { username: req.body.username } });
-
     if (result.modifiedCount === 1) {
-        console.log('Gebruikersnaam succesvol bijgewerkt naar:', req.body.username);
-		res.redirect('/myaccount');
+        console.log('Gebruikersnaam succesvol bijgewerkt naar:', req.body.updatedUsername);
+		res.redirect('/login');
+
     } else {
         console.log('Gebruikersnaam niet bijgewerkt.');
+		res.send(`<h1> Fout bij het bijwerken van gebruikersnaam.
+		 </h1>`)
     }
 }
 
 //Functie voor wachtwoord wijzigen
+app.get('/update_password', (req, res) => {
+    res.render('pages/update_password');
+});
+
+app.post('/updated_password',updatePassword)
+
+async function updatePassword(req,res) {
+	
+	const database = client.db('gebruikers');
+	const collection = database.collection('accounts');
+
+	const username = req.session.username;
+	const updatedPassword = req.body.updatedPassword;
+
+	const result = await collection.updateOne(
+        { username: username},
+        { $set: { username: updatedPassword } }
+    );
+
+    if (result.modifiedCount === 1) {
+        console.log('Wachtwoord succesvol bijgewerkt naar:', req.body.updatedPassword);
+		res.redirect('/login');
+
+    } else {
+        console.log('Wachtwoord niet bijgewerkt.');
+		res.send(`<h1> Fout bij het bijwerken van wachtwoord.
+		 </h1>`)
+    }
+}
+
+
+
 //Functie voor email wijzigen
 			
 
