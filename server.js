@@ -239,9 +239,12 @@ async function updateUsername(req,res) {
 	const username = req.session.username;
 
 	const result = await collection.updateOne(
-        { _id: ObjectId(req.body.id) },
+        { _id: new ObjectId(req.body.id) },
         { $set: { username: req.body.username } }
     );
+
+	// const result = await collection.updateOne({ username: username },
+	// 	{ $set: { username: req.body.username } });
 
     if (result.modifiedCount === 1) {
         console.log('Gebruikersnaam succesvol bijgewerkt naar:', req.body.username);
