@@ -12,7 +12,10 @@
         <h2> Welkom, <%= user.username %>  </h2>
         <button onclick="location.href = 'update_username';">Wijzig gebruikersnaam</button>
         <button onclick="location.href = 'update_password';">Wijzig wachtwoord</button>
+        <button onclick="location.href = 'update_email';">Wijzig email</button>
        
+
+
         <img src="<%= user.avatar %>">
 
         <form id="uploadpicture" action="/myaccount" method="POST" enctype="multipart/form-data"> 
@@ -26,6 +29,9 @@
        <form id="logoutbutton" action="/logout" method="GET"> 
         <button> Log uit </button>
      </form>
+
+     <button onclick="location.href = 'delete_account';">Verwijder account</button>
+       
 
     </main>
 

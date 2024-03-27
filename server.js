@@ -86,7 +86,7 @@ async function addAccount(req, res) {
  const password = xss(req.body.password)
  const email = xss(req.body.email)
 
- bcrypt.hash(password, 10, async (hashedPassword) => {
+ bcrypt.hash(password, 10, async (err, hashedPassword) => {
 
 	{
 			const database = client.db('gebruikers');
@@ -272,13 +272,16 @@ async function updatePassword(req,res) {
 	const username = req.session.username;
 	const updatedPassword = req.body.updatedPassword;
 
+	bcrypt.hash(updatedPassword, 10, async (err, hashedPassword) => {
+
+		{
+
 	const result = await collection.updateOne(
         { username: username},
-        { $set: { username: updatedPassword } }
-    );
+        { $set: { password: hashedPassword } });
 
     if (result.modifiedCount === 1) {
-        console.log('Wachtwoord succesvol bijgewerkt naar:', req.body.updatedPassword);
+        console.log('Wachtwoord succesvol bijgewerkt');
 		res.redirect('/login');
 
     } else {
@@ -287,12 +290,43 @@ async function updatePassword(req,res) {
 		 </h1>`)
     }
 }
+	})
+
+}
 
 
 
 //Functie voor email wijzigen
-			
+app.get('/update_email', (req, res) => {
+    res.render('pages/update_email');
+});
 
+app.post('/updated_email',updateEmail)
+
+async function updateEmail(req,res) {
+	
+	const database = client.db('gebruikers');
+	const collection = database.collection('accounts');
+
+	const username = req.session.username;
+	const updatedEmail = req.body.updatedEmail;
+
+	const result = await collection.updateOne(
+        { username: username},
+        { $set: { email: updatedEmail } }
+    );
+
+    if (result.modifiedCount === 1) {
+        console.log('Email succesvol bijgewerkt naar:', req.body.updatedEmail);
+		res.redirect('/myaccount');
+
+    } else {
+        console.log('Email niet bijgewerkt.');
+		res.send(`<h1> Fout bij het bijwerken van email.
+		 </h1>`)
+    }
+}
+			
 
  // functie voor uitloggen
 	app.get('/logout', (req, res) => {
@@ -310,10 +344,36 @@ async function updatePassword(req,res) {
 	});
 
 
+//Functie voor account verwijderen
+app.get('/delete_account', (req, res) => {
+    res.render('pages/delete_account');
+});
 
+app.post('/deleted_account',deleteAccount)
 
+async function deleteAccount(req, res) {
 
+	const database = client.db('gebruikers');
+	const collection = database.collection('accounts');
 
+	const username = req.session.username;
+
+	const result = await collection.deleteOne(
+		{ username: username });
+
+	console.log('Account verwijderd');
+
+	req.session.destroy(err => {
+		if (err) {
+			console.error('Fout bij het uitloggen:', err);
+			res.status(500).send('Er is een fout opgetreden bij het uitloggen.');
+		} else {
+			// Redirect de gebruiker naar de inlogpagina
+			res.redirect('/login');
+			console.log(`Er is uitgelogd.`)
+		}
+	});
+};
 
 
 

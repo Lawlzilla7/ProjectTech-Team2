@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
 
-    <link href="styles/style.css" rel="stylesheet">
+    <!-- <link href="styles/style.css" rel="stylesheet"> -->
     <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,14 +18,13 @@
 <body class="BodySignIn">
     <main>
         <section class="LogInWrapper">
-            <form action="">
                 <h1>Maak hier je account aan!</h1>
                 <div class="input-box">
            <form id="accountForm" action="/add-account" method="POST">                    
             
             <input type="text" name="username" placeholder="Gebruikersnaam" required>
             
-                    <input type="text" name="email" placeholder="Email" required>
+                    <input type="email" name="email" placeholder="Email" required>
 
                     <input type="password" name="password" placeholder="Wachtwoord" required>
 
