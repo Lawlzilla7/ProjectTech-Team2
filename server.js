@@ -86,7 +86,7 @@ async function addAccount(req, res) {
  const password = xss(req.body.password)
  const email = xss(req.body.email)
 
- bcrypt.hash(password, 10, async (err, hashedPassword) => {
+ bcrypt.hash(password, 10, async (hashedPassword) => {
 
 	{
 			const database = client.db('gebruikers');
