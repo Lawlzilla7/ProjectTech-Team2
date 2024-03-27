@@ -77,10 +77,6 @@ function onsignup(req, res) {
 }
 
 async function addAccount(req, res) {
-	res.send(`
-	<h1> thanks for making an account with
-	username: ${req.body.username}
- </h1>`)
 
  const username = xss(req.body.username)
  const password = xss(req.body.password)
@@ -104,6 +100,9 @@ async function addAccount(req, res) {
 		}
 
 	});
+
+	res.redirect('/login')
+
 }
 
 

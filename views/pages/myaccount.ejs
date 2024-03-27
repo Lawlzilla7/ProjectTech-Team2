@@ -15,11 +15,12 @@
         <button onclick="location.href = 'update_email';">Wijzig email</button>
        
 
-
+<br>
         <img src="<%= user.avatar %>">
+        <br>
 
         <form id="uploadpicture" action="/myaccount" method="POST" enctype="multipart/form-data"> 
-            <label>Voeg een profielfoto toe:</label>
+            <label>Wijzig jouw profielfoto:</label>
             <input type="file" name="avatar" accept="image/*">
        <input type="submit" value="Voeg toe">
        </form>
