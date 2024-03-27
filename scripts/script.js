@@ -126,11 +126,49 @@ ChangeKleur(KleurWaarde);
 ChangeVelg(VelgenWaarde);
 ChangeBody(BodyWaarde);
 
+
+
+
 const SendBuildData = () => {
     console.log("body waarde = " + BodyWaarde + " Velgen waarde = " +
         VelgenWaarde + " Kleur waarde = " + KleurWaarde);
 
-    return KleurWaarde + VelgenWaarde + BodyWaarde;
+
+    sessionStorage.setItem('Body', BodyWaarde);
+    sessionStorage.setItem('Velgen', VelgenWaarde);
+    sessionStorage.setItem('Kleur', KleurWaarde);
+
+    // return KleurWaarde + VelgenWaarde + BodyWaarde;
+}
+const ToResults = () => {
+    location.href = 'results.html'
+}
+
+const ClickFunction = () => {
+    SendBuildData();
+    ToResults();
+}
+
+const OnLoadResults = () => {
+    console.log("Loaded");
+
+    let image = document.querySelector('#CarBody');
+    let image2 = document.querySelector('#CarVelgen');
+    let image3 = document.querySelector('#CarKleur');
+
+    let items = ["Body", "Velgen", "Kleur"];
+    let images = [image, image2, image3];
+    let colors = ['/images/green.png', '/images/red.png', '/images/blue.png'];
+
+    for (let i = 0; i < items.length; i++) {
+        let itemValue = sessionStorage.getItem(items[i]);
+        if (itemValue >= 1 && itemValue <= 3) {
+            images[i].src = colors[itemValue - 1];
+        }
+    }
+
+
+    console.log(image, image2, image3);
 }
 // var options = {
 //     direction: 'horizontal',

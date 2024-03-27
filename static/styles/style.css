@@ -3,14 +3,19 @@
     padding: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
+    -webkit-tap-highlight-color: transparent;
+}
 
+@font-face {
+    font-family: "Sonsie One";
+    src: url(../fonts/SonsieOne-Regular.ttf);
 }
 
 :root {
     --Background-Colour: #4E4E4E;
     --CallToAction: #FFA800;
     --BoxColour: #D9C9D4;
-    --swiper-theme-color: #000 !important;
+    --swiper-theme-color: #A24492 !important;
     --swiper-navigation-size: 2rem !important;
 }
 
@@ -37,14 +42,21 @@ a {
 
 h1 {
     color: white;
-    font-size: 5rem;
+    font-size: 3.5rem;
+    font-family: "Sonsie One", system-ui;
+}
+
+h2 {
+    color: white;
+    font-size: 2.5rem;
+    font-family: "Sonsie One", system-ui;
 }
 
 .sonsie-one-regular {
     font-family: "Sonsie One", system-ui;
     font-weight: 400;
     font-style: normal;
-  }  
+}
 
 
 /* #region header */
@@ -57,20 +69,22 @@ header ul {
     flex-direction: row;
     padding: 1rem;
     margin-top: 1rem;
+    justify-content: space-between;
 }
 
 header li {
     text-decoration: none;
     list-style: none;
     align-self: center;
+    justify-content: space-between;
     color: var(--CallToAction);
     z-index: 1;
 }
 
-header li:first-child {
+/* header li:first-child {
     margin-right: auto;
     align-self: flex-end;
-}
+} */
 
 header img {
     object-fit: contain;
@@ -136,17 +150,14 @@ header a:hover {
     margin-bottom: 4rem;
 } */
 
-.OpslaanKnop {
-    margin-bottom: 4em;
-}
-
 .StartButton:active {
     background-color: #db5bc6;
 }
 
-.StartButton{
+.StartButton {
     margin-bottom: 5rem;
 }
+
 .StartImgText {
     display: flex;
     flex-direction: column;
@@ -199,6 +210,7 @@ header a:hover {
 
 .CarBuild>h2 {
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .CarWithButtons {
@@ -298,14 +310,20 @@ li {
         width: 30rem;
     }
 
-    .OpslaanKnop, .StartButton {
+    .OpslaanKnop,
+    .StartButton {
         width: 15rem;
+    }
+
+    #ResultsPage {
+        width: 30rem;
     }
 
     /* body {
         background-size: 10%;
     } */
 }
+
 /* #endregion SamenStellen */
 
 /* #region DetailPagina */
@@ -382,8 +400,8 @@ li {
 }
 
 .input-box input {
-    width: 65%;
-    height: 40%;
+    width: 86%;
+    height: 60px;
     background: #E7E7E7;
     color: #4E4E4E;
     font-weight: 600;
@@ -393,6 +411,7 @@ li {
     font-size: 16px;
     padding: 20px 45px 20px 20px;
     margin-left: 17.2%;
+    margin-bottom: 6px;
 }
 
 
@@ -440,7 +459,7 @@ li {
     font-weight: 600;
     margin-left: 14.5%;
     margin-bottom: 14px;
-    margin-top: 10px;
+    margin-top: 85px;
 }
 
 .LogInWrapper .register-link {
@@ -471,6 +490,7 @@ li {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+
 }
 
 /* #endregion SignInPagina */
@@ -483,6 +503,7 @@ li {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+
 }
 
 .LogInWrapper .register-link-password-page {
@@ -504,3 +525,87 @@ li {
 }
 
 /* #endregion PasswordPagina */
+
+/* #region results */
+#ResultsPage {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto 0;
+    padding: 0 1rem 0 1rem;
+    justify-content: center;
+}
+
+#ResultsPage>.BuildImg {
+    margin-bottom: 2em;
+    margin-top: 0;
+}
+
+.ResultsHeading {
+    display: flex;
+}
+
+.ResultsHeading>img {
+    margin-left: auto;
+}
+
+.ResultsHeading>img:active,
+.ResultsHeading>img:hover {
+    opacity: .5;
+}
+
+.SearchResult {
+    position: relative;
+    margin-top: 1rem;
+    border-radius: 31px;
+    height: 15rem;
+    background-image: url(../images/auditt3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.SearchResult div{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(235,192,218,1) 10%, rgba(0,0,0,0) 40%);
+    height: 15em;
+    width: 100%;
+    z-index: 1;
+    border-radius: 31px;
+}
+.SearchResult h3 {
+    position: absolute;
+    bottom: 2em;
+    left: 1em;
+    font-weight: bolder;
+    font-style: italic;
+    color: white;
+    z-index: 2;
+}
+
+.SearchResult p {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    font-style: italic;
+    color: var(--swiper-theme-color);
+    font-weight: 500;
+    z-index: 2;
+}
+.SearchResult button
+{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+}
+.SearchResult button:active{
+    filter: opacity(50%);
+}
+
+
+/* #endregion results */
