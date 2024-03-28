@@ -1,0 +1,35 @@
+<!DOCTYPE ejs>
+<html lang="en">
+
+<body>
+
+    <%- include('../partials/nav'); %> 
+    
+    <main>
+
+        <h1> Mijn account </h1>
+
+        <h2> Welkom, <%= user.username %>  </h2>
+        <img src="<%= user.avatar %>">
+
+        <form id="uploadpicture" action="/myaccount" method="POST" enctype="multipart/form-data"> 
+            <label>Voeg een profielfoto toe:</label>
+            <input type="file" name="avatar" accept="image/*">
+       <input type="submit" value="Voeg toe">
+       </form>
+
+        <p> Jouw email is: <%= user.email %> </p>
+
+       <form id="logoutbutton" action="/logout" method="GET"> 
+        <button> Log uit </button>
+     </form>
+
+    </main>
+
+    <footer> </footer>
+
+    <script defer src="/scripts/script.js"> </script>
+
+</body>
+
+</html>
