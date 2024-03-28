@@ -175,7 +175,7 @@ const OnLoadResults = () => {
     } else if (sessionStorage.getItem("Kleur") == 2) {
         image3.src = '/images/green.png';
     } else if (sessionStorage.getItem("Kleur") == 3) {
-        image3.src = '/images/green.png';
+        image3.src = '/images/blue.png';
     }
     
     // let items = ["Body", "Velgen", "Kleur"];

@@ -101,7 +101,7 @@ header button {
 }
 
 header button:active {
-    filter: opacity(50%);
+    opacity: .5;
 }
 
 header a {
@@ -547,8 +547,7 @@ li {
     margin-left: auto;
 }
 
-.ResultsHeading>img:active,
-.ResultsHeading>img:hover {
+.ResultsHeading>img:active {
     opacity: .5;
 }
 
@@ -602,8 +601,8 @@ li {
     padding: 0;
     z-index: 99;
 }
-.SearchResult button:active{
-    filter: opacity(50%);
+.SearchResult img:active{
+    opacity: .5;
 }
 
 
