@@ -177,7 +177,7 @@ const OnLoadResults = () => {
     } else if (sessionStorage.getItem("Kleur") == 3) {
         image3.src = '/images/blue.png';
     }
-    
+
     // let items = ["Body", "Velgen", "Kleur"];
     // let images = [image, image2, image3];
     // let colors = ['/images/green.png', '/images/red.png', '/images/blue.png'];
@@ -188,7 +188,43 @@ const OnLoadResults = () => {
     //         images[i].src = colors[itemValue - 1];
     //     }
     // }
+
+
 }
+
+const baseURL = "https://www.amiiboapi.com/api/";
+const endPoint = "amiibo/?gameseries=Super Mario";
+
+const URL = baseURL + endPoint;
+const list = document.querySelector('ul');
+
+function GetCars() {
+    getData(URL).then((data) => {
+        const AllCars = data.cars;
+        AllCars.forEach(AnCars => {
+            const CarListElement =
+                `
+                            <li style="background-image: url('${AnCars.imageUrl}');">
+								<h3>${AnCars.name}</h3>
+                                <p>${AnCars.year}</p>
+							</li>
+					`;
+            list.insertAdjacentHTML('beforeend', CarListElement);
+        })
+    })
+}
+
+{
+    /* <img src="${AnCars.image}" alt="${AnCars.name}"></img> */ }
+
+async function getData(URL) {
+    return (
+        fetch(URL)
+        .then(response => response.json())
+        .then(jsonData => jsonData)
+    );
+}
+
 // var options = {
 //     direction: 'horizontal',
 //     loop: 'true',
