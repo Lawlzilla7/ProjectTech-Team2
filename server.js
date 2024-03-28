@@ -8,11 +8,9 @@ app
   .use(express.static('static'))
   .set('view engine', 'ejs')
   .set('views', 'views')
-  .get('/', onHome)
+  .get('/', onhome)
   .use('/api/auto', require('./routes/api/auto'))
-  // .get('/about', onAbout)
-  // .get('/profile/:name', onProfile)
-
+  .get('/resultaten', alleAutos)
 
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
@@ -37,7 +35,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-function onHome(req, res) {
+function onhome(req, res) {
   res.render('pages/index')
 }
 
@@ -63,3 +61,10 @@ app.listen(process.env.PORT, () => {
   console.log(`I did not change this message and now my webserver is listening at port ${process.env.PORT}`)
 })
 
+async function alleAutos(req, res) {
+    const database = client.db('autolijst');
+    const collection = database.collection('auto');
+
+  const autoLijst = await collection.find().toArray()
+  res.render('pages/resultaten.ejs', {auto: autoLijst})
+}
