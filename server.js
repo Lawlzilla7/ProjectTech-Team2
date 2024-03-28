@@ -29,10 +29,7 @@ app
 
 // Use MongoDB
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
-// Construct URL used to connect to database from info in the .env file
-// const uri = "mongodb+srv://sindy:mongo123@clustertech.5fqnsm1.mongodb.net/?retryWrites=true&w=majority&appName=ClusterTech"
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
-// Create a MongoClient
 const client = new MongoClient(uri, {
 	serverApi: {
 		version: ServerApiVersion.v1,
@@ -41,8 +38,6 @@ const client = new MongoClient(uri, {
 	}
 })
 
-
-// Try to open a database connection
 client.connect()
 	.then((res) => {
 		console.log('Database connection established')
@@ -53,9 +48,12 @@ client.connect()
 		console.log(`For uri - ${uri}`)
 	})
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-function onhome(req, res) {
-	res.render('pages/index')
+function onHome(req, res) {
+  res.render('pages/index')
 }
 
 
@@ -336,6 +334,7 @@ async function addMovie(req, res) {
 
 
 
+
 // Middleware to handle not found errors - error 404
 app.use((req, res) => {
 	// log error to console
@@ -354,6 +353,7 @@ app.use((err, req, res) => {
 
 client.close();
 
+// Start the webserver and listen for HTTP requests at specified port
 // Start the webserver and listen for HTTP requests at specified port
 app.listen(process.env.PORT, () => {
 	console.log(`My webserver is listening at port ${process.env.PORT}`)
