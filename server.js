@@ -384,7 +384,7 @@ function showAddForm(req, res) {
 
 async function addMovie(req, res) {
 
-	{
+	
 
 		const database = client.db('movielist');
 		const collection = database.collection('movies');
@@ -406,7 +406,7 @@ async function addMovie(req, res) {
 		const movieList = await collection.find().toArray()
 		res.render('pages/movies.ejs', {movies: movieList, addedMovie: addedMovie})
 
-	}
+	
 
 }
 
