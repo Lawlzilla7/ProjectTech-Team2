@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-function onHome(req, res) {
+function onhome(req, res) {
   res.render('pages/index')
 }
 
