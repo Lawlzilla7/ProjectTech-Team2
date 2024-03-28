@@ -152,7 +152,7 @@ async function findAccount(req, res) {
 	
 		if (result && await bcrypt.compare(password, result.password)) {
 			req.session.username = username;
-			res.redirect('/');
+			res.render('pages/loggedin');
 				console.log(`User with _id: ${result._id}`);
 			console.log(`Logged in with username ${xss(req.body.username)}`);
 		} 
