@@ -504,3 +504,83 @@ li {
 }
 
 /* #endregion PasswordPagina */
+
+/* #region update */
+.BodyUpdate h1 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 30px;
+}
+ 
+
+.BodyUpdate h2 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 1em;
+}
+
+
+.BodyUpdate svg {
+    margin-left: 36.5%;
+}
+ 
+.update-box {
+    align-items: center;
+    justify-content: center;
+    background-color: #E7E7E7;
+    padding: 10%;
+    margin: 10%;
+    border-radius: 30px;
+    color: #a4a4a4;
+}
+ 
+.update-box p {
+    text-align: center;
+    margin-top: 20px;
+}
+ 
+.update-box img{
+    align-self: center;
+    justify-self: center;
+    margin: 80px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+ 
+.update-wrapper .btn {
+    width: 71.5%;
+    height: 45px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 600;
+    margin-left: 14.5%;
+    margin-top: 25px;
+}
+ 
+.update-input-box input {
+    width: 80%;
+    height: 30%;
+    background: #E7E7E7;
+    color: #4E4E4E;
+    font-weight: 600;
+    border: none;
+    outline: auto;
+    outline-color: #4E4E4E;
+    outline-style: solid;
+    outline-width: 3px;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+    margin-bottom: 15px;
+}
+/* #endregion update */
