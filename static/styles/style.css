@@ -57,20 +57,22 @@ header ul {
     flex-direction: row;
     padding: 1rem;
     margin-top: 1rem;
+    justify-content: space-between;
 }
 
 header li {
     text-decoration: none;
     list-style: none;
     align-self: center;
+    justify-content: space-between;
     color: var(--CallToAction);
     z-index: 1;
 }
 
-header li:first-child {
+/* header li:first-child {
     margin-right: auto;
     align-self: flex-end;
-}
+} */
 
 header img {
     object-fit: contain;
@@ -87,7 +89,7 @@ header button {
 }
 
 header button:active {
-    filter: opacity(50%);
+    opacity: .5;
 }
 
 header a {
@@ -102,8 +104,8 @@ header a {
 header a:hover {
     background-color: aquamarine;
 }
-
 /* #endregion header */
+
 
 /* #region ZeroState */
 .StartButton,
@@ -199,6 +201,7 @@ header a:hover {
 
 .CarBuild>h2 {
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .CarWithButtons {
@@ -298,14 +301,20 @@ li {
         width: 30rem;
     }
 
-    .OpslaanKnop, .StartButton {
+    .OpslaanKnop,
+    .StartButton {
         width: 15rem;
+    }
+
+    #ResultsPage {
+        width: 30rem;
     }
 
     /* body {
         background-size: 10%;
     } */
 }
+
 /* #endregion SamenStellen */
 
 /* #region DetailPagina */

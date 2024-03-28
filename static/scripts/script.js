@@ -141,7 +141,7 @@ const SendBuildData = () => {
     // return KleurWaarde + VelgenWaarde + BodyWaarde;
 }
 const ToResults = () => {
-    location.href = 'results.html'
+    location.href = '/results'
 }
 
 const ClickFunction = () => {

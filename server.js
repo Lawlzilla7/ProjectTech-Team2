@@ -374,6 +374,13 @@ async function deleteAccount(req, res) {
 
 
 
+app.get('/results', (req, res) => {
+    res.render('pages/results');
+});
+
+
+
+
 // Functie voor toevoegen van film
 app.get('/addmovie', showAddForm) //middleware: parses form data
 app.post('/movies', addMovie) //Route to handle the post request to /add-movie
