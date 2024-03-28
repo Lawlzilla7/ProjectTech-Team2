@@ -157,9 +157,7 @@ async function findAccount(req, res) {
 			console.log(`Logged in with username ${xss(req.body.username)}`);
 		} 
 		else {
-			res.send(`<h1> Fout bij inloggen. 
-			Verkeerde gebruikersnaam of wachtwoord ingevoerd
-		 </h1>`)
+			res.render('pages/notloggedin');
 		}
 	};
 
