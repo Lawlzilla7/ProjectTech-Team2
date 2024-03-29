@@ -12,16 +12,22 @@ const multer  = require('multer')
 const upload = multer({ dest: 'static/uploads/' }) 
 const path = require('node:path'); 
 
+
 app
-  .use(express.urlencoded({ extended: true }))
-  .use(express.static('static'))
   .set('view engine', 'ejs')
   .set('views', 'views')
+  .use(express.urlencoded({ extended: true }))
+  .use(express.static('static'))
   .get('/', onHome)
+  .get('/about/:name', onabout)
+  .use(session({
+	resave: false,
+	saveUninitialized: true,
+	secret: process.env.SESSION_SECRET
+}))
   .use('/api/auto', require('./routes/api/auto'))
-  .get('/resultaten', alleAutos)
-  // .get('/about', onAbout)
-  // .get('/profile/:name', onProfile)
+  .get('/resultaten', alleResultaten)
+
 
 
 // Use MongoDB
@@ -49,10 +55,9 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-function onhome(req, res) {
+function onHome(req, res) {
   res.render('pages/index')
 }
-
 
 function onabout(req, res) {
 	res.send(`<h1> About ${req.params.name} </h1>`)
@@ -216,12 +221,6 @@ async function addAvatar(req, res) {
 	}
 } 
 
-		
-
-			
-
-
-
 	app.get('/logout', (req, res) => {
 		// Vernietig de sessie
 		req.session.destroy(err => {
@@ -235,13 +234,6 @@ async function addAvatar(req, res) {
 			}
 		});
 	});
-
-
-
-
-
-
-
 
 
 // Functie voor toevoegen van film
@@ -327,7 +319,15 @@ async function addMovie(req, res) {
 //   run().catch(console.dir);
 
 
+// Functie voor het laten zien van de API
 
+async function alleResultaten(req, res) {
+    const database = client.db('autolijst');
+    const collection = database.collection('auto');
+
+  const autoLijst = await collection.find().toArray()
+  res.render('pages/results.ejs', {auto: autoLijst})
+}
 
 
 
@@ -355,11 +355,3 @@ client.close();
 app.listen(process.env.PORT, () => {
 	console.log(`My webserver is listening at port ${process.env.PORT}`)
 })
-
-async function alleAutos(req, res) {
-    const database = client.db('autolijst');
-    const collection = database.collection('auto');
-
-  const autoLijst = await collection.find().toArray()
-  res.render('pages/resultaten.ejs', {auto: autoLijst})
-}

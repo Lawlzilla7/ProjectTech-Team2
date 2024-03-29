@@ -558,7 +558,7 @@ li {
     margin-top: 1rem;
     border-radius: 31px;
     height: 15rem;
-    background-image: url(../images/auditt3.jpg);
+    /* background-image: url(../images/auditt3.jpg); */
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -584,7 +584,7 @@ li {
 }
 
 .SearchResult p {
-    position: absolute;
+    /* position: absolute; */
     bottom: 1em;
     left: 1em;
     font-style: italic;
