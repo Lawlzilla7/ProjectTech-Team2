@@ -1,18 +1,22 @@
 let KleurWaarde = 1;
 console.log("Kleurwaarde = " + KleurWaarde);
 
+
 let VelgenWaarde = 1;
 console.log("velgen waarde = " + VelgenWaarde);
 
+
 let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const ScrollSpeed = 200;
     const CssSetting = false;
 
+
+
     var swiper1 = new Swiper('#swiper1', {
-        effect: "coverflow",
         speed: ScrollSpeed,
         cssMode: CssSetting,
         allowTouchMove: false,
@@ -23,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     var swiper2 = new Swiper('#swiper2', {
-        effect: "coverflow",
         speed: ScrollSpeed,
         cssMode: CssSetting,
         allowTouchMove: false,
@@ -34,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     var swiper3 = new Swiper('#swiper3', {
-        effect: "coverflow",
         speed: ScrollSpeed,
         cssMode: CssSetting,
         navigation: {
@@ -43,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
     });
 });
+
 
 const KleurKnopPrev = () => {
     KleurWaarde -= 1;
@@ -85,6 +88,7 @@ const BodyKnopNext = () => {
     console.log("body waarde = " + BodyWaarde);
 }
 
+
 const ChangeBody = (BodyWaarde) => {
     let image = document.querySelector('#CarBody');
 
@@ -120,55 +124,18 @@ const ChangeKleur = (KleurWaarde) => {
     } else if (KleurWaarde === 3) {
         image.src = '/images/blue.png';
     }
+
 }
 
 ChangeKleur(KleurWaarde);
 ChangeVelg(VelgenWaarde);
 ChangeBody(BodyWaarde);
 
-
-
-
 const SendBuildData = () => {
     console.log("body waarde = " + BodyWaarde + " Velgen waarde = " +
         VelgenWaarde + " Kleur waarde = " + KleurWaarde);
 
-
-    sessionStorage.setItem('Body', BodyWaarde);
-    sessionStorage.setItem('Velgen', VelgenWaarde);
-    sessionStorage.setItem('Kleur', KleurWaarde);
-
-    // return KleurWaarde + VelgenWaarde + BodyWaarde;
-}
-const ToResults = () => {
-    location.href = 'results.html'
-}
-
-const ClickFunction = () => {
-    SendBuildData();
-    ToResults();
-}
-
-const OnLoadResults = () => {
-    console.log("Loaded");
-
-    let image = document.querySelector('#CarBody');
-    let image2 = document.querySelector('#CarVelgen');
-    let image3 = document.querySelector('#CarKleur');
-
-    let items = ["Body", "Velgen", "Kleur"];
-    let images = [image, image2, image3];
-    let colors = ['/images/green.png', '/images/red.png', '/images/blue.png'];
-
-    for (let i = 0; i < items.length; i++) {
-        let itemValue = sessionStorage.getItem(items[i]);
-        if (itemValue >= 1 && itemValue <= 3) {
-            images[i].src = colors[itemValue - 1];
-        }
-    }
-
-
-    console.log(image, image2, image3);
+    return KleurWaarde + VelgenWaarde + BodyWaarde;
 }
 // var options = {
 //     direction: 'horizontal',

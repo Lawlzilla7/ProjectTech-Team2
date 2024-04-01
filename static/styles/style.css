@@ -327,137 +327,37 @@ li {
 /* #endregion SamenStellen */
 
 /* #region DetailPagina */
-.detail-body {
-    background: url('../images/fg_bg.png');
-    background-size: 114em;
-}
-
-.detail-body section {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.detail-background {
+.AutoAchtergrond {
     display: flex;
-    position: relative;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(0deg, #4E4E4E 4.72%, rgba(180, 180, 180, 0.00) 61.24%), 
-                url('../images/auditt.png'), lightgray 50%;
+    background: url('../images/auditt3.png'), lightgray 50%;
     margin-top: -9em;
     height: 400px;
-    background-size: cover;
 }
 
-.detail-icons {
+.InfoBox {
     display: flex;
-    flex-direction: column;
-    width: 22em;
-    height: 8.25em;
-    border-radius: 2em;
+    width: 336px;
+    height: 132px;
+    border-radius: 29px;
+    flex-shrink: 0;
     background: #E7E7E7;
     margin-top: 25rem;
 }
 
-.detail-icons h2 {
-    color: #A24492;
-    text-align: center;
-    font-family: "Sonsie One";
-    font-size: 2em;
-    font-weight: 700;
-    padding: .2em;
-}
-
-.car-name {
-    align-self: center;
-}
-
-.detail-icons ul {
+.InfoBox ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.detail-icons li {
+.InfoBox li {
     display: flex;
+    margin: 10px;
     padding: 1em;
-    flex-direction: column;
-    align-items: center;
-    font-weight: 700;
 }
 
-.car-photos {
-    background: url('../images/auditt_1.png');
-    background-size: cover;
-    background-position: bottom;
-    margin-top: 6em;
-    height: 10em;
-    border-radius: 2em;
-    width: 22em;
-}
-
-.car-info {
-    margin-top: 1.5em;
-    height: 10em;
-    font-weight: 300;
-    color: #FFF;
-    font-family: "Avenir Next";
-    line-height: 1.25em; 
-    width: 22em;
-
-}
-
-.car-price {
-    display: flex;
-    margin-top: 1.5em;
-    width: 17em;
-    height: 2em;
-    padding: 1em 2em;
-    justify-content: space-between;
-    border-top: solid #E7E7E7;
-    border-bottom: solid #E7E7E7;
-
-}
-.car-price p{
-    color: #FFF;
-    font-size: 1.5em;
-    font-weight: 500;
-    font-style: italic;
-}
-.car-price button{
-    background: #FFA800;
-    color: #FFF;
-    text-align: center;
-    font-family: "Avenir Next";
-    font-size: 1em;
-    font-weight: 600;
-    border-radius: 1em;
-    width: 8em;
-    height: 2em;
-    border: .1em solid #FFA800;
-}
-
-.car-map {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.car-map img {
-    /* height: 11em; */
-    margin-top: 1.5em;
-    width: 20em;
-}
-
-.car-map p {
-    margin-top: 1em;
-    height: 10em;
-    font-weight: 600;
-    color: #FFF;
-    font-family: "Avenir Next";
-    line-height: 1.25em; 
-    font-size: 1.25em;
-}
 /* #endregion DetailPagina */
 
 /* #region InlogPagina */
@@ -500,8 +400,8 @@ li {
 }
 
 .input-box input {
-    width: 65%;
-    height: 40%;
+    width: 86%;
+    height: 60px;
     background: #E7E7E7;
     color: #4E4E4E;
     font-weight: 600;
@@ -511,6 +411,7 @@ li {
     font-size: 16px;
     padding: 20px 45px 20px 20px;
     margin-left: 17.2%;
+    margin-bottom: 6px;
 }
 
 
@@ -558,7 +459,7 @@ li {
     font-weight: 600;
     margin-left: 14.5%;
     margin-bottom: 14px;
-    margin-top: 10px;
+    margin-top: 85px;
 }
 
 .LogInWrapper .register-link {
@@ -705,111 +606,6 @@ li {
 .SearchResult button:active{
     filter: opacity(50%);
 }
+
+
 /* #endregion results */
-
-
-/* #region loggedin */
-.BodyLoggedIn h1 {
-    font-size: 38px;
-    margin-bottom: 10px;
-}
-
-.loggedin-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.loggedin-box {
-    align-items: center;
-    justify-content: center;
-    background-color: #4E4E4E;
-    padding: 10%;
-    margin: 10%;
-    border-radius: 10px;
-    color: #a4a4a4;
-}
-
-.loggedin-box p {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.loggedin-box img{
-    align-self: center;
-    justify-self: center;
-    margin: 80px;
-    margin-bottom: 10px;
-    margin-top: 5px;
-}
-
-.loggedin-wrapper .btn {
-    width: 71.5%;
-    height: 45px;
-    background: #FFA800;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 20px;
-    color: #FFF;
-    font-weight: 600;
-    margin-left: 14.5%;
-    margin-top: 25px;
-}
-/* #endregion loggedin */
-
-
-/* #region notloggedin */
-.BodyNotLoggedIn h1 {
-    font-size: 30px;
-    margin-bottom: 10px;
-    margin-left: 11px;
-}
-
-.notloggedin-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.notloggedin-box {
-    align-items: center;
-    justify-content: center;
-    background-color: #4E4E4E;
-    padding: 10%;
-    margin: 10%;
-    border-radius: 10px;
-    color: #a4a4a4;
-}
-
-.notloggedin-box p {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.notloggedin-box img{
-    align-self: center;
-    justify-self: center;
-    margin: 80px;
-    margin-bottom: 10px;
-    margin-top: 5px;
-}
-
-.notloggedin-wrapper .btn {
-    width: 71.5%;
-    height: 45px;
-    background: #FFA800;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 20px;
-    color: #FFF;
-    font-weight: 600;
-    margin-left: 14.5%;
-    margin-top: 25px;
-}
-/* #endregion notloggedin */
