@@ -460,6 +460,21 @@ li {
 }
 /* #endregion DetailPagina */
 
+/* #region LikedPagina */
+.liked-body {
+    background: url('../images/fg_bg.png');
+    background-size: 114em;
+}
+
+.liked-body section {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* #endregion LikedPagina */
+
+
 /* #region InlogPagina */
 
 .BodyLogIn {
