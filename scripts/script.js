@@ -6,6 +6,7 @@ console.log("velgen waarde = " + VelgenWaarde);
 
 let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
+let imageCar = document.querySelector('#CarBody');
 
 document.addEventListener('DOMContentLoaded', function () {
     const ScrollSpeed = 200;
@@ -86,14 +87,13 @@ const BodyKnopNext = () => {
 }
 
 const ChangeBody = (BodyWaarde) => {
-    let image = document.querySelector('#CarBody');
 
     if (BodyWaarde === 1) {
-        image.src = '/images/green.png';
+        imageCar.src = '/images/green.png';
     } else if (BodyWaarde === 2) {
-        image.src = '/images/red.png';
+        imageCar.src = '/images/red.png';
     } else if (BodyWaarde === 3) {
-        image.src = '/images/blue.png';
+        imageCar.src = '/images/blue.png';
     }
 
 }
@@ -111,14 +111,14 @@ const ChangeVelg = (VelgenWaarde) => {
 }
 
 const ChangeKleur = (KleurWaarde) => {
-    let image = document.querySelector('#CarKleur');
+    let image = document.querySelector('#CarBody');
 
     if (KleurWaarde === 1) {
-        image.src = '/images/red.png';
+        imageCar.style.filter = 'hue-rotate(0deg)'; // red
     } else if (KleurWaarde === 2) {
-        image.src = '/images/green.png';
+        imageCar.style.filter = 'hue-rotate(120deg)'; // green
     } else if (KleurWaarde === 3) {
-        image.src = '/images/blue.png';
+        imageCar.style.filter = 'hue-rotate(240deg)'; // blue
     }
 }
 
@@ -137,8 +137,6 @@ const SendBuildData = () => {
     sessionStorage.setItem('Body', BodyWaarde);
     sessionStorage.setItem('Velgen', VelgenWaarde);
     sessionStorage.setItem('Kleur', KleurWaarde);
-
-    // return KleurWaarde + VelgenWaarde + BodyWaarde;
 }
 const ToResults = () => {
     location.href = 'results.html'
@@ -171,11 +169,11 @@ const OnLoadResults = () => {
     }
 
     if (sessionStorage.getItem("Kleur") == 1) {
-        image3.src = '/images/red.png';
+        image.style.filter = 'hue-rotate(0deg)'; // red
     } else if (sessionStorage.getItem("Kleur") == 2) {
-        image3.src = '/images/green.png';
+        image.style.filter = 'hue-rotate(120deg)'; // green
     } else if (sessionStorage.getItem("Kleur") == 3) {
-        image3.src = '/images/blue.png';
+        image.style.filter = 'hue-rotate(240deg)'; // blue
     }
 
     // let items = ["Body", "Velgen", "Kleur"];
@@ -204,18 +202,17 @@ function GetCars() {
         AllCars.forEach(AnCars => {
             const CarListElement =
                 `
-                            <li style="background-image: url('${AnCars.imageUrl}');">
-								<h3>${AnCars.name}</h3>
-                                <p>${AnCars.year}</p>
-							</li>
-					`;
+                    <li style="background-image: url('${AnCars.imageUrl}');">
+						<h3>${AnCars.name}</h3>
+                        <p>${AnCars.year}</p>
+					</li>
+				`;
             list.insertAdjacentHTML('beforeend', CarListElement);
         })
     })
 }
 
-{
-    /* <img src="${AnCars.image}" alt="${AnCars.name}"></img> */ }
+/* <img src="${AnCars.image}" alt="${AnCars.name}"></img> */
 
 async function getData(URL) {
     return (
