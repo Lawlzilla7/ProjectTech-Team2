@@ -36,6 +36,57 @@ body {
     background-size: 20px 20px;
 }
 
+.navigatie-header {
+    width: 100%;
+    height: 65px;
+    border-bottom-left-radius: 800px;
+    border-bottom-right-radius: 800px;
+    background: #575757;
+    box-shadow: 0px 0px 20px 15px #B859A2;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+}
+
+.navigatie-header img{
+    margin-left: 100px;
+}
+
+.navigatie-header svg{
+    margin: 18px;
+}
+
+.navigatie-footer {
+    width: 100%;
+    height: 90px;
+    border-top-left-radius: 800px;
+    border-top-right-radius: 800px;
+    background: #575757;
+    box-shadow: 0px 0px 20px 15px #B859A2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.navigatie-footer a{
+    margin: 10px;
+}
+
+.navigatie-footer a:first-child{
+    margin-right: 50px;
+}
+
+.navigatie-footer a:last-child{
+    margin-left: 50px;
+}
+
+
 a {
     text-decoration: none;
 }
@@ -561,16 +612,17 @@ li {
     background-repeat: no-repeat;
 }
 
-.SearchResult div{
+.SearchResult div {
     position: absolute;
     bottom: 0;
     left: 0;
-    background: linear-gradient(0deg, rgba(235,192,218,1) 10%, rgba(0,0,0,0) 40%);
+    background: linear-gradient(0deg, rgba(235, 192, 218, 1) 10%, rgba(0, 0, 0, 0) 40%);
     height: 15em;
     width: 100%;
     z-index: 1;
     border-radius: 31px;
 }
+
 .SearchResult h3 {
     position: absolute;
     bottom: 2em;
@@ -590,8 +642,8 @@ li {
     font-weight: 500;
     z-index: 2;
 }
-.SearchResult button
-{
+
+.SearchResult button {
     position: absolute;
     top: 1em;
     right: 1em;
@@ -601,9 +653,11 @@ li {
     padding: 0;
     z-index: 99;
 }
-.SearchResult img:active{
+
+.SearchResult img:active {
     opacity: .5;
 }
+
 /* #endregion results */
 
 
@@ -634,7 +688,7 @@ li {
     margin-top: 20px;
 }
 
-.loggedin-box img{
+.loggedin-box img {
     align-self: center;
     justify-self: center;
     margin: 80px;
@@ -657,6 +711,7 @@ li {
     margin-left: 14.5%;
     margin-top: 25px;
 }
+
 /* #endregion loggedin */
 
 
@@ -688,7 +743,7 @@ li {
     margin-top: 20px;
 }
 
-.notloggedin-box img{
+.notloggedin-box img {
     align-self: center;
     justify-self: center;
     margin: 80px;
@@ -711,6 +766,7 @@ li {
     margin-left: 14.5%;
     margin-top: 25px;
 }
+
 /* #endregion notloggedin */
 
 
@@ -741,7 +797,7 @@ li {
     margin-top: 20px;
 }
 
-.account-box img{
+.account-box img {
     align-self: center;
     justify-self: center;
     margin: 80px;
