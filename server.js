@@ -8,6 +8,7 @@ const xss = require('xss')
 const bcrypt = require('bcryptjs')
 const session = require('express-session')
 const multer  = require('multer')
+const imagemin = require('imagemin');
 const upload = multer({ dest: 'static/uploads/' }) 
 const path = require('node:path'); 
 
@@ -50,6 +51,22 @@ client.connect()
 		console.log(`Database connection error - ${err}`)
 		console.log(`For uri - ${uri}`)
 	})
+
+
+	import imagemin from 'imagemin';
+	import imageminJpegtran from 'imagemin-jpegtran';
+	import imageminPngquant from 'imagemin-pngquant';
+	
+	const files = await imagemin(['images/*.{jpg,png}'], {
+		destination: 'build/images',
+		plugins: [
+			imageminJpegtran(),
+			imageminPngquant({
+				quality: [0.6, 0.8]
+			})
+		]
+	});
+
 
 
 function onhome(req, res) {
