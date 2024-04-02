@@ -1,0 +1,25 @@
+<!DOCTYPE ejs>
+<html lang="en">
+
+<body>
+
+    <%- include('../partials/header'); %> 
+    
+    <main>
+
+<form id="deleteAccount" action="/deleted_account" method="POST" enctype="application/x-www-form-urlencoded"> 
+    <label>Wil je jouw account verwijderen? </label>
+<input type="submit" name="yesDelete" value="Ja">
+</form>
+
+<button onclick="location.href = 'myaccount';"> Nee </button>
+
+</main>
+
+<footer> </footer>
+
+<script defer src="/scripts/script.js"> </script>
+
+</body>
+
+</html>

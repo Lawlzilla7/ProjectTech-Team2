@@ -1,20 +1,20 @@
 let KleurWaarde = 1;
 console.log("Kleurwaarde = " + KleurWaarde);
 
-
 let VelgenWaarde = 1;
 console.log("velgen waarde = " + VelgenWaarde);
-
 
 let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
 
 
 function build() {
+document.addEventListener('DOMContentLoaded', function () {
     const ScrollSpeed = 200;
     const CssSetting = false;
 
     var swiper1 = new Swiper('#swiper1', {
+        effect: "coverflow",
         speed: ScrollSpeed,
         cssMode: CssSetting,
         allowTouchMove: false,
@@ -25,6 +25,7 @@ function build() {
     });
 
     var swiper2 = new Swiper('#swiper2', {
+        effect: "coverflow",
         speed: ScrollSpeed,
         cssMode: CssSetting,
         allowTouchMove: false,
@@ -35,6 +36,7 @@ function build() {
     });
 
     var swiper3 = new Swiper('#swiper3', {
+        effect: "coverflow",
         speed: ScrollSpeed,
         cssMode: CssSetting,
         navigation: {
@@ -42,6 +44,7 @@ function build() {
             prevEl: '#swiper3 .swiper-button-prev',
         },
     });
+});
 };
 
 
@@ -86,7 +89,6 @@ const BodyKnopNext = () => {
     console.log("body waarde = " + BodyWaarde);
 }
 
-
 const ChangeBody = (BodyWaarde) => {
     let image = document.querySelector('#CarBody');
 
@@ -122,18 +124,25 @@ const ChangeKleur = (KleurWaarde) => {
     } else if (KleurWaarde === 3) {
         image.src = '/images/blue.png';
     }
-
 }
 
 ChangeKleur(KleurWaarde);
 ChangeVelg(VelgenWaarde);
 ChangeBody(BodyWaarde);
 
+
+
+
 const SendBuildData = () => {
     console.log("body waarde = " + BodyWaarde + " Velgen waarde = " +
         VelgenWaarde + " Kleur waarde = " + KleurWaarde);
 
-    return KleurWaarde + VelgenWaarde + BodyWaarde;
+
+    sessionStorage.setItem('Body', BodyWaarde);
+    sessionStorage.setItem('Velgen', VelgenWaarde);
+    sessionStorage.setItem('Kleur', KleurWaarde);
+
+    // return KleurWaarde + VelgenWaarde + BodyWaarde;
 }
 
 // Navigeer naar de 'results' pagina via 'opslaan knop' op build pagina
@@ -200,20 +209,42 @@ function showDetails() {
 }        
 
 
+const ToResults = () => {
+    location.href = '/results'
+}
 
-// var options = {
-//     direction: 'horizontal',
-//     loop: 'true',
-//     speed: 300,
-//     cssMode: true,
+const ClickFunction = () => {
+    SendBuildData();
+    ToResults();
+}
 
-//     pagination: {
-//         el: '.swiper-pagination',
-//         type: 'fraction'
-//     },
-//     navigation: {
-//         nextEl: '.swiper-button-next',
-//         prevEl: '.swiper-button-prev'
-//     }
+const OnLoadResults = () => {
+    let image = document.querySelector('#CarBody');
+    let image2 = document.querySelector('#CarVelgen');
+    let image3 = document.querySelector('#CarKleur');
 
-// };
+    if (sessionStorage.getItem("Body") == 1) {
+        image.src = '/images/green.png';
+    } else if (sessionStorage.getItem("Body") == 2) {
+        image.src = '/images/red.png';
+    } else if (sessionStorage.getItem("Body") == 3) {
+        image.src = '/images/blue.png';
+    }
+
+    if (sessionStorage.getItem("Velgen") == 1) {
+        image2.src = '/images/blue.png';
+    } else if (sessionStorage.getItem("Velgen") == 2) {
+        image2.src = '/images/red.png';
+    } else if (sessionStorage.getItem("Velgen") == 3) {
+        image2.src = '/images/green.png';
+    }
+
+    if (sessionStorage.getItem("Kleur") == 1) {
+        image3.src = '/images/red.png';
+    } else if (sessionStorage.getItem("Kleur") == 2) {
+        image3.src = '/images/green.png';
+    } else if (sessionStorage.getItem("Kleur") == 3) {
+        image3.src = '/images/blue.png';
+    }
+
+   }

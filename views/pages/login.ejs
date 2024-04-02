@@ -16,16 +16,16 @@
 </head>
 
 <body class="BodyLogIn">
+    <%- include('../partials/navHeader'); %> 
     <main>
         <section class="LogInWrapper">
-                        <h1>Welkom! <br> Log eerst in. </h1>
-               <form id="loginForm" action="/loggedin" method="POST">
-    
-                <div class="input-box">
+                <form id="loginForm" action="/loggedin" method="POST">
+                    <h1>Welkom! <br> Log eerst in. </h1>
+                    <div class="input-box">
                         <input type="text" name="username" placeholder="Gebruikersnaam" required>
                     </div>
-                    
-                    <div class="input-box">
+
+                        <div class="input-box">
                     <input type="password" name="password" placeholder="Wachtwoord" required>
                 </div>
 

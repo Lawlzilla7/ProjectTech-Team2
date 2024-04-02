@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE ejs>
 <html lang="en">
 
 <head>
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LogIn</title>
 
-    <link href="styling/style.css" rel="stylesheet">
+    <link href="/styles/style.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
 
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,14 +15,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap" rel="stylesheet"> -->
 </head>
 
-<body class="BodyNotLoggedIn">
+<body class="BodyLoggedIn">
+
+    <%- include('../partials/header'); %> 
+
     <main>
-        <section class="notloggedin-wrapper">
-            <div class="notloggedin-box">
+        <section class="loggedin-wrapper">
+            <div class="loggedin-box">
                 <img src="./images/cross.png" alt="Cross" width="100px">
-                <h1>Niet gelukt</h1>
+                <h1>Niet ingelogd</h1>
                 <p>De gegevens kloppen helaas niet, probeer het opnieuw.</p>
-                <input type="submit" value="Doorgaan" class="btn">
+                <button onclick="location.href = 'login';" class="btn">Doorgaan</button>
             </div>
         </section>
     </main>
