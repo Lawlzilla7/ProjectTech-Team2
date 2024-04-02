@@ -18,7 +18,7 @@ app
   .set('views', 'views')
   .use(express.urlencoded({ extended: true }))
   .use(express.static('static'))
-  .get('/', onHome)
+  .get('/', onhome)
   .get('/about/:name', onabout)
   .use(session({
 	resave: false,
