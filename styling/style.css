@@ -301,7 +301,6 @@ li {
     position: absolute;
     object-fit: contain;
     height: 100%;
-    opacity: 30%;
 }
 
 
@@ -604,6 +603,4 @@ li {
 .SearchResult img:active{
     opacity: .5;
 }
-
-
 /* #endregion results */

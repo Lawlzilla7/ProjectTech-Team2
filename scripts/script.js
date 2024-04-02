@@ -114,11 +114,14 @@ const ChangeKleur = (KleurWaarde) => {
     let image = document.querySelector('#CarBody');
 
     if (KleurWaarde === 1) {
-        imageCar.style.filter = 'hue-rotate(0deg)'; // red
+        console.log("red");
+        image.style.filter  = 'invert(34%) sepia(49%) saturate(7485%) hue-rotate(345deg) brightness(115%) contrast(102%)';
     } else if (KleurWaarde === 2) {
-        imageCar.style.filter = 'hue-rotate(120deg)'; // green
+        console.log("green");
+        image.style.filter  = 'invert(72%) sepia(74%) saturate(991%) hue-rotate(64deg) brightness(103%) contrast(101%)';
     } else if (KleurWaarde === 3) {
-        imageCar.style.filter = 'hue-rotate(240deg)'; // blue
+        console.log("blue");
+        image.style.filter  = 'invert(51%) sepia(69%) saturate(6308%) hue-rotate(209deg) brightness(106%) contrast(101%)';
     }
 }
 
@@ -152,6 +155,8 @@ const OnLoadResults = () => {
     let image2 = document.querySelector('#CarVelgen');
     let image3 = document.querySelector('#CarKleur');
 
+    console.log(image);
+
     if (sessionStorage.getItem("Body") == 1) {
         image.src = '/images/hatchback-02.png';
     } else if (sessionStorage.getItem("Body") == 2) {
@@ -169,11 +174,11 @@ const OnLoadResults = () => {
     }
 
     if (sessionStorage.getItem("Kleur") == 1) {
-        image.style.filter = 'hue-rotate(0deg)'; // red
+        image.style.filter = 'invert(34%) sepia(49%) saturate(7485%) hue-rotate(345deg) brightness(115%) contrast(102%)';
     } else if (sessionStorage.getItem("Kleur") == 2) {
-        image.style.filter = 'hue-rotate(120deg)'; // green
+        image.style.filter = 'invert(72%) sepia(74%) saturate(991%) hue-rotate(64deg) brightness(103%) contrast(101%)';
     } else if (sessionStorage.getItem("Kleur") == 3) {
-        image.style.filter = 'hue-rotate(240deg)'; // blue
+        image.style.filter = 'invert(51%) sepia(69%) saturate(6308%) hue-rotate(209deg) brightness(106%) contrast(101%)';
     }
 
     // let items = ["Body", "Velgen", "Kleur"];
