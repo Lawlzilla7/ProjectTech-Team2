@@ -12,18 +12,22 @@ const multer  = require('multer')
 const upload = multer({ dest: 'static/uploads/' }) 
 const path = require('node:path'); 
 
+
 app
-	.set('view engine', 'ejs') // Set EJS to be our templating engine
-	.set('views', 'views')  // And tell it the views can be found in the directory named views
-	.use(express.urlencoded({ extended: true })) // middleware to parse form data from incoming HTTP request and add form fields to req.body
-	.use(express.static('static'))             // Allow server to serve static content such as images, stylesheets, fonts or frontend js from the directory named static
-	.get('/', onhome)
-	.get('/about/:name', onabout)
-	.use(session({
-		resave: false,
-		saveUninitialized: true,
-		secret: process.env.SESSION_SECRET
-	}))
+  .set('view engine', 'ejs')
+  .set('views', 'views')
+  .use(express.urlencoded({ extended: true }))
+  .use(express.static('static'))
+  .get('/', onHome)
+  .get('/about/:name', onabout)
+  .use(session({
+	resave: false,
+	saveUninitialized: true,
+	secret: process.env.SESSION_SECRET
+}))
+  .use('/api/auto', require('./routes/api/auto'))
+  .get('/resultaten', alleResultaten)
+  .get('/detail', onDetail)
 
 
 
@@ -56,9 +60,12 @@ function onhome(req, res) {
   res.render('pages/index')
 }
 
-
 function onabout(req, res) {
 	res.send(`<h1> About ${req.params.name} </h1>`)
+}
+
+function onDetail(req, res) {
+	res.render('pages/detail')
 }
 
 
@@ -219,12 +226,6 @@ async function addAvatar(req, res) {
 	}
 } 
 
-		
-
-			
-
-
-
 	app.get('/logout', (req, res) => {
 		// Vernietig de sessie
 		req.session.destroy(err => {
@@ -238,13 +239,6 @@ async function addAvatar(req, res) {
 			}
 		});
 	});
-
-
-
-
-
-
-
 
 
 // Functie voor toevoegen van film
@@ -330,7 +324,19 @@ async function addMovie(req, res) {
 //   run().catch(console.dir);
 
 
+// Functie voor het laten zien van de API
 
+async function alleResultaten(req, res) {
+    const database = client.db('autolijst');
+    const collection = database.collection('auto');
+
+  const autoLijst = await collection.find().toArray()
+  res.render('pages/results.ejs', {auto: autoLijst})
+}
+
+
+
+//resultaten laden
 
 
 

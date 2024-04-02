@@ -558,7 +558,7 @@ li {
     margin-top: 1rem;
     border-radius: 31px;
     height: 15rem;
-    background-image: url(../images/auditt3.jpg);
+    /* background-image: url(../images/auditt3.jpg); */
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -584,7 +584,7 @@ li {
 }
 
 .SearchResult p {
-    position: absolute;
+    /* position: absolute; */
     bottom: 1em;
     left: 1em;
     font-style: italic;
@@ -609,3 +609,38 @@ li {
 
 
 /* #endregion results */
+
+
+/* #region DetailPagina */
+.AutoAchtergrond {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('../images/auditt3.png'), lightgray 50%;
+    margin-top: -9em;
+    height: 400px;
+}
+
+.InfoBox {
+    display: flex;
+    width: 336px;
+    height: 132px;
+    border-radius: 29px;
+    flex-shrink: 0;
+    background: #E7E7E7;
+    margin-top: 25rem;
+}
+
+.InfoBox ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.InfoBox li {
+    display: flex;
+    margin: 10px;
+    padding: 1em;
+}
+
+/* #endregion DetailPagina */
