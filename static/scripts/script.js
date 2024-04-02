@@ -171,6 +171,7 @@ function showResults() {
                     li.appendChild(document.createElement('p')).textContent = `Bouwjaar: ${auto.Bouwjaar}`
                     li.appendChild(document.createElement('p')).textContent = `KM Stand: ${auto.kilometers}`
                     searchResult.appendChild(li)
+                    // console.log('hallo')
                 }
             }
         })
@@ -190,17 +191,14 @@ function showDetails() {
         if (autos.length === 0) {
             alert('Deze auto is helaas niet beschikbaar, kies een andere auto.')
         } else {
-            const detailResults = document.querySelector('ul.detailResultsList')
-            searchResult.innerHTML = ''
-            for (const auto of autos) {
-                const li = document.createElement('li')
-                li.classList.replace('detailResults')
-                div.style.backgroundImage = `url(/images/auto/${auto.afbeelding})`
-                li.appendChild(document.createElement('p')).textContent = `carrosserie: ${auto.carrosserie}`
-            }
+            // auto's renderen:
+            const detailResult = document.querySelector('ul.detailResultsList')
+            detailResult.innerHTML = ''
+   
         }
-    })
-}
+        })
+}        
+
 
 
 // var options = {

@@ -336,6 +336,10 @@ async function alleResultaten(req, res) {
 
 
 
+//resultaten laden
+
+
+
 
 // Middleware to handle not found errors - error 404
 app.use((req, res) => {
