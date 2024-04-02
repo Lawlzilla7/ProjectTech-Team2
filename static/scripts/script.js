@@ -176,6 +176,32 @@ function showResults() {
         })
 }
 
+//detailpagina - resultaten laten zien
+function showDetails() {
+    fetch(`/api/auto/${window.location.search}`)
+    .then(result => {
+        if(!result.ok){
+            alert('Deze auto is helaas niet beschikbaar, kies een andere auto.')
+        } else {
+            return result.json()
+        }
+    })
+    .then(autos => {
+        if (autos.length === 0) {
+            alert('Deze auto is helaas niet beschikbaar, kies een andere auto.')
+        } else {
+            const detailResults = document.querySelector('ul.detailResultsList')
+            searchResult.innerHTML = ''
+            for (const auto of autos) {
+                const li = document.createElement('li')
+                li.classList.replace('detailResults')
+                div.style.backgroundImage = `url(/images/auto/${auto.afbeelding})`
+                li.appendChild(document.createElement('p')).textContent = `carrosserie: ${auto.carrosserie}`
+            }
+        }
+    })
+}
+
 
 // var options = {
 //     direction: 'horizontal',

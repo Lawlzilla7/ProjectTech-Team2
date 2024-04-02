@@ -27,6 +27,7 @@ app
 }))
   .use('/api/auto', require('./routes/api/auto'))
   .get('/resultaten', alleResultaten)
+  .get('/detail', onDetail)
 
 
 
@@ -61,6 +62,10 @@ function onHome(req, res) {
 
 function onabout(req, res) {
 	res.send(`<h1> About ${req.params.name} </h1>`)
+}
+
+function onDetail(req, res) {
+	res.render('pages/detail')
 }
 
 
