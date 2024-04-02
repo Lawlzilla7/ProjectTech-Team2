@@ -643,3 +643,133 @@ li {
     margin-top: 25px;
 }
 /* #endregion loggedin */
+
+/* #region account */
+
+.BodyAccount h1 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.BodyAccount h3 {
+    color: black;
+    font-size: 20px;
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
+
+.BodyAvatar {
+    margin-left: 35%;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    align-self: center;
+
+}
+
+.account-box {
+    align-items: center;
+    justify-content: center;
+    background-color: #E7E7E7;
+    padding: 8%;
+    margin: 5%;
+    border-radius: 30px;
+    color: #a4a4a4;
+}
+
+.account-box p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.account-box img{
+    align-self: center;
+    justify-self: center;
+    margin: 80px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.account-wrapper .btn {
+    width: 71.5%;
+    height: 45px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 600;
+    margin-left: 14.5%;
+    margin-top: 25px;
+}
+
+.account-input-box p {
+    width: 10em;
+    height: auto;
+    background: #E7E7E7;
+    color: #4E4E4E;
+    font-weight: 600;
+    border: none;
+    outline: auto;
+    outline-color: #4E4E4E;
+    outline-style: solid;
+    outline-width: 3px;
+    border-top-left-radius: 10px;
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+    margin-right: 6px;
+}
+
+.account-input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.account-box button {
+    width: auto;
+    height: 2em;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 600;
+padding: 1.5em;
+padding-bottom: 2.5em;
+}
+
+.AccountPasswordButton {
+    width: 100%;
+    height: 2em;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 600;
+padding: 10em;
+
+}
+
+.FormAvatar {
+    color: white;
+    text-align: center;
+}
+
+
+
+
+/* #endregion account */
