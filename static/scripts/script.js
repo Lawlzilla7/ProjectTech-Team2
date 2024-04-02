@@ -147,8 +147,6 @@ ChangeVelg(VelgenWaarde);
 ChangeBody(BodyWaarde);
 
 
-
-
 const SendBuildData = () => {
     console.log("body waarde = " + BodyWaarde + " Velgen waarde = " +
         VelgenWaarde + " Kleur waarde = " + KleurWaarde);
@@ -235,11 +233,9 @@ function showDetails() {
                 // auto's renderen:
                 const detailResult = document.querySelector('ul.detailResultsList')
                 detailResult.innerHTML = ''
-
             }
         })
 }
-
 
 const ToResults = () => {
     location.href = '/results'
