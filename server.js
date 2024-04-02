@@ -1,4 +1,3 @@
-// nodemon ./server.js 
 
 require('dotenv').config()
 
@@ -49,10 +48,6 @@ client.connect()
 		console.log(`For uri - ${uri}`)
 	})
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
 
 function onhome(req, res) {
   res.render('pages/index')
@@ -62,7 +57,6 @@ function onhome(req, res) {
 function onabout(req, res) {
 	res.send(`<h1> About ${req.params.name} </h1>`)
 }
-
 
 
 
