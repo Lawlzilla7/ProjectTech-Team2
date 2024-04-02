@@ -455,34 +455,88 @@ li {
 /* #endregion DetailPagina */
 
 /* #region LikedPagina */
+.liked-body {
+    display: flex;
+    margin: 2rem auto 0;
+    padding: 0 1rem 0 1rem;
+    justify-content: center;
+}
+
+.liked-main {
+    margin-top: 6em;
+}
+
+.liked-body h2 {
+    color: white;
+    font-size: 2.5em;
+    font-family: "Sonsie One", system-ui;
+}
+
 .liked-body section {
     margin-left: auto;
     margin-right: auto;
 }
 
-.liked-body .liked-cars {
-    background-size: cover;
-    background-position: bottom;
-    margin-top: 2em;
-    height: 10em;
-    border-radius: 2em;
-    width: 22em;
-    px 27px;
-background: linear-gradient(180deg, rgba(68, 68, 68, 0.00) 21.7%, rgba(141, 122, 133, 0.77) 35.45%, #CAA7BC 65.61%, #EBC0DA 100%);
-}
-
 .liked-body #car-1 {
     background: linear-gradient(180deg, rgba(68, 68, 68, 0.00) 21.7%, rgb(207 177 194 / 0%) 35.45%, #caa7bcd4 65.61%, #EBC0DA 100%), url(../images/auditt_1.png);
+    background-size: cover;
+    background-position: bottom;
 }
 
 .liked-body #car-2 {
     background: linear-gradient(180deg, rgba(68, 68, 68, 0.00) 21.7%, rgb(207 177 194 / 0%) 35.45%, #caa7bcd4 65.61%, #EBC0DA 100%), url(../images/auditt_1.png);
+    background-size: cover;
+    background-position: bottom;
 }
 
 .liked-body #car-3 {
     background: linear-gradient(180deg, rgba(68, 68, 68, 0.00) 21.7%, rgb(207 177 194 / 0%) 35.45%, #caa7bcd4 65.61%, #EBC0DA 100%), url(../images/auditt_1.png);
+    background-size: cover;
+    background-position: bottom;
 }
 
+.liked-body .liked-cars {
+    position: relative;
+    margin-bottom: 2em;
+    height: 10em;
+    border-radius: 2em;
+    width: 24em;
+}
+
+.liked-body .liked-cars .car-name {
+    position: absolute;
+    bottom: 2em;
+    left: 1em;
+    font-weight: bolder;
+    font-style: italic;
+    color: white;
+    margin-bottom: .5em;
+}
+
+.liked-body .liked-cars .car-year {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    font-style: italic;
+    color: #A24492;
+    font-weight: 500;
+}
+
+.liked-body .liked-cars .car-price {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    font-style: italic;
+    color: #A24492;
+    font-weight: 500;
+}
+
+.liked-body .like-button {
+    position: absolute;
+    top: 1.5em;
+    right: 1.5em;
+    border: none;
+}
 
 /* #endregion LikedPagina */
 
