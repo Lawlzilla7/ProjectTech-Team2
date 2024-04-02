@@ -7,42 +7,60 @@ console.log("velgen waarde = " + VelgenWaarde);
 let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
 
-document.addEventListener('DOMContentLoaded', function () {
-    const ScrollSpeed = 200;
-    const CssSetting = false;
-
-    var swiper1 = new Swiper('#swiper1', {
-        effect: "coverflow",
-        speed: ScrollSpeed,
-        cssMode: CssSetting,
-        allowTouchMove: false,
-        navigation: {
-            nextEl: '#swiper1 .swiper-button-next',
-            prevEl: '#swiper1 .swiper-button-prev',
-        },
+function sort(){
+    document.addEventListener('DOMContentLoaded', function()
+    {
+        console.log(options);
+        var options = {
+            valueNames: ['merk', 'Bouwjaar', 'Brandstof ', 'kilometers']
+        }
+        var carList = new List('theList', options);
+        
+        carList.sort('merk', { order: "asc" });
     });
+};
 
-    var swiper2 = new Swiper('#swiper2', {
-        effect: "coverflow",
-        speed: ScrollSpeed,
-        cssMode: CssSetting,
-        allowTouchMove: false,
-        navigation: {
-            nextEl: '#swiper2 .swiper-button-next',
-            prevEl: '#swiper2 .swiper-button-prev',
-        },
-    });
 
-    var swiper3 = new Swiper('#swiper3', {
-        effect: "coverflow",
-        speed: ScrollSpeed,
-        cssMode: CssSetting,
-        navigation: {
-            nextEl: '#swiper3 .swiper-button-next',
-            prevEl: '#swiper3 .swiper-button-prev',
-        },
+function build() {
+    document.addEventListener('DOMContentLoaded', function () 
+    {
+        const ScrollSpeed = 200;
+        const CssSetting = false;
+
+        var swiper1 = new Swiper('#swiper1', {
+            effect: "coverflow",
+            speed: ScrollSpeed,
+            cssMode: CssSetting,
+            allowTouchMove: false,
+            navigation: {
+                nextEl: '#swiper1 .swiper-button-next',
+                prevEl: '#swiper1 .swiper-button-prev',
+            },
+        });
+
+        var swiper2 = new Swiper('#swiper2', {
+            effect: "coverflow",
+            speed: ScrollSpeed,
+            cssMode: CssSetting,
+            allowTouchMove: false,
+            navigation: {
+                nextEl: '#swiper2 .swiper-button-next',
+                prevEl: '#swiper2 .swiper-button-prev',
+            },
+        });
+
+        var swiper3 = new Swiper('#swiper3', {
+            effect: "coverflow",
+            speed: ScrollSpeed,
+            cssMode: CssSetting,
+            navigation: {
+                nextEl: '#swiper3 .swiper-button-next',
+                prevEl: '#swiper3 .swiper-button-prev',
+            },
+        });
     });
-});
+};
+
 
 const KleurKnopPrev = () => {
     KleurWaarde -= 1;
@@ -86,14 +104,13 @@ const BodyKnopNext = () => {
 }
 
 const ChangeBody = (BodyWaarde) => {
-    let image = document.querySelector('#CarBody');
 
     if (BodyWaarde === 1) {
-        image.src = '/images/green.png';
+        imageCar.src = '/images/hatchback-02.png';
     } else if (BodyWaarde === 2) {
-        image.src = '/images/red.png';
+        imageCar.src = '/images/suv.png';
     } else if (BodyWaarde === 3) {
-        image.src = '/images/blue.png';
+        imageCar.src = '/images/sportcar-02.png';
     }
 
 }
@@ -111,14 +128,17 @@ const ChangeVelg = (VelgenWaarde) => {
 }
 
 const ChangeKleur = (KleurWaarde) => {
-    let image = document.querySelector('#CarKleur');
+    let image = document.querySelector('#CarBody');
 
     if (KleurWaarde === 1) {
-        image.src = '/images/red.png';
+        console.log("red");
+        image.style.filter = 'invert(34%) sepia(49%) saturate(7485%) hue-rotate(345deg) brightness(115%) contrast(102%)';
     } else if (KleurWaarde === 2) {
-        image.src = '/images/green.png';
+        console.log("green");
+        image.style.filter = 'invert(72%) sepia(74%) saturate(991%) hue-rotate(64deg) brightness(103%) contrast(101%)';
     } else if (KleurWaarde === 3) {
-        image.src = '/images/blue.png';
+        console.log("blue");
+        image.style.filter = 'invert(51%) sepia(69%) saturate(6308%) hue-rotate(209deg) brightness(106%) contrast(101%)';
     }
 }
 
@@ -140,6 +160,87 @@ const SendBuildData = () => {
 
     // return KleurWaarde + VelgenWaarde + BodyWaarde;
 }
+
+// Navigeer naar de 'results' pagina via 'opslaan knop' op build pagina
+function navigateToResults() {
+    // Roep SendBuildData aan om gegevens te verzenden voordat de pagina wordt gewijzigd
+    const data = SendBuildData();
+    console.log("Gegevens verzonden: " + data);
+
+    // Navigeer naar de 'resultaten' pagina
+    window.location.href = '/results'; 
+}
+
+function showResults() {
+    fetch(`/api/auto/${window.location.search}`)
+        .then(result => {
+            if (!result.ok) {
+                alert('Helaas ging er iets mis bij het ophalen van het resultaat. Probeer het later nogmaals.')
+            } else {
+                return result.json()
+            }
+        })
+        .then(autos => {
+            if (autos.length === 0) {
+                alert('Er zijn geen auto\'s gevonden die aan je zoekcriteria voldoen. Probeer het met andere zoekcriteria.')
+            } else {
+                // auto's renderen:
+                const searchResult = document.querySelector('ul.SearchResultList')
+                searchResult.innerHTML = ''
+                for (const auto of autos) {
+                    const li = document.createElement('li');
+                    li.classList.add('SearchResult'); 
+                    li.style.backgroundImage = `url(/images/auto/${auto.afbeelding})`;
+
+                    const brandstofParagraph = document.createElement('p');
+                    brandstofParagraph.textContent = `Brandstof: ${auto.brandstof}`;
+                    brandstofParagraph.classList.add('Brandstof');
+                    li.appendChild(brandstofParagraph);
+
+                    const bouwjaarParagraph = document.createElement('p');
+                    bouwjaarParagraph.textContent = `Bouwjaar: ${auto.Bouwjaar}`;
+                    bouwjaarParagraph.classList.add('Bouwjaar');
+                    li.appendChild(bouwjaarParagraph);
+
+                    const kmStandParagraph = document.createElement('p');
+                    kmStandParagraph.textContent = `KM Stand: ${auto.kilometers}`;
+                    kmStandParagraph.classList.add('kilometers');
+                    li.appendChild(kmStandParagraph);
+
+                    const merkHeading = document.createElement('h3');
+                    merkHeading.textContent = auto.merk;
+                    merkHeading.classList.add('merk');
+                    li.appendChild(merkHeading);
+
+                    searchResult.appendChild(li);
+                }
+            }
+        })
+}
+
+//detailpagina - resultaten laten zien
+function showDetails() {
+    fetch(`/api/auto/${window.location.search}`)
+        .then(result => {
+            if (!result.ok) {
+                alert('Deze auto is helaas niet beschikbaar, kies een andere auto.')
+            } else {
+                return result.json()
+            }
+        })
+        .then(autos => {
+            if (autos.length === 0) {
+                alert('Deze auto is helaas niet beschikbaar, kies een andere auto.')
+            } else {
+                // auto's renderen:
+                const detailResult = document.querySelector('ul.detailResultsList')
+                detailResult.innerHTML = ''
+
+            }
+        })
+}
+
+
 const ToResults = () => {
     location.href = '/results'
 }
@@ -154,12 +255,14 @@ const OnLoadResults = () => {
     let image2 = document.querySelector('#CarVelgen');
     let image3 = document.querySelector('#CarKleur');
 
+    console.log(image);
+
     if (sessionStorage.getItem("Body") == 1) {
-        image.src = '/images/green.png';
+        image.src = '/images/hatchback-02.png';
     } else if (sessionStorage.getItem("Body") == 2) {
-        image.src = '/images/red.png';
+        image.src = '/images/suv.png';
     } else if (sessionStorage.getItem("Body") == 3) {
-        image.src = '/images/blue.png';
+        image.src = '/images/sportcar-02.png';
     }
 
     if (sessionStorage.getItem("Velgen") == 1) {
@@ -171,73 +274,10 @@ const OnLoadResults = () => {
     }
 
     if (sessionStorage.getItem("Kleur") == 1) {
-        image3.src = '/images/red.png';
+        image.style.filter = 'invert(34%) sepia(49%) saturate(7485%) hue-rotate(345deg) brightness(115%) contrast(102%)';
     } else if (sessionStorage.getItem("Kleur") == 2) {
-        image3.src = '/images/green.png';
+        image.style.filter = 'invert(72%) sepia(74%) saturate(991%) hue-rotate(64deg) brightness(103%) contrast(101%)';
     } else if (sessionStorage.getItem("Kleur") == 3) {
-        image3.src = '/images/blue.png';
+        image.style.filter = 'invert(51%) sepia(69%) saturate(6308%) hue-rotate(209deg) brightness(106%) contrast(101%)';
     }
-
-    // let items = ["Body", "Velgen", "Kleur"];
-    // let images = [image, image2, image3];
-    // let colors = ['/images/green.png', '/images/red.png', '/images/blue.png'];
-
-    // for (let i = 0; i < items.length; i++) {
-    //     let itemValue = sessionStorage.getItem(items[i]);
-    //     if (itemValue >= 1 && itemValue <= 3) {
-    //         images[i].src = colors[itemValue - 1];
-    //     }
-    // }
-
-
 }
-
-const baseURL = "https://www.amiiboapi.com/api/";
-const endPoint = "amiibo/?gameseries=Super Mario";
-
-const URL = baseURL + endPoint;
-const list = document.querySelector('ul');
-
-function GetCars() {
-    getData(URL).then((data) => {
-        const AllCars = data.cars;
-        AllCars.forEach(AnCars => {
-            const CarListElement =
-                `
-                            <li style="background-image: url('${AnCars.imageUrl}');">
-								<h3>${AnCars.name}</h3>
-                                <p>${AnCars.year}</p>
-							</li>
-					`;
-            list.insertAdjacentHTML('beforeend', CarListElement);
-        })
-    })
-}
-
-{
-    /* <img src="${AnCars.image}" alt="${AnCars.name}"></img> */ }
-
-async function getData(URL) {
-    return (
-        fetch(URL)
-        .then(response => response.json())
-        .then(jsonData => jsonData)
-    );
-}
-
-// var options = {
-//     direction: 'horizontal',
-//     loop: 'true',
-//     speed: 300,
-//     cssMode: true,
-
-//     pagination: {
-//         el: '.swiper-pagination',
-//         type: 'fraction'
-//     },
-//     navigation: {
-//         nextEl: '.swiper-button-next',
-//         prevEl: '.swiper-button-prev'
-//     }
-
-// };
