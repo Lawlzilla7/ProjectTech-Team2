@@ -12,6 +12,7 @@ const multer  = require('multer')
 const upload = multer({ dest: 'static/uploads/' }) 
 const path = require('node:path'); 
 
+
 app
 	.set('view engine', 'ejs') // Set EJS to be our templating engine
 	.set('views', 'views')  // And tell it the views can be found in the directory named views
@@ -52,6 +53,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+
 function onhome(req, res) {
   res.render('pages/index')
 }
@@ -60,6 +62,7 @@ function onhome(req, res) {
 function onabout(req, res) {
 	res.send(`<h1> About ${req.params.name} </h1>`)
 }
+
 
 
 
@@ -72,10 +75,6 @@ function onsignup(req, res) {
 }
 
 async function addAccount(req, res) {
-	res.send(`
-	<h1> thanks for making an account with
-	username: ${req.body.username}
- </h1>`)
 
  const username = xss(req.body.username)
  const password = xss(req.body.password)
@@ -99,6 +98,9 @@ async function addAccount(req, res) {
 		}
 
 	});
+
+	res.redirect('/login')
+
 }
 
 
@@ -148,16 +150,15 @@ async function findAccount(req, res) {
 	
 		if (result && await bcrypt.compare(password, result.password)) {
 			req.session.username = username;
-			res.redirect('/myaccount');
+			res.render('pages/loggedin');
+				console.log(`User with _id: ${result._id}`);
 			console.log(`Logged in with username ${xss(req.body.username)}`);
 		} 
 		else {
-			res.send(`<h1> Fout bij inloggen. 
-			Verkeerde gebruikersnaam of wachtwoord ingevoerd
-		 </h1>`)
+			res.render('pages/notloggedin');
 		}
 	};
-	// console.log(`User with _id: ${result.ObjectId}`);
+
  
 
 
@@ -220,13 +221,111 @@ async function addAvatar(req, res) {
 } 
 
 		
+//Functie voor gebruikersnaam wijzigen
+app.get('/update_username', (req, res) => {
+    res.render('pages/update_username');
+});
 
+app.post('/updated_username',updateUsername)
+
+async function updateUsername(req,res) {
+	
+	const database = client.db('gebruikers');
+	const collection = database.collection('accounts');
+
+	const username = req.session.username;
+	const updatedUsername = req.body.updatedUsername;
+
+	const result = await collection.updateOne(
+        { username: username},
+        { $set: { username: updatedUsername } }
+    );
+
+    if (result.modifiedCount === 1) {
+        console.log('Gebruikersnaam succesvol bijgewerkt naar:', req.body.updatedUsername);
+		res.redirect('/login');
+
+    } else {
+        console.log('Gebruikersnaam niet bijgewerkt.');
+		res.send(`<h1> Fout bij het bijwerken van gebruikersnaam.
+		 </h1>`)
+    }
+}
+
+//Functie voor wachtwoord wijzigen
+app.get('/update_password', (req, res) => {
+    res.render('pages/update_password');
+});
+
+app.post('/updated_password',updatePassword)
+
+async function updatePassword(req,res) {
+	
+	const database = client.db('gebruikers');
+	const collection = database.collection('accounts');
+
+	const username = req.session.username;
+	const updatedPassword = req.body.updatedPassword;
+
+	bcrypt.hash(updatedPassword, 10, async (err, hashedPassword) => {
+
+		{
+
+	const result = await collection.updateOne(
+        { username: username},
+        { $set: { password: hashedPassword } });
+
+    if (result.modifiedCount === 1) {
+        console.log('Wachtwoord succesvol bijgewerkt');
+		res.redirect('/login');
+
+    } else {
+        console.log('Wachtwoord niet bijgewerkt.');
+		res.send(`<h1> Fout bij het bijwerken van wachtwoord.
+		 </h1>`)
+    }
+}
+	})
+
+}
+
+
+
+//Functie voor email wijzigen
+app.get('/update_email', (req, res) => {
+    res.render('pages/update_email');
+});
+
+app.post('/updated_email',updateEmail)
+
+async function updateEmail(req,res) {
+	
+	const database = client.db('gebruikers');
+	const collection = database.collection('accounts');
+
+	const username = req.session.username;
+	const updatedEmail = req.body.updatedEmail;
+
+	const result = await collection.updateOne(
+        { username: username},
+        { $set: { email: updatedEmail } }
+    );
+
+    if (result.modifiedCount === 1) {
+        console.log('Email succesvol bijgewerkt naar:', req.body.updatedEmail);
+		res.redirect('/myaccount');
+
+    } else {
+        console.log('Email niet bijgewerkt.');
+		res.send(`<h1> Fout bij het bijwerken van email.
+		 </h1>`)
+    }
+}
 			
 
-
-
+ // functie voor uitloggen
 	app.get('/logout', (req, res) => {
-		// Vernietig de sessie
+		// stop de sessie
 		req.session.destroy(err => {
 			if (err) {
 				console.error('Fout bij het uitloggen:', err);
@@ -240,9 +339,42 @@ async function addAvatar(req, res) {
 	});
 
 
+//Functie voor account verwijderen
+app.get('/delete_account', (req, res) => {
+    res.render('pages/delete_account');
+});
+
+app.post('/deleted_account',deleteAccount)
+
+async function deleteAccount(req, res) {
+
+	const database = client.db('gebruikers');
+	const collection = database.collection('accounts');
+
+	const username = req.session.username;
+
+	const result = await collection.deleteOne(
+		{ username: username });
+
+	console.log('Account verwijderd');
+
+	req.session.destroy(err => {
+		if (err) {
+			console.error('Fout bij het uitloggen:', err);
+			res.status(500).send('Er is een fout opgetreden bij het uitloggen.');
+		} else {
+			// Redirect de gebruiker naar de inlogpagina
+			res.redirect('/login');
+			console.log(`Er is uitgelogd.`)
+		}
+	});
+};
 
 
 
+app.get('/results', (req, res) => {
+    res.render('pages/results');
+});
 
 
 
@@ -257,7 +389,7 @@ function showAddForm(req, res) {
 
 async function addMovie(req, res) {
 
-	{
+	
 
 		const database = client.db('movielist');
 		const collection = database.collection('movies');
@@ -279,7 +411,7 @@ async function addMovie(req, res) {
 		const movieList = await collection.find().toArray()
 		res.render('pages/movies.ejs', {movies: movieList, addedMovie: addedMovie})
 
-	}
+	
 
 }
 
