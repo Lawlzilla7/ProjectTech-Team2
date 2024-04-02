@@ -168,15 +168,12 @@ header button:active {
 header a {
     /* background-color: rgb(211, 211, 211); */
     padding: 1rem;
-
     padding: 1em;
     font-size: clamp(0.9375rem, 0.738rem + 0.8511vw, 1.3125rem);
     word-break: break-all;
 }
 
-header a:hover {
-    background-color: aquamarine;
-}
+
 /* #endregion header */
 
 
@@ -224,7 +221,7 @@ header a:hover {
     flex-direction: column;
     margin: 1rem;
     position: relative;
-    margin-top: 5rem;
+    margin-top: 10rem;
 }
 
 .StartImgText img {
@@ -239,6 +236,7 @@ header a:hover {
 .StartImgText>h1 {
     text-align: center;
     font-style: italic;
+    z-index: 1;
 }
 
 /* #endregion ZeroState */

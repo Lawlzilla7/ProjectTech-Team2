@@ -117,7 +117,17 @@ function onlogin(req, res) {
 app.get('/build', onbuild) 
 
 function onbuild(req,res) {
+
+	const username = req.session.username;
+
+	// Als de gebruikersnaam niet in de sessie is opgeslagen, doorsturen naar de inlogpagina
+	if (!username) {
+		res.redirect('/login');
+		return;
+	}
+	else {
 	res.render('pages/build')
+	}
 }
 
 
