@@ -26,7 +26,6 @@ app
 	secret: process.env.SESSION_SECRET
 }))
   .use('/api/auto', require('./routes/api/auto'))
-  .get('/resultaten', alleResultaten)
   .get('/detail', onDetail)
 
 
@@ -373,97 +372,11 @@ async function deleteAccount(req, res) {
 
 
 
-app.get('/results', (req, res) => {
-    res.render('pages/results');
-});
 
-
-
-
-// Functie voor toevoegen van film
-app.get('/addmovie', showAddForm) //middleware: parses form data
-app.post('/movies', addMovie) //Route to handle the post request to /add-movie
-
-function showAddForm(req, res) {
-	res.render('pages/addmovie.ejs')
-}
-
-async function addMovie(req, res) {
-
-	
-
-		const database = client.db('movielist');
-		const collection = database.collection('movies');
-
-		const result = await collection.insertOne({
-			title: req.body.title,
-			plot: req.body.plot,
-			description: req.body.description
-		});
-
-		console.log(`Added with _id: ${result.insertedId}`);
-
-		const addedMovie = {
-            title: req.body.title,
-            plot: req.body.plot,
-            description: req.body.description
-        };
-
-		const movieList = await collection.find().toArray()
-		res.render('pages/movies.ejs', {movies: movieList, addedMovie: addedMovie})
-
-	
-
-}
-
-
-// async function addMovie(req, res) {
-// 	const database = client.db('sample_mflix')
-// 	const collection = database.collection('movies')
-// 	await client.connect();
-// 	{
-// 		{
-// 			res.send(`<h1> thanks for adding the movie with:
-// 		title: ${req.body.title},
-// 		plot: ${req.body.plot},
-// 		and description:  ${req.body.description}
-// 	 </h1>`)
-// 		}
-
-// 	}
-
-// 	{
-// 		result = await collection.insertOne({
-// 			title: req.body.title,
-// 			plot: req.body.plot,
-// 			description: req.body.description
-// 		})
-
-// 		console.log(`Added with _id: ${result.insertedID}`)
-// 		// res.render('added.ejs')
-
-// 	}
-// }
-
-
-// Functie op een film op te halen uit de database
-// async function run() {
-// 	try {
-// 	  const database = client.db('sample_mflix');
-// 	  const movies = database.collection('movies');
-// 	  // Query for a movie that has the title 'Back to the Future'
-// 	  const query = { title: 'Back to the Future' };
-// 	  const movie = await movies.findOne(query);
-// 	  console.log(movie);
-// 	} finally {
-// 	  // Ensures that the client will close when you finish/error
-// 	  await client.close();
-// 	}
-//   }
-//   run().catch(console.dir);
 
 
 // Functie voor het laten zien van de API
+app.get('/results', alleResultaten)
 
 async function alleResultaten(req, res) {
     const database = client.db('autolijst');
@@ -474,9 +387,7 @@ async function alleResultaten(req, res) {
 }
 
 
-
 //resultaten laden
-
 
 
 

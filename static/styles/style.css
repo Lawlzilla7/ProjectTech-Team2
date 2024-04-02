@@ -931,37 +931,65 @@ padding: 10em;
 
 /* #endregion account */
 
+
 /* #region DetailPagina */
-.AutoAchtergrond {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url('../images/auditt3.png'), lightgray 50%;
-    margin-top: -9em;
-    height: 400px;
+.detail-body {
+    background: url('../images/fg_bg.png');
+    background-size: 114em;
 }
 
-.InfoBox {
+.detail-body section {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.detail-background {
     display: flex;
-    width: 336px;
-    height: 132px;
-    border-radius: 29px;
-    flex-shrink: 0;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(0deg, #4E4E4E 4.72%, rgba(180, 180, 180, 0.00) 61.24%), 
+                url('../images/auditt.png'), lightgray 50%;
+    margin-top: -9em;
+    height: 400px;
+    background-size: cover;
+}
+
+.detail-icons {
+    display: flex;
+    flex-direction: column;
+    width: 22em;
+    height: 8.25em;
+    border-radius: 2em;
     background: #E7E7E7;
     margin-top: 25rem;
 }
 
-.InfoBox ul {
+.detail-icons h2 {
+    color: #A24492;
+    text-align: center;
+    font-family: "Sonsie One";
+    font-size: 2em;
+    font-weight: 700;
+    padding: .2em;
+}
+
+.car-name {
+    align-self: center;
+}
+
+.detail-icons ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.InfoBox li {
+.detail-icons li {
     display: flex;
-    margin: 10px;
     padding: 1em;
 }
+
+/* #endregion DetailPagina */
 
 .sort.asc,
 .sort.desc {
@@ -998,4 +1026,3 @@ padding: 10em;
 .ResultsHeading button:active{
     opacity: 0.5;
 }
-/* #endregion DetailPagina */

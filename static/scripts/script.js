@@ -168,7 +168,7 @@ function navigateToResults() {
     console.log("Gegevens verzonden: " + data);
 
     // Navigeer naar de 'resultaten' pagina
-    window.location.href = '/resultaten';
+    window.location.href = '/results'; 
 }
 
 function showResults() {

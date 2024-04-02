@@ -12,9 +12,9 @@
 </head>
 
     <body>
-    <header>
-        <%- include('../partials/header-resultaten'); %>
-    </header>
+
+        <%- include('../partials/navHeader'); %>
+
 
     <main id="ResultsPage">
         <section class="BuildImg">
@@ -47,9 +47,8 @@
         
     </main>
 
-    <footer>
+    <%- include('../partials/navFooter'); %>
 
-    </footer>
     <script src="./scripts/script.js"></script>
     <script type="module" src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <script>window.onload = showResults</script>

@@ -1,15 +1,16 @@
-<!DOCTYPE html>
+<!DOCTYPE ejs>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ChooseCar</title>
-        <link href="styling/style.css" rel="stylesheet">
+        <link href="/styles/style.css" rel="stylesheet">
         <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
     </head>
     <body class="detail-body">
-        <%- include('../partials/header'); %> 
+
+        <%- include('../partials/navHeader'); %> 
 
         <main class="detail-main">
             <div class="detail-background">
@@ -51,6 +52,9 @@
                     <button>Zoek nu</button>
                 </section>
         </main>
+
+        <%- include('../partials/navFooter'); %> 
+
         <script src="./scripts/script.js"></script>
         <script>window.onload = showDetails </script>
 
