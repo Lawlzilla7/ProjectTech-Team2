@@ -53,10 +53,11 @@ client.connect()
 	})
 
 
-	import imagemin from 'imagemin';
-	import imageminJpegtran from 'imagemin-jpegtran';
-	import imageminPngquant from 'imagemin-pngquant';
+	const imageminJpegtran = require('imagemin-jpegtran');
+	const imageminPngquant = require('imagemin-pngquant');
 	
+
+	async function imagemin(req, res) {
 	const files = await imagemin(['images/*.{jpg,png}'], {
 		destination: 'build/images',
 		plugins: [
@@ -66,7 +67,7 @@ client.connect()
 			})
 		]
 	});
-
+}
 
 
 function onhome(req, res) {
