@@ -89,11 +89,11 @@ const BodyKnopNext = () => {
 const ChangeBody = (BodyWaarde) => {
 
     if (BodyWaarde === 1) {
-        imageCar.src = '/images/green.png';
+        imageCar.src = '/images/hatchback-02.png';
     } else if (BodyWaarde === 2) {
-        imageCar.src = '/images/red.png';
+        imageCar.src = '/images/suv.png';
     } else if (BodyWaarde === 3) {
-        imageCar.src = '/images/blue.png';
+        imageCar.src = '/images/sportcar-02.png';
     }
 
 }
@@ -153,11 +153,11 @@ const OnLoadResults = () => {
     let image3 = document.querySelector('#CarKleur');
 
     if (sessionStorage.getItem("Body") == 1) {
-        image.src = '/images/green.png';
+        image.src = '/images/hatchback-02.png';
     } else if (sessionStorage.getItem("Body") == 2) {
-        image.src = '/images/red.png';
+        image.src = '/images/suv.png';
     } else if (sessionStorage.getItem("Body") == 3) {
-        image.src = '/images/blue.png';
+        image.src = '/images/sportcar-02.png';
     }
 
     if (sessionStorage.getItem("Velgen") == 1) {
