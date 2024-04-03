@@ -419,6 +419,22 @@ async function alleResultaten(req, res) {
 }
 
 
+//esmes code voor detailpagina aanmaken
+async function onDetail(req, res) {
+	let _id
+	try {
+		_id = new ObjectId(req.params.id+'')
+	} catch(e) {
+		res.render('pages/detail', {auto: null})
+	}
+
+	const database = client.db('autolijst');
+	const collection = database.collection('auto');
+
+	const auto = await collection.findOne({_id})
+	return res.render('pages/detail', {auto})
+}
+
 //favorieten toevoegen
 async function addFavorite(req,res) {
 	
@@ -426,11 +442,12 @@ async function addFavorite(req,res) {
 	const collection = database.collection('accounts');
 
 	const username = req.session.username;
-	const updatedEmail = req.body.updatedEmail;
+
+	let _id = new ObjectId(req.params.id+'')
 
 	const result = await collection.updateOne(
         { username: username},
-        { $set: { email: updatedEmail } }
+        { $set: { favorieten: _id } }
     );
 	}
 
