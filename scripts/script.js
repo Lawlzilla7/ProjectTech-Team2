@@ -118,7 +118,7 @@ const ChangeKleur = (KleurWaarde) => {
         image.style.filter  = 'invert(34%) sepia(49%) saturate(7485%) hue-rotate(345deg) brightness(115%) contrast(102%)';
     } else if (KleurWaarde === 2) {
         console.log("green");
-        image.style.filter  = 'invert(72%) sepia(74%) saturate(991%) hue-rotate(64deg) brightness(103%) contrast(101%)';
+        image.style.filter  = 'invert(33%) sepia(34%) saturate(3042%) hue-rotate(105deg) brightness(95%) contrast(92%)';
     } else if (KleurWaarde === 3) {
         console.log("blue");
         image.style.filter  = 'invert(51%) sepia(69%) saturate(6308%) hue-rotate(209deg) brightness(106%) contrast(101%)';
@@ -176,7 +176,7 @@ const OnLoadResults = () => {
     if (sessionStorage.getItem("Kleur") == 1) {
         image.style.filter = 'invert(34%) sepia(49%) saturate(7485%) hue-rotate(345deg) brightness(115%) contrast(102%)';
     } else if (sessionStorage.getItem("Kleur") == 2) {
-        image.style.filter = 'invert(72%) sepia(74%) saturate(991%) hue-rotate(64deg) brightness(103%) contrast(101%)';
+        image.style.filter = 'invert(33%) sepia(34%) saturate(3042%) hue-rotate(105deg) brightness(95%) contrast(92%)';
     } else if (sessionStorage.getItem("Kleur") == 3) {
         image.style.filter = 'invert(51%) sepia(69%) saturate(6308%) hue-rotate(209deg) brightness(106%) contrast(101%)';
     }
