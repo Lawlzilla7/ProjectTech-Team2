@@ -7,18 +7,14 @@ console.log("velgen waarde = " + VelgenWaarde);
 let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
 
-function sort(){
-    document.addEventListener('DOMContentLoaded', function()
-    {
-        console.log(options);
-        var options = {
-            valueNames: ['merk', 'Bouwjaar', 'Brandstof ', 'kilometers']
-        }
-        var carList = new List('theList', options);
-        
-        carList.sort('merk', { order: "asc" });
-    });
-};
+
+var options = {
+    valueNames: ['merk', 'Bouwjaar', 'Brandstof ', 'kilometers']
+}
+var carList = new List('theList', options);
+console.log(carList);
+carList.sort('merk', { order: "asc" });
+
 
 
 function build() {
