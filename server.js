@@ -8,7 +8,7 @@ const xss = require('xss')
 const bcrypt = require('bcryptjs')
 const session = require('express-session')
 const multer  = require('multer')
-const imagemin = require('imagemin');
+// const imagemin = require('imagemin');
 const upload = multer({ dest: 'static/uploads/' }) 
 const path = require('node:path'); 
 
@@ -53,21 +53,21 @@ client.connect()
 	})
 
 //start imagemin
-	const imageminJpegtran = require('imagemin-jpegtran');
-	const imageminPngquant = require('imagemin-pngquant');
+// 	const imageminJpegtran = require('imagemin-jpegtran');
+// 	const imageminPngquant = require('imagemin-pngquant');
 	
 
-	async function minify (req, res) {
-	const files = await imagemin(['images/*.{jpg,png}'], {
-		destination: 'static/images',
-		plugins: [
-			imageminJpegtran(),
-			imageminPngquant({
-				quality: [0.6, 0.8]
-			})
-		]
-	});
-}
+// 	async function minify (req, res) {
+// 	const files = await imagemin(['images/*.{jpg,png}'], {
+// 		destination: 'static/images',
+// 		plugins: [
+// 			imageminJpegtran(),
+// 			imageminPngquant({
+// 				quality: [0.6, 0.8]
+// 			})
+// 		]
+// 	});
+// }
 //end imagemin
 
 function onhome(req, res) {
@@ -419,7 +419,20 @@ async function alleResultaten(req, res) {
 }
 
 
-//resultaten laden
+//favorieten toevoegen
+async function addFavorite(req,res) {
+	
+	const database = client.db('gebruikers');
+	const collection = database.collection('accounts');
+
+	const username = req.session.username;
+	const updatedEmail = req.body.updatedEmail;
+
+	const result = await collection.updateOne(
+        { username: username},
+        { $set: { email: updatedEmail } }
+    );
+	}
 
 
 
