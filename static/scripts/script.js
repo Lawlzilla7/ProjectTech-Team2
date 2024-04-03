@@ -189,6 +189,10 @@ function showResults() {
                 searchResult.innerHTML = ''
                 for (const auto of autos) {
                     const li = document.createElement('li');
+                    li.addEventListener('click', () => {
+                        window.location = `/detail/${auto._id}`
+                    })
+                    li.style.cursor = 'pointer'
                     li.classList.add('SearchResult'); 
                     li.style.backgroundImage = `url(/images/auto/${auto.afbeelding})`;
 
@@ -218,31 +222,30 @@ function showResults() {
         })
 }
 
-//detailpagina - resultaten laten zien
-function showDetails() {
-    fetch(`/api/auto/${window.location.search}`)
-        .then(result => {
-            if (!result.ok) {
-                alert('Deze auto is helaas niet beschikbaar, kies een andere auto.')
-            } else {
-                return result.json()
-            }
-        })
-        .then(autos => {
-            if (autos.length === 0) {
-                alert('Deze auto is helaas niet beschikbaar, kies een andere auto.')
-            } else {
-                // auto's renderen:
-                const detailResult = document.querySelector('ul.detailResultsList')
-                detailResult.innerHTML = ''
-
-            }
-        })
-}
+// detailpagina - resultaten laten zien
+// function showDetails() {
+//     fetch(`/api/auto/${window.location.search}`)
+//         .then(result => {
+//             if (!result.ok) {
+//                 alert('Deze auto is helaas niet beschikbaar, kies een andere auto.')
+//             } else {
+//                 return result.json()
+//             }
+//         })
+//         .then(autos => {
+//             if (autos.length === 0) {
+//                 alert('Deze auto is helaas niet beschikbaar, kies een andere auto.')
+//             } else {
+//                 // auto's renderen:
+//                 const detailResult = document.querySelector('ul.detailResultsList')
+//                 detailResult.innerHTML = ''
+//             }
+//         })
+// }
 
 
 const ToResults = () => {
-    location.href = '/results'
+    window.location.href = '/results'; 
 }
 
 const ClickFunction = () => {

@@ -1,5 +1,5 @@
 const express = require('express');
-const { MONGO_CLIENT_EVENTS } = require('mongodb');
+const { ObjectId } = require('mongodb');
 const router = express.Router()
 const { client, connect } = require('../../db')
 const collection = client.db('autolijst').collection('auto')
@@ -36,6 +36,12 @@ router.get('/filter/:veldnaam', async (req, res, next) => {
         .map(value => {
             return { [value]: req.protocol + '://' + req.get('host') + `/api/auto?${req.params.veldnaam}=${value}` }
         }))
+})
+
+router.get('/:id', async (req, res, next) => {
+    await connect(client)
+    let auto = await collection.findOne({_id: new ObjectId(req.params.id)})
+    return res.send(auto)
 })
 
 //losse dingen zoals uri (kleur) + (merk) ipv dat het in een url staat

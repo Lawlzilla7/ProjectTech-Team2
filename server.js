@@ -26,12 +26,13 @@ app
 	secret: process.env.SESSION_SECRET
 }))
   .use('/api/auto', require('./routes/api/auto'))
-  .get('/detail', onDetail)
+  .get('/detail/:id', onDetail)
 
 
 
 // Use MongoDB
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
+
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
 const client = new MongoClient(uri, {
 	serverApi: {
@@ -60,8 +61,19 @@ function onabout(req, res) {
 	res.send(`<h1> About ${req.params.name} </h1>`)
 }
 
-function onDetail(req, res) {
-	res.render('pages/detail')
+async function onDetail(req, res) {
+	let _id
+	try {
+		_id = new ObjectId(req.params.id+'')
+	} catch(e) {
+		res.render('pages/detail', {auto: null})
+	}
+
+	const database = client.db('autolijst');
+	const collection = database.collection('auto');
+
+	const auto = await collection.findOne({_id})
+	return res.render('pages/detail', {auto})
 }
 
 
@@ -387,7 +399,7 @@ async function alleResultaten(req, res) {
 }
 
 
-//resultaten laden
+//	
 
 
 

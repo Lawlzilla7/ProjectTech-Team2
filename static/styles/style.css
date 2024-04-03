@@ -933,11 +933,6 @@ padding: 10em;
 
 
 /* #region DetailPagina */
-.detail-body {
-    background: url('../images/fg_bg.png');
-    background-size: 114em;
-}
-
 .detail-body section {
     margin-left: auto;
     margin-right: auto;
@@ -948,7 +943,7 @@ padding: 10em;
     position: relative;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(0deg, #4E4E4E 4.72%, rgba(180, 180, 180, 0.00) 61.24%), 
+    background: linear-gradient(0deg, #242424 4.72%, rgba(180, 180, 180, 0.00) 61.24%), 
                 url('../images/auditt.png'), lightgray 50%;
     margin-top: -9em;
     height: 400px;
@@ -974,7 +969,7 @@ padding: 10em;
     padding: .2em;
 }
 
-.car-name {
+.detail-body .car-name {
     align-self: center;
 }
 
@@ -987,8 +982,82 @@ padding: 10em;
 .detail-icons li {
     display: flex;
     padding: 1em;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
 }
 
+.detail-body .car-photos {
+    background: url('../images/auditt_1.png');
+    background-size: cover;
+    background-position: bottom;
+    margin-top: 6em;
+    height: 10em;
+    border-radius: 2em;
+    width: 22em;
+}
+
+.detail-body .car-info {
+    margin-top: 1.5em;
+    height: 10em;
+    font-weight: 300;
+    color: #FFF;
+    font-family: "Avenir Next";
+    line-height: 1.25em; 
+    width: 22em;
+}
+
+.detail-body .car-price {
+    display: flex;
+    margin-top: 1.5em;
+    width: 17em;
+    height: 2em;
+    padding: 1em 2em;
+    justify-content: space-between;
+    border-top: solid #E7E7E7;
+    border-bottom: solid #E7E7E7;
+
+}
+.detail-body .car-price p{
+    color: #FFF;
+    font-size: 1.5em;
+    font-weight: 500;
+    font-style: italic;
+}
+.detail-body .car-price button, .detail-body .car-map button {
+    background: #FFA800;
+    color: #FFF;
+    text-align: center;
+    font-family: "Avenir Next";
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 1em;
+    width: 8em;
+    height: 2em;
+    border: .1em solid #FFA800;
+}
+
+.detail-body .car-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-body .car-map img {
+    /* height: 11em; */
+    margin-top: 1.5em;
+    width: 20em;
+}
+
+.detail-body .car-map p {
+    margin-top: 1em;
+    height: 10em;
+    font-weight: 600;
+    color: #FFF;
+    font-family: "Avenir Next";
+    line-height: 1.25em; 
+    font-size: 1.25em;
+}
 /* #endregion DetailPagina */
 
 .sort.asc,
