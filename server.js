@@ -26,7 +26,7 @@ app
 	secret: process.env.SESSION_SECRET
 }))
   .use('/api/auto', require('./routes/api/auto'))
-  .get('/detail/:id', onDetail)
+  .get('/detail/:id', onDetail, addFavorite)
 
 
 
@@ -74,8 +74,37 @@ async function onDetail(req, res) {
 
 	const auto = await collection.findOne({_id})
 	return res.render('pages/detail', {auto})
+
 }
 
+//favorieten toevoegen
+app.get('/favorite', onFavorite)
+app.post('/favorite', onFavorite, addFavorite)
+
+function onFavorite(req, res) {
+	res.render('pages/favorite')
+}
+
+async function addFavorite(req, res) {
+    try {
+        const database = client.db('gebruikers');
+        const collection = database.collection('accounts');
+
+        const username = req.session.username;
+
+        let _id = new ObjectId(req.params.id+'')
+
+        const result = await collection.updateOne(
+            { username: username},
+            { $set: { favorieten: _id } }
+        );
+        console.log('Favoriet succesvol toegevoegd met id:', _id);
+        res.status(200).send("Favoriet succesvol toegevoegd.");
+    } catch (error) {
+        console.error('Er is een fout opgetreden bij het toevoegen van de favoriet:', error);
+        res.status(500).send("Er is een fout opgetreden bij het toevoegen van de favoriet.");
+    }
+}
 
 
 // Functie voor toevoegen van account

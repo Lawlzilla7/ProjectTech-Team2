@@ -50,7 +50,10 @@
                 </section>
                 <section class="car-price">
                     <p>€ <%= auto.prijs.toLocaleString() %>,-</p>
-                    <button>Koop nu</button>
+                    <!-- <button>Opslaan</button> -->
+                    <form id="saveFavorites" action="/favorite" method="POST" enctype="application/x-www-form-urlencoded">
+                        <input type="submit" value="Opslaan" class="btn">
+                    </form>
                 </section>
                 <section class="car-map">
                     <img src="/images/map.png">
