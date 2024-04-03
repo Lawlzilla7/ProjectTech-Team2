@@ -8,7 +8,7 @@ const xss = require('xss')
 const bcrypt = require('bcryptjs')
 const session = require('express-session')
 const multer  = require('multer')
-const imagemin = require('imagemin');
+// const imagemin = require('imagemin');
 const upload = multer({ dest: 'static/uploads/' }) 
 const path = require('node:path'); 
 
@@ -52,23 +52,23 @@ client.connect()
 		console.log(`For uri - ${uri}`)
 	})
 
-
-	const imageminJpegtran = require('imagemin-jpegtran');
-	const imageminPngquant = require('imagemin-pngquant');
+//start imagemin
+// 	const imageminJpegtran = require('imagemin-jpegtran');
+// 	const imageminPngquant = require('imagemin-pngquant');
 	
 
-	async function imagemin(req, res) {
-	const files = await imagemin(['images/*.{jpg,png}'], {
-		destination: 'build/images',
-		plugins: [
-			imageminJpegtran(),
-			imageminPngquant({
-				quality: [0.6, 0.8]
-			})
-		]
-	});
-}
-
+// 	async function imagemin(req, res) {
+// 	const files = await imagemin(['images/*.{jpg,png}'], {
+// 		destination: 'build/images',
+// 		plugins: [
+// 			imageminJpegtran(),
+// 			imageminPngquant({
+// 				quality: [0.6, 0.8]
+// 			})
+// 		]
+// 	});
+// }
+//end imagemin
 
 function onhome(req, res) {
   res.render('pages/index')
@@ -84,7 +84,7 @@ function onDetail(req, res) {
 
 
 
-// Functie voor toevoegen van account
+// Start functie voor toevoegen van account
 app.get('/signup', onsignup)
 app.post('/add-account', addAccount) //Route to handle the post request to /add-movie
 
@@ -120,10 +120,10 @@ async function addAccount(req, res) {
 	res.redirect('/login')
 
 }
+// End functie voor toevoegen van account
 
 
-
-// Functie voor ophalen van account
+// Start functie voor inloggen met account
 app.get('/login', onlogin)
 app.post('/loggedin', findAccount)
 
@@ -147,8 +147,10 @@ function onbuild(req,res) {
 	res.render('pages/build')
 	}
 }
+// End functie voor inloggen met account
 
 
+// Start kijken of de gebruiker is ingelogd als er op "start" word geklikt
 app.get('/start', onstart)
 
 function onstart(req, res) {
@@ -165,6 +167,8 @@ function onstart(req, res) {
 	res.redirect('/build')
 	}
 }
+// End kijken of de gebruiker is ingelogd als er op "start" word geklikt
+
 
 async function findAccount(req, res) {
 
