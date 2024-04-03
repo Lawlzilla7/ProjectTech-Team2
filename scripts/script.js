@@ -130,6 +130,10 @@ ChangeVelg(VelgenWaarde);
 ChangeBody(BodyWaarde);
 
 
+const ClickFunction = () => {
+    SendBuildData();
+    ToResults();
+}
 
 
 const SendBuildData = () => {
@@ -145,10 +149,6 @@ const ToResults = () => {
     location.href = 'results.html'
 }
 
-const ClickFunction = () => {
-    SendBuildData();
-    ToResults();
-}
 
 const OnLoadResults = () => {
     let image = document.querySelector('#CarBody');
@@ -180,19 +180,6 @@ const OnLoadResults = () => {
     } else if (sessionStorage.getItem("Kleur") == 3) {
         image.style.filter = 'invert(51%) sepia(69%) saturate(6308%) hue-rotate(209deg) brightness(106%) contrast(101%)';
     }
-
-    // let items = ["Body", "Velgen", "Kleur"];
-    // let images = [image, image2, image3];
-    // let colors = ['/images/green.png', '/images/red.png', '/images/blue.png'];
-
-    // for (let i = 0; i < items.length; i++) {
-    //     let itemValue = sessionStorage.getItem(items[i]);
-    //     if (itemValue >= 1 && itemValue <= 3) {
-    //         images[i].src = colors[itemValue - 1];
-    //     }
-    // }
-
-
 }
 
 const baseURL = "https://www.amiiboapi.com/api/";
