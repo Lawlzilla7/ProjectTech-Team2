@@ -8,12 +8,7 @@ let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
 
 
-var options = {
-    valueNames: ['merk', 'Bouwjaar', 'Brandstof ', 'kilometers']
-}
-var carList = new List('theList', options);
-console.log(carList);
-carList.sort('merk', { order: "asc" });
+
 
 
 
@@ -213,6 +208,12 @@ function showResults() {
             }
         })
 }
+var options = {
+    valueNames: ['merk', 'Bouwjaar', 'Brandstof ', 'kilometers']
+}
+var carList = new List('theList', options);
+console.log(carList);
+carList.sort('merk', { order: "asc" });
 
 //detailpagina - resultaten laten zien
 function showDetails() {
