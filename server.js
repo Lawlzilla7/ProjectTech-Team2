@@ -443,12 +443,14 @@ async function addFavorite(req,res) {
 
 	const username = req.session.username;
 
-	let _id = new ObjectId(req.params.id+'')
+	const _id = new ObjectId(req.params.id+'')
 
 	const result = await collection.updateOne(
         { username: username},
         { $set: { favorieten: _id } }
     );
+	console.log('Favoriet succesvol toegevoegd met id:', _id);
+
 	}
 
 
