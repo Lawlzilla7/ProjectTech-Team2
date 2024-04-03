@@ -8,18 +8,11 @@ let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
 
 
-var options = {
-    valueNames: ['merk', 'Bouwjaar', 'Brandstof ', 'kilometers']
-}
-var carList = new List('theList', options);
-console.log(carList);
-carList.sort('merk', { order: "asc" });
 
 
 
 function build() {
-    document.addEventListener('DOMContentLoaded', function () 
-    {
+    document.addEventListener('DOMContentLoaded', function () {
         const ScrollSpeed = 200;
         const CssSetting = false;
 
@@ -100,13 +93,14 @@ const BodyKnopNext = () => {
 }
 
 const ChangeBody = (BodyWaarde) => {
+    let image = document.querySelector('#CarBody');
 
     if (BodyWaarde === 1) {
-        imageCar.src = '/images/hatchback-02.png';
+        image.src = '/images/hatchback-02.png';
     } else if (BodyWaarde === 2) {
-        imageCar.src = '/images/suv.png';
+        image.src = '/images/suv.png';
     } else if (BodyWaarde === 3) {
-        imageCar.src = '/images/sportcar-02.png';
+        image.src = '/images/sportcar-02.png';
     }
 
 }
@@ -164,28 +158,28 @@ function navigateToResults() {
     console.log("Gegevens verzonden: " + data);
 
     // Navigeer naar de 'resultaten' pagina
-    window.location.href = '/results'; 
+    window.location.href = '/results';
 }
 
 function showResults() {
     fetch(`/api/auto/${window.location.search}`)
         .then(result => {
             if (!result.ok) {
-                alert('Helaas ging er iets mis bij het ophalen van het resultaat. Probeer het later nogmaals.')
+                alert('Helaas ging er iets mis bij het ophalen van het resultaat. Probeer het later nogmaals.');
             } else {
-                return result.json()
+                return result.json();
             }
         })
         .then(autos => {
             if (autos.length === 0) {
-                alert('Er zijn geen auto\'s gevonden die aan je zoekcriteria voldoen. Probeer het met andere zoekcriteria.')
+                alert('Er zijn geen auto\'s gevonden die aan je zoekcriteria voldoen. Probeer het met andere zoekcriteria.');
             } else {
-                // auto's renderen:
-                const searchResult = document.querySelector('ul.SearchResultList')
-                searchResult.innerHTML = ''
+                const searchResult = document.querySelector('ul.SearchResultList');
+                searchResult.innerHTML = '';
                 for (const auto of autos) {
                     const li = document.createElement('li');
-                    li.classList.add('SearchResult'); 
+                    li.classList.add('SearchResult');
+                    li.classList.add('List');
                     li.style.backgroundImage = `url(/images/auto/${auto.afbeelding})`;
 
                     const brandstofParagraph = document.createElement('p');
@@ -210,9 +204,35 @@ function showResults() {
 
                     searchResult.appendChild(li);
                 }
+
+                // Initialize List.js for sorting and searching
+                var options = {
+                    valueNames: ['merk', 'kilometers', 'Brandstof', 'Bouwjaar']
+                };
+                var carList = new List('theList', options);
+
+                // Initialize sorting based on button clicks
+                var buttons = document.querySelectorAll('.sort');
+                buttons.forEach(function (button) {
+                    button.addEventListener('click', function () {
+                        var sortBy = button.getAttribute('data-sort');
+                        carList.sort(sortBy, {
+                            order: button.getAttribute('data-default-order') || 'asc'
+                        });
+                    });
+                });
+
+                // Initialize search functionality
+                var searchField = document.querySelector('.search');
+                searchField.addEventListener('input', function () {
+                    var searchString = this.value.toLowerCase();
+                    carList.search(searchString);
+                });
             }
-        })
+        });
 }
+
+
 
 //detailpagina - resultaten laten zien
 function showDetails() {
@@ -235,6 +255,7 @@ function showDetails() {
             }
         })
 }
+
 
 
 const ToResults = () => {

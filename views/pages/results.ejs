@@ -11,9 +11,9 @@
     <link rel="icon" type="image/x-icon" href="./images/project_tech_logo_1.png">
 </head>
 
-    <body>
+<body>
 
-        <%- include('../partials/navHeader'); %>
+    <%- include('../partials/navHeader'); %>
 
 
     <main id="ResultsPage">
@@ -24,34 +24,36 @@
         </section>
 
         <section class="ResultsHeading">
-          <section>
-            <input type="search" class="search" placeholder="wat zoek je?">
-            <button class="sort" data-sort="merk"  data-default-order='asc'>merk</button>
-            <button class="sort" data-sort="kilometers">Kilometers</button>
-            <button class="sort" data-sort="Brandstof">Brandstof</button>
-            <button class="sort" data-sort="Bouwjaar">Bouwjaar</button>
-          </section>
-          <h2>results</h2>
-          <!-- <img src="./images/filter.svg" alt="" onclick=""> -->
-          <section id="theList">
-            <ul class="SearchResultList list">
-              <!-- <li class="SearchResult">
-                  <h3>Naam:</h3>
-                  <p>Jaar:</p>
-                  <button onclick=""><img src="./images/Heart.svg" alt=""></a></button>
-                  <div></div>
-              </li> -->
-          </ul>   
-          </section>
-  
-        
+            <section>
+                <input type="search" class="search" placeholder="Wat zoek je?">
+                <button class="sort" data-sort="merk" data-default-order='asc'>Merk</button>
+                <button class="sort" data-sort="kilometers">Kilometers</button>
+                <button class="sort" data-sort="Brandstof">Brandstof</button>
+                <button class="sort" data-sort="Bouwjaar">Bouwjaar</button>
+            </section>
+            <h2>results</h2>
+            <!-- <img src="./images/filter.svg" alt="" onclick=""> -->
+            <section id="theList">
+                <ul class="SearchResultList list">
+                <!-- <li class="SearchResult">
+                    <h3>Naam:</h3>
+                    <p>Jaar:</p>
+                    <button onclick=""><img src="./images/Heart.svg" alt=""></a></button>
+                    <div></div>
+                </li> -->
+                </ul>
+            </section>
+
+
     </main>
 
     <%- include('../partials/navFooter'); %>
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <script src="./scripts/script.js"></script>
-    <script type="module" src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
-    <script>window.onload = showResults</script>
+
+    <script>
+        window.onload = showResults
+    </script>
 
 </body>
 
