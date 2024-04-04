@@ -1,9 +1,7 @@
 let KleurWaarde = 1;
 console.log("Kleurwaarde = " + KleurWaarde);
-
 let VelgenWaarde = 1;
 console.log("velgen waarde = " + VelgenWaarde);
-
 let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
 
@@ -111,7 +109,7 @@ const ChangeVelg = (VelgenWaarde) => {
 }
 
 const ChangeKleur = (KleurWaarde) => {
-    let image = document.querySelector('#CarKleur');
+    let image = document.querySelector('#CarBody');
 
     if (KleurWaarde === 1) {
         image.style.filter = 'invert(34%) sepia(49%) saturate(7485%) hue-rotate(345deg) brightness(115%) contrast(102%)';
@@ -143,7 +141,6 @@ function navigateToResults() {
     // Navigeer naar de 'resultaten' pagina
     window.location.href = '/results';
 }
-build(); 
 
 function showResults() {
     fetch(`/api/auto/${window.location.search}`)
@@ -254,12 +251,10 @@ const ClickFunction = () => {
     ToResults();
 }
 
+
 const OnLoadResults = () => {
     let image = document.querySelector('#CarBody');
     let image2 = document.querySelector('#CarVelgen');
-    let image3 = document.querySelector('#CarKleur');
-
-    console.log(image);
 
     if (sessionStorage.getItem("Body") == 1) {
         image.src = '/images/hatchback-02.png';
@@ -284,4 +279,9 @@ const OnLoadResults = () => {
     } else if (sessionStorage.getItem("Kleur") == 3) {
         image.style.filter = 'invert(51%) sepia(69%) saturate(6308%) hue-rotate(209deg) brightness(106%) contrast(101%)';
     }
+}
+
+const LoadResults = () =>{
+    OnLoadResults();
+    showResults();
 }
