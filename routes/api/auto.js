@@ -1,4 +1,5 @@
 const express = require('express');
+const { MONGO_CLIENT_EVENTS } = require('mongodb');
 const router = express.Router()
 const { client, connect } = require('../../db')
 const collection = client.db('autolijst').collection('auto')
@@ -12,19 +13,13 @@ router.get('/', async (req, res, next) => {
             req.query[veldnaam] = parseInt(req.query[veldnaam])
         }
     }
+    
     let autos = await collection.find(req.query).toArray()
     return res.send(autos)
 })
-            //Voor elk veld wordt gecontroleerd of het overeenkomt met 
-            //een queryparameter in het inkomende verzoek. Als het veld 
-            //aanwezig is in de queryparameters, gaat de code verder.
-            //Als het veld aanwezig is, wordt de waarde ervan omgezet 
-            //naar een geheel getal (integer) met behulp van parseInt.
 
-// list van beschikbare velden:
 router.get('/filter', async (req, res, next) => {
     await connect(client)
-    //erste document ophalen:
     const doc = (await collection.find({}, { limit: 1 }).toArray()).pop()
     const velden = []
     const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
@@ -43,4 +38,9 @@ router.get('/filter/:veldnaam', async (req, res, next) => {
         }))
 })
 
+//losse dingen zoals uri (kleur) + (merk) ipv dat het in een url staat
+
 module.exports = router
+
+
+

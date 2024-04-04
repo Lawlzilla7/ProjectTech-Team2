@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE ejs>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -9,21 +9,14 @@
         <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
     </head>
     <body class="detail-body">
-        <header>
-            <ul>
-                <li>
-                    <button onclick=""><img src="./images/Heart.png" alt=""></a></button>
-                </li>
-                <li>
-                    <button onclick=""><img src="./images/Profile.png" alt=""></a></button>
-                </li>
-            </ul>
-        </header>
+
+        <%- include('../partials/navHeader'); %> 
+
         <main class="detail-main">
             <div class="detail-background">
                     <div class="detail-icons">
-                        <h2 class="car-name">Audi TT</h2>
-                        <ul>
+                        <h2 class="car-name">Audi</h2>
+                        <ul class="detailResultsList">
                             <li class="model-car">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 3.05176e-05C19.4037 3.05176e-05 25 5.59628 25 12.5C25 19.4038 19.4037 25 12.5 25C5.59625 25 0 19.4038 0 12.5C0 5.59628 5.59625 3.05176e-05 12.5 3.05176e-05ZM2.75625 14.7625C3.1937 16.6405 4.16411 18.3522 5.55089 19.692C6.93767 21.0318 8.68181 21.9426 10.5737 22.315C10.3325 19.0338 9.25375 17.065 7.89125 15.9763C6.58625 14.9325 4.81625 14.5288 2.75625 14.7613V14.7625ZM17.1087 15.975C15.7463 17.0663 14.6675 19.0338 14.4263 22.315C16.3183 21.9425 18.0626 21.0315 19.4494 19.6915C20.8362 18.3515 21.8065 16.6395 22.2437 14.7613C20.1838 14.5288 18.4137 14.9325 17.1087 15.9763V15.975ZM12.5 2.50003C10.1702 2.50034 7.9136 3.31381 6.11948 4.80009C4.32536 6.28636 3.10626 8.35223 2.6725 10.6413L2.61875 10.9513L5.38125 10.3988C6.10875 10.2538 6.8 9.87003 7.5725 9.34878L8.16875 8.93378C9.165 8.22628 10.6412 7.50003 12.5 7.50003C14.235 7.50003 15.6363 8.13253 16.625 8.79253L17.4275 9.34878C18.1025 9.80503 18.7175 10.155 19.3475 10.3338L19.6187 10.3988L22.3813 10.9513C22.0115 8.59619 20.8128 6.45058 19.0012 4.90108C17.1895 3.35158 14.8839 2.50009 12.5 2.50003Z" fill="#A24492"/>
@@ -47,7 +40,7 @@
                 </div>
                 <section class="car-photos"></section>
                 <section class="car-info">
-                    <p>Deze auto is een compacte auto die elegantie en kracht combineert. Met zijn kenmerkende afgeronde vormen, strakke lijnen en iconische achterlichten is het een tijdloos icoon op de weg. De auto biedt een opwindende rijervaring dankzij zijn responsieve handling en krachtige motoropties, terwijl het luxe interieur comfort en stijl biedt.</p>
+                    <p>De Audi TT is een compacte sportwagen die elegantie en kracht combineert. Met zijn kenmerkende afgeronde vormen, strakke lijnen en iconische achterlichten is het een tijdloos icoon op de weg. De TT biedt een opwindende rijervaring dankzij zijn responsieve handling en krachtige motoropties, terwijl het luxe interieur comfort en stijl biedt.</p>
                 </section>
                 <section class="car-price">
                     <p>€12.017,-</p>
@@ -59,5 +52,11 @@
                     <button>Zoek nu</button>
                 </section>
         </main>
+
+        <%- include('../partials/navFooter'); %> 
+
+        <script src="./scripts/script.js"></script>
+        <script>window.onload = showDetails </script>
+
     </body>
 </html>
