@@ -79,12 +79,12 @@ h2 {
 }
 
 
-.navigatie-header img{
+.navigatie-header img {
     /* margin-left: auto; */
     justify-content: center;
 }
 
-.navigatie-header svg{
+.navigatie-header svg {
     margin: 18px;
 }
 
@@ -104,15 +104,15 @@ h2 {
     z-index: 99;
 }
 
-.navigatie-footer a{
+.navigatie-footer a {
     margin: 10px;
 }
 
-.navigatie-footer a:first-child{
+.navigatie-footer a:first-child {
     margin-right: 50px;
 }
 
-.navigatie-footer a:last-child{
+.navigatie-footer a:last-child {
     margin-left: 50px;
 }
 
@@ -177,6 +177,7 @@ header a {
 header a:hover {
     background-color: aquamarine;
 }
+
 /* #endregion header */
 
 
@@ -625,16 +626,17 @@ li {
     flex-direction: column;
 }
 
-.SearchResult div{
+.SearchResult div {
     position: absolute;
     bottom: 0;
     left: 0;
-    background: linear-gradient(0deg, rgba(235,192,218,1) 10%, rgba(0,0,0,0) 40%);
+    background: linear-gradient(0deg, rgba(235, 192, 218, 1) 10%, rgba(0, 0, 0, 0) 40%);
     height: 15em;
     width: 100%;
     z-index: 1;
     border-radius: 31px;
 }
+
 .SearchResult h3 {
     /* position: absolute; */
     bottom: 2em;
@@ -654,8 +656,8 @@ li {
     font-weight: 500;
     z-index: 2;
 }
-.SearchResult button
-{
+
+.SearchResult button {
     position: absolute;
     top: 1em;
     right: 1em;
@@ -665,7 +667,8 @@ li {
     padding: 0;
     z-index: 99;
 }
-.SearchResult button:active{
+
+.SearchResult button:active {
     filter: opacity(50%);
 }
 
@@ -679,7 +682,7 @@ li {
     justify-content: center;
     font-size: 30px;
 }
- 
+
 
 .BodyUpdate h2 {
     display: flex;
@@ -694,7 +697,7 @@ li {
 .BodyUpdate svg {
     margin-left: 36.5%;
 }
- 
+
 .update-box {
     align-items: center;
     justify-content: center;
@@ -704,20 +707,20 @@ li {
     border-radius: 30px;
     color: #a4a4a4;
 }
- 
+
 .update-box p {
     text-align: center;
     margin-top: 20px;
 }
- 
-.update-box img{
+
+.update-box img {
     align-self: center;
     justify-self: center;
     margin: 80px;
     margin-bottom: 10px;
     margin-top: 5px;
 }
- 
+
 .update-wrapper .btn {
     width: 71.5%;
     height: 45px;
@@ -733,7 +736,7 @@ li {
     margin-left: 14.5%;
     margin-top: 25px;
 }
- 
+
 .update-input-box input {
     width: 80%;
     height: 30%;
@@ -750,6 +753,7 @@ li {
     padding: 20px 45px 20px 20px;
     margin-bottom: 15px;
 }
+
 /* #endregion update */
 
 /* #region loggedin */
@@ -779,7 +783,7 @@ li {
     margin-top: 20px;
 }
 
-.loggedin-box img{
+.loggedin-box img {
     align-self: center;
     justify-self: center;
     margin: 80px;
@@ -802,6 +806,7 @@ li {
     margin-left: 14.5%;
     margin-top: 25px;
 }
+
 /* #endregion loggedin */
 
 /* #region account */
@@ -844,7 +849,7 @@ li {
     margin-top: 10px;
 }
 
-.account-box img{
+.account-box img {
     align-self: center;
     justify-self: center;
     margin: 80px;
@@ -904,8 +909,8 @@ li {
     font-size: 16px;
     color: #FFF;
     font-weight: 600;
-padding: 1.5em;
-padding-bottom: 2.5em;
+    padding: 1.5em;
+    padding-bottom: 2.5em;
 }
 
 .AccountPasswordButton {
@@ -920,7 +925,7 @@ padding-bottom: 2.5em;
     font-size: 16px;
     color: #FFF;
     font-weight: 600;
-padding: 10em;
+    padding: 10em;
 
 }
 
@@ -948,8 +953,8 @@ padding: 10em;
     position: relative;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(0deg, #4E4E4E 4.72%, rgba(180, 180, 180, 0.00) 61.24%), 
-                url('../images/auditt.png'), lightgray 50%;
+    background: linear-gradient(0deg, #4E4E4E 4.72%, rgba(180, 180, 180, 0.00) 61.24%),
+        url('../images/auditt.png'), lightgray 50%;
     margin-top: -9em;
     height: 400px;
     background-size: cover;
@@ -991,38 +996,55 @@ padding: 10em;
 
 /* #endregion DetailPagina */
 
-.sort.asc,
+/* .sort.asc,
 .sort.desc {
-  font-weight:bold;
+    font-weight: bold;
 }
 
-.sort.asc::after {
-  content: "(az↓)";
-  padding-left: .25em;
-  font-weight:normal;
+.sort::after {
+    content: "(↑)";
+    padding-left: .25em;
+    font-weight: normal;
+  }
+  
+  .sort.desc::after {
+    content: "(↓)";
+  } */
+
+
+.SortingButtons
+{
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.sort.desc::after {
-  content: "(za↓)";
-  padding-left: .25em;
-  font-weight:normal;
-}
-
-.ResultsHeading input{
+.ResultsHeading input {
     width: 100%;
     height: 2rem;
+    background: #E7E7E7;
+    color: #4E4E4E;
+    font-weight: 600;
+    border: none;
+
+    border-radius: 10px;
+    font-size: 1rem;
+    padding: 20px 45px 20px 20px;
 }
 
-.ResultsHeading button{
+.ResultsHeading button {
     height: 2rem;
     text-align: center;
     border-radius: 4.0625rem;
+    margin-top: 0.5em;
+    margin-right: 0.5rem;
     padding-left: 1em;
     padding-right: 1em;
     font-weight: bold;
     font-size: large;
+    background-color: EBC0DA;
+    border: none;
 }
 
-.ResultsHeading button:active{
+.ResultsHeading button:active {
     opacity: 0.5;
 }

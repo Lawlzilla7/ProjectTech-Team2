@@ -24,18 +24,18 @@
         </section>
 
         <section class="ResultsHeading">
-            <section>
+            <section class="SortingButtons">
                 <input type="search" class="search" placeholder="Wat zoek je?">
                 <button class="sort" data-sort="merk" data-default-order='asc'>Merk</button>
-                <button class="sort" data-sort="kilometers">Kilometers</button>
-                <button class="sort" data-sort="Brandstof">Brandstof</button>
-                <button class="sort" data-sort="Bouwjaar">Bouwjaar</button>
+                <button class="sort" data-sort="kilometers" data-default-order='asc'>Kilometers</button>
+                <button class="sort" data-sort="Brandstof" data-default-order='asc'>Brandstof</button>
+                <button class="sort" data-sort="Bouwjaar" data-default-order='asc'>Bouwjaar</button>
             </section>
             <h2>results</h2>
             <!-- <img src="./images/filter.svg" alt="" onclick=""> -->
             <section id="theList">
                 <ul class="SearchResultList list">
-                <!-- <li class="SearchResult">
+                    <!-- <li class="SearchResult">
                     <h3>Naam:</h3>
                     <p>Jaar:</p>
                     <button onclick=""><img src="./images/Heart.svg" alt=""></a></button>
@@ -54,7 +54,6 @@
     <script>
         window.onload = showResults
     </script>
-
 </body>
 
 </html>

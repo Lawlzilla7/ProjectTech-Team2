@@ -7,10 +7,6 @@ console.log("velgen waarde = " + VelgenWaarde);
 let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
 
-
-
-
-
 function build() {
     document.addEventListener('DOMContentLoaded', function () {
         const ScrollSpeed = 200;
@@ -57,7 +53,6 @@ const KleurKnopPrev = () => {
 
     console.log("Kleurwaarde = " + KleurWaarde);
 }
-
 const KleurKnopNext = () => {
     KleurWaarde += 1;
     ChangeKleur(KleurWaarde);
@@ -71,20 +66,19 @@ const VelgKnopPrev = () => {
 
     console.log("velgen waarde = " + VelgenWaarde);
 }
-
 const VelgKnopNext = () => {
     VelgenWaarde += 1;
     ChangeVelg(VelgenWaarde);
 
     console.log("velgen waarde = " + VelgenWaarde);
 }
+
 const BodyKnopPrev = () => {
     BodyWaarde -= 1;
     ChangeBody(BodyWaarde);
 
     console.log("body waarde = " + BodyWaarde);
 }
-
 const BodyKnopNext = () => {
     BodyWaarde += 1;
     ChangeBody(BodyWaarde);
@@ -104,7 +98,6 @@ const ChangeBody = (BodyWaarde) => {
     }
 
 }
-
 const ChangeVelg = (VelgenWaarde) => {
     let image = document.querySelector('#CarVelgen');
 
@@ -118,10 +111,9 @@ const ChangeVelg = (VelgenWaarde) => {
 }
 
 const ChangeKleur = (KleurWaarde) => {
-    let image = document.querySelector('#CarBody');
+    let image = document.querySelector('#CarKleur');
 
     if (KleurWaarde === 1) {
-        console.log("red");
         image.style.filter = 'invert(34%) sepia(49%) saturate(7485%) hue-rotate(345deg) brightness(115%) contrast(102%)';
     } else if (KleurWaarde === 2) {
         console.log("green");
@@ -137,29 +129,21 @@ ChangeVelg(VelgenWaarde);
 ChangeBody(BodyWaarde);
 
 
-
-
-const SendBuildData = () => {
-    console.log("body waarde = " + BodyWaarde + " Velgen waarde = " +
-        VelgenWaarde + " Kleur waarde = " + KleurWaarde);
-
-
-    sessionStorage.setItem('Body', BodyWaarde);
-    sessionStorage.setItem('Velgen', VelgenWaarde);
-    sessionStorage.setItem('Kleur', KleurWaarde);
-
-    // return KleurWaarde + VelgenWaarde + BodyWaarde;
-}
-
 // Navigeer naar de 'results' pagina via 'opslaan knop' op build pagina
 function navigateToResults() {
-    // Roep SendBuildData aan om gegevens te verzenden voordat de pagina wordt gewijzigd
-    const data = SendBuildData();
-    console.log("Gegevens verzonden: " + data);
+    try {
+        sessionStorage.setItem('Body', BodyWaarde);
+        sessionStorage.setItem('Velgen', VelgenWaarde);
+        sessionStorage.setItem('Kleur', KleurWaarde);
+        console.log("Data stored successfully in session storage.");
+    } catch (error) {
+        console.error("Error storing data in session storage:", error);
+    }
 
     // Navigeer naar de 'resultaten' pagina
     window.location.href = '/results';
 }
+build(); 
 
 function showResults() {
     fetch(`/api/auto/${window.location.search}`)
@@ -216,9 +200,10 @@ function showResults() {
                 buttons.forEach(function (button) {
                     button.addEventListener('click', function () {
                         var sortBy = button.getAttribute('data-sort');
-                        carList.sort(sortBy, {
-                            order: button.getAttribute('data-default-order') || 'asc'
-                        });
+                        var currentSortOrder = button.getAttribute('data-default-order') || 'asc';
+
+                        carList.sort(sortBy, { order: currentSortOrder });
+                        button.setAttribute('data-default-order', currentSortOrder === 'asc' ? 'desc' : 'asc');
                     });
                 });
 
@@ -231,6 +216,8 @@ function showResults() {
             }
         });
 }
+
+
 
 
 
