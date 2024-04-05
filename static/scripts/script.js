@@ -146,103 +146,31 @@ function navigateToResults() {
 build(); 
 
 function showResults() {
-    fetch(`/api/auto/${window.location.search}`)
-        .then(result => {
-            if (!result.ok) {
-                alert('Helaas ging er iets mis bij het ophalen van het resultaat. Probeer het later nogmaals.');
-            } else {
-                return result.json();
-            }
-        })
-        .then(autos => {
-            if (autos.length === 0) {
-                alert('Er zijn geen auto\'s gevonden die aan je zoekcriteria voldoen. Probeer het met andere zoekcriteria.');
-            } else {
-                const searchResult = document.querySelector('ul.SearchResultList');
-                searchResult.innerHTML = '';
-                for (const auto of autos) {
-                    const li = document.createElement('li');
-                    li.classList.add('SearchResult');
-                    li.classList.add('List');
-                    li.style.backgroundImage = `url(/images/auto/${auto.afbeelding})`;
+   // Initialize List.js for sorting and searching
+    var options = {
+        valueNames: ['merk', 'kilometers', 'Brandstof', 'Bouwjaar']
+    };
+    var carList = new List('theList', options);
 
-                    const brandstofParagraph = document.createElement('p');
-                    brandstofParagraph.textContent = `Brandstof: ${auto.brandstof}`;
-                    brandstofParagraph.classList.add('Brandstof');
-                    li.appendChild(brandstofParagraph);
+    // Initialize sorting based on button clicks
+    var buttons = document.querySelectorAll('.sort');
+    buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            var sortBy = button.getAttribute('data-sort');
+            var currentSortOrder = button.getAttribute('data-default-order') || 'asc';
 
-                    const bouwjaarParagraph = document.createElement('p');
-                    bouwjaarParagraph.textContent = `Bouwjaar: ${auto.Bouwjaar}`;
-                    bouwjaarParagraph.classList.add('Bouwjaar');
-                    li.appendChild(bouwjaarParagraph);
-
-                    const kmStandParagraph = document.createElement('p');
-                    kmStandParagraph.textContent = `KM Stand: ${auto.kilometers}`;
-                    kmStandParagraph.classList.add('kilometers');
-                    li.appendChild(kmStandParagraph);
-
-                    const merkHeading = document.createElement('h3');
-                    merkHeading.textContent = auto.merk;
-                    merkHeading.classList.add('merk');
-                    li.appendChild(merkHeading);
-
-                    searchResult.appendChild(li);
-                }
-
-                // Initialize List.js for sorting and searching
-                var options = {
-                    valueNames: ['merk', 'kilometers', 'Brandstof', 'Bouwjaar']
-                };
-                var carList = new List('theList', options);
-
-                // Initialize sorting based on button clicks
-                var buttons = document.querySelectorAll('.sort');
-                buttons.forEach(function (button) {
-                    button.addEventListener('click', function () {
-                        var sortBy = button.getAttribute('data-sort');
-                        var currentSortOrder = button.getAttribute('data-default-order') || 'asc';
-
-                        carList.sort(sortBy, { order: currentSortOrder });
-                        button.setAttribute('data-default-order', currentSortOrder === 'asc' ? 'desc' : 'asc');
-                    });
-                });
-
-                // Initialize search functionality
-                var searchField = document.querySelector('.search');
-                searchField.addEventListener('input', function () {
-                    var searchString = this.value.toLowerCase();
-                    carList.search(searchString);
-                });
-            }
+            carList.sort(sortBy, { order: currentSortOrder });
+            button.setAttribute('data-default-order', currentSortOrder === 'asc' ? 'desc' : 'asc');
         });
+    });
+
+    // Initialize search functionality
+    var searchField = document.querySelector('.search');
+    searchField.addEventListener('input', function () {
+        var searchString = this.value.toLowerCase();
+        carList.search(searchString);
+    });
 }
-
-
-
-
-
-//detailpagina - resultaten laten zien
-function showDetails() {
-    fetch(`/api/auto/${window.location.search}`)
-        .then(result => {
-            if (!result.ok) {
-                alert('Deze auto is helaas niet beschikbaar, kies een andere auto.')
-            } else {
-                return result.json()
-            }
-        })
-        .then(autos => {
-            if (autos.length === 0) {
-                alert('Deze auto is helaas niet beschikbaar, kies een andere auto.')
-            } else {
-                // auto's renderen:
-                const detailResult = document.querySelector('ul.detailResultsList')
-                detailResult.innerHTML = ''
-
-            }
-        })
-}
-
 
 
 const ToResults = () => {

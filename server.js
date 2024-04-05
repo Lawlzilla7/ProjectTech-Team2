@@ -25,13 +25,13 @@ app
 	saveUninitialized: true,
 	secret: process.env.SESSION_SECRET
 }))
-  .use('/api/auto', require('./routes/api/auto'))
-  .get('/detail', onDetail)
+  .get('/detail/:id', onDetail)
 
 
 
 // Use MongoDB
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
+
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
 const client = new MongoClient(uri, {
 	serverApi: {
@@ -60,10 +60,108 @@ function onabout(req, res) {
 	res.send(`<h1> About ${req.params.name} </h1>`)
 }
 
-function onDetail(req, res) {
-	res.render('pages/detail')
+async function onDetail(req, res) {
+	let _id
+	try {
+		_id = new ObjectId(req.params.id+'')
+	} catch(e) {
+		res.render('pages/detail', {auto: null})
+	}
+
+	const database = client.db('autolijst');
+	const collection = database.collection('auto');
+
+	const auto = await collection.findOne({_id})
+	return res.render('pages/detail', {auto})
+
 }
 
+//favorieten toevoegen
+app.get('/bookmark', onBookmark) 
+async function onBookmark(req, res) {
+	//Haal de gebruikersnaam op uit de sessie
+	const username = req.session.username;
+	// Als de gebruikersnaam niet in de sessie is opgeslagen, doorsturen naar de inlogpagina
+	if (!username) return res.redirect('/login');
+	// haal alle CarIds uit db:
+	const dbUsers = client.db('gebruikers');
+	const colBookmarks = dbUsers.collection('bookmarks');
+	const bookmarks = await colBookmarks.find({ username }).toArray()
+
+	const dbAutos = client.db('autolijst');
+	const colAuto = dbAutos.collection('auto');
+	const autos = []
+	for (id of bookmarks) {
+		const auto = await colAuto.findOne({_id: id.car})
+		if (auto) autos.push(auto)
+	}
+	res.render('pages/results', {autos, title: "Favorieten", mode: 'favorites'})
+}
+
+app.post('/bookmark', addBookmark)
+async function addBookmark(req, res) {
+	if (!req.session.username || !req.body.carId) {
+		// als niet ingelogd stuur dan naar login
+		console.log(req.session, req.body.carId)
+		return res.redirect('/login')
+	}
+	const username = req.session.username
+	let _id
+	try {
+		// geldige ID gepost?
+		_id = new ObjectId(req.body.carId + '')
+	} catch(e) {
+		return res.redirect('/build')
+	}
+	//check of the auto wel bestaat:
+	const dbAutos = client.db('autolijst');
+	const colAuto = dbAutos.collection('auto');
+	const auto = await colAuto.findOne({_id})
+	if (!auto) return res.redirect('/build')
+
+	const dbUsers = client.db('gebruikers');
+	const colBookmarks = dbUsers.collection('bookmarks');
+	const exisitingBookmark = await colBookmarks.findOne({username, car: _id})
+	if (exisitingBookmark) {
+		// bookmark bestaat al, prima
+		return res.redirect('/bookmark')
+	}
+
+	try {
+		const result = await colBookmarks.insertOne({username, car: _id})
+		console.log('Favoriet succesvol toegevoegd met id:', result.insertedId);
+		return res.redirect('/bookmark')
+	} catch (error) {
+		console.error('Er is een fout opgetreden bij het toevoegen van de favoriet:', error);
+		res.status(500).send("Er is een fout opgetreden bij het toevoegen van de favoriet.");
+	}
+}
+
+
+app.post('/remove-bookmark', removeBookmark)
+async function removeBookmark(req, res) {
+	if (!req.session.username || !req.body.carId) {
+		// als niet ingelogd stuur dan naar login
+		console.log(req.session, req.body.carId)
+		return res.redirect('/login')
+	}
+	let _id
+	try {
+		// geldige ID gepost?
+		_id = new ObjectId(req.body.carId + '')
+	} catch(e) {
+		return res.redirect('/build')
+	}
+	const dbUsers = client.db('gebruikers');
+	const colBookmarks = dbUsers.collection('bookmarks');
+	try {
+		await colBookmarks.deleteOne({car: _id})
+	} catch (error) {
+		console.error('Er is een fout opgetreden bij het verwijderen van de favoriet:', error);
+		res.status(500).send("Er is een fout opgetreden bij het verwijderen van de favoriet.");
+	}
+	return res.redirect('/bookmark')
+}
 
 
 // Functie voor toevoegen van account
@@ -151,7 +249,7 @@ async function findAccount(req, res) {
 		if (result && await bcrypt.compare(password, result.password)) {
 			req.session.username = username;
 			res.render('pages/loggedin');
-				console.log(`User with _id: ${result._id}`);
+			console.log(`User with _id: ${result._id}`);
 			console.log(`Logged in with username ${xss(req.body.username)}`);
 		} 
 		else {
@@ -376,18 +474,17 @@ async function deleteAccount(req, res) {
 
 
 // Functie voor het laten zien van de API
-app.get('/results', alleResultaten)
+app.get('/results', filteredresults)
 
-async function alleResultaten(req, res) {
-    const database = client.db('autolijst');
+async function filteredresults(req, res) {
+	const database = client.db('autolijst');
     const collection = database.collection('auto');
-
-  const autoLijst = await collection.find().toArray()
-  res.render('pages/results.ejs', {auto: autoLijst})
+	const autos = await collection.find(req.query).toArray()
+	res.render('pages/results', {autos, title: "Resultaten", mode: 'results'})
 }
 
 
-//resultaten laden
+//	
 
 
 

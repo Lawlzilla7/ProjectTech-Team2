@@ -938,11 +938,6 @@ li {
 
 
 /* #region DetailPagina */
-.detail-body {
-    background: url('../images/fg_bg.png');
-    background-size: 114em;
-}
-
 .detail-body section {
     margin-left: auto;
     margin-right: auto;
@@ -953,8 +948,8 @@ li {
     position: relative;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(0deg, #4E4E4E 4.72%, rgba(180, 180, 180, 0.00) 61.24%),
-        url('../images/auditt.png'), lightgray 50%;
+    background: linear-gradient(0deg, #242424 4.72%, rgba(180, 180, 180, 0.00) 61.24%), 
+                url('../images/auditt.png'), lightgray 50%;
     margin-top: -9em;
     height: 400px;
     background-size: cover;
@@ -979,7 +974,7 @@ li {
     padding: .2em;
 }
 
-.car-name {
+.detail-body .car-name {
     align-self: center;
 }
 
@@ -992,11 +987,170 @@ li {
 .detail-icons li {
     display: flex;
     padding: 1em;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
 }
 
+.detail-body .car-photos {
+    background: url('../images/auditt_1.png');
+    background-size: cover;
+    background-position: bottom;
+    margin-top: 6em;
+    height: 10em;
+    border-radius: 2em;
+    width: 22em;
+}
+
+.detail-body .car-info {
+    margin-top: 1.5em;
+    height: 10em;
+    font-weight: 300;
+    color: #FFF;
+    font-family: "Avenir Next";
+    line-height: 1.25em; 
+    width: 22em;
+}
+
+.detail-body .car-price {
+    display: flex;
+    margin-top: 1.5em;
+    width: 17em;
+    height: 2em;
+    padding: 1em 2em;
+    justify-content: space-between;
+    border-top: solid #E7E7E7;
+    border-bottom: solid #E7E7E7;
+
+}
+.detail-body .car-price p{
+    color: #FFF;
+    font-size: 1.5em;
+    font-weight: 500;
+    font-style: italic;
+}
+.detail-body .car-price button, .detail-body .car-map button {
+    background: #FFA800;
+    color: #FFF;
+    text-align: center;
+    font-family: "Avenir Next";
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 1em;
+    width: 8em;
+    height: 2em;
+    border: .1em solid #FFA800;
+}
+
+.detail-body .car-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-body .car-map img {
+    /* height: 11em; */
+    margin-top: 1.5em;
+    width: 20em;
+}
+
+.detail-body .car-map p {
+    margin-top: 1em;
+    height: 10em;
+    font-weight: 600;
+    color: #FFF;
+    font-family: "Avenir Next";
+    line-height: 1.25em; 
+    font-size: 1.25em;
+}
 /* #endregion DetailPagina */
 
-/* .sort.asc,
+.liked-body {
+    display: flex;
+    margin: 2rem auto 0;
+    padding: 0 1rem 0 1rem;
+    justify-content: center;
+}
+
+#liked-main {
+    margin-top: 6em;
+}
+
+.liked-body h2 {
+    color: white;
+    font-size: 2.5em;
+    font-family: "Sonsie One", system-ui;
+}
+
+.liked-body section {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.liked-body #car-1 {
+    background: linear-gradient(180deg, rgba(68, 68, 68, 0.00) 21.7%, rgb(207 177 194 / 0%) 35.45%, #caa7bcd4 65.61%, #EBC0DA 100%), url(../images/auditt_1.png);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.liked-body #car-2 {
+    background: linear-gradient(180deg, rgba(68, 68, 68, 0.00) 21.7%, rgb(207 177 194 / 0%) 35.45%, #caa7bcd4 65.61%, #EBC0DA 100%), url(../images/auditt_1.png);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.liked-body #car-3 {
+    background: linear-gradient(180deg, rgba(68, 68, 68, 0.00) 21.7%, rgb(207 177 194 / 0%) 35.45%, #caa7bcd4 65.61%, #EBC0DA 100%), url(../images/auditt_1.png);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.liked-body .liked-cars {
+    position: relative;
+    margin-bottom: 2em;
+    height: 10em;
+    border-radius: 2em;
+    width: 24em;
+}
+
+.liked-body .liked-cars .car-name {
+    position: absolute;
+    bottom: 2em;
+    left: 1em;
+    font-weight: bolder;
+    font-style: italic;
+    color: white;
+    margin-bottom: .5em;
+}
+
+.liked-body .liked-cars .car-year {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    font-style: italic;
+    color: #A24492;
+    font-weight: 500;
+}
+
+.liked-body .liked-cars .car-price {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    font-style: italic;
+    color: #A24492;
+    font-weight: 500;
+}
+
+.liked-body .like-button {
+    position: absolute;
+    top: 1.5em;
+    right: 1.5em;
+    border: none;
+}
+
+/* #endregion LikedPagina */
+
+.sort.asc,
 .sort.desc {
     font-weight: bold;
 }

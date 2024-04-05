@@ -1,56 +1,54 @@
 <!DOCTYPE ejs>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChooseCar</title>
-
-    <link href="styles/style.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="./images/project_tech_logo_1.png">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Favorites</title>
+        <link href="styles/style.css" rel="stylesheet">
+        <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
 </head>
 
 <body>
 
     <%- include('../partials/navHeader'); %>
 
-
     <main id="ResultsPage">
-        <section class="BuildImg">
-            <img src="./images/auditt.png" alt="" id="CarBody">
-            <img src="./images/auditt.png" alt="" id="CarVelgen">
-            <img src="./images/auditt.png" alt="" id="CarKleur">
+        <h2><%= title %></h2>
+        <section class="SortingButtons">
+            <input type="search" class="search" placeholder="Wat zoek je?">
+            <button class="sort" data-sort="merk" data-default-order='asc'>Merk</button>
+            <button class="sort" data-sort="kilometers" data-default-order='asc'>Kilometers</button>
+            <button class="sort" data-sort="Brandstof" data-default-order='asc'>Brandstof</button>
+            <button class="sort" data-sort="Bouwjaar" data-default-order='asc'>Bouwjaar</button>
         </section>
-
-        <section class="ResultsHeading">
-            <section class="SortingButtons">
-                <input type="search" class="search" placeholder="Wat zoek je?">
-                <button class="sort" data-sort="merk" data-default-order='asc'>Merk</button>
-                <button class="sort" data-sort="kilometers" data-default-order='asc'>Kilometers</button>
-                <button class="sort" data-sort="Brandstof" data-default-order='asc'>Brandstof</button>
-                <button class="sort" data-sort="Bouwjaar" data-default-order='asc'>Bouwjaar</button>
-            </section>
-            <h2>results</h2>
-            <!-- <img src="./images/filter.svg" alt="" onclick=""> -->
-            <section id="theList">
-                <ul class="SearchResultList list">
-                    <!-- <li class="SearchResult">
-                    <h3>Naam:</h3>
-                    <p>Jaar:</p>
-                    <button onclick=""><img src="./images/Heart.svg" alt=""></a></button>
-                    <div></div>
-                </li> -->
-                </ul>
-            </section>
-
-
+        <section id="theList">
+            <ul class="SearchResultList list">
+            <% autos.forEach(auto => { %>
+                <li 
+                    class="SearchResult" style="cursor: pointer; background-image: url(/images/auto/<%= auto.afbeelding %>)"
+                    onclick="window.location='/detail/<%= auto._id %>'"
+                >
+                    <p>Brandstof: <%= auto.brandstof %></p>
+                    <p>Bouwjaar: <%= auto.Bouwjaar %></p>
+                    <p>KM Stand: <%= auto.kilometers %></p>
+                    <h3 class="merk"><%= auto.merk %></h3>
+                    <% if(mode && mode==='favorites') { %>
+                        <form method="post" action="/remove-bookmark" onsubmit="return confirm('Bookmark verwijderen?')">
+                            <input type="hidden" name="carId" id="carId" value="<%= auto._id %>">
+                            <button>Verwijder</button>
+                        </form>
+                    <% } %>
+                </li>
+            <% }) %>
+          </ul>   
     </main>
-
+    
+    
     <%- include('../partials/navFooter'); %>
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <script src="./scripts/script.js"></script>
-
+    <script type="module" src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <script>
         window.onload = showResults
     </script>
