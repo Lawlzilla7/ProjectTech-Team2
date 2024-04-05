@@ -109,7 +109,7 @@ const ChangeVelg = (VelgenWaarde) => {
         VelgenString = 'klassiek';
     } else if (VelgenWaarde === 3) {
         image.src = '/images/green.png';
-        VelgenString = 'confort';
+        VelgenString = 'comfort';
     }
 }
 
