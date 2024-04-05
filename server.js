@@ -392,7 +392,6 @@ async function deleteAccount(req, res) {
 
 
 
-
 // Start functie voor het laten zien van de API: Esmé
 app.get('/results', alleResultaten)
 
