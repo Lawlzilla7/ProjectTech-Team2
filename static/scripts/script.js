@@ -181,17 +181,6 @@ function showResults() {
     });
 }
 
-
-const ToResults = () => {
-    location.href = '/results'
-}
-
-const ClickFunction = () => {
-    SendBuildData();
-    ToResults();
-}
-
-
 const OnLoadResults = () => {
     let image = document.querySelector('#CarBody');
     let image2 = document.querySelector('#CarVelgen');
@@ -221,9 +210,8 @@ const OnLoadResults = () => {
     }
 }
 
-const LoadResults = () => {
-    console.log('LoadResults function called');
+const LoadResults = () =>{
+   
     showResults();
-    // OnLoadResults();
+    OnLoadResults();
 }
-
