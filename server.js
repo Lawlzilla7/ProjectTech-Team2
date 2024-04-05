@@ -11,8 +11,6 @@ const multer  = require('multer')
 const upload = multer({ dest: 'static/uploads/' }) 
 const path = require('node:path'); 
 
-
-
 app
   .set('view engine', 'ejs')
   .set('views', 'views')
@@ -29,7 +27,7 @@ app
 
 
 
-// Use MongoDB
+// Connectie met MongoDB starten
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
 
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
@@ -51,7 +49,7 @@ client.connect()
 		console.log(`For uri - ${uri}`)
 	})
 
-
+// verwerkt een HTTP-verzoek en rendert de inhoud van de pagina 'index'.
 function onhome(req, res) {
   res.render('pages/index')
 }
@@ -60,6 +58,7 @@ function onabout(req, res) {
 	res.send(`<h1> About ${req.params.name} </h1>`)
 }
 
+// Rendert de inhoud van de pagina 'detail'.
 async function onDetail(req, res) {
 	let _id
 	try {
@@ -73,7 +72,6 @@ async function onDetail(req, res) {
 
 	const auto = await collection.findOne({_id})
 	return res.render('pages/detail', {auto})
-
 }
 
 //favorieten toevoegen
