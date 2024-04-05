@@ -5,8 +5,12 @@ console.log("velgen waarde = " + VelgenWaarde);
 let BodyWaarde = 1;
 console.log("body waarde = " + BodyWaarde);
 
-function build() {
-    document.addEventListener('DOMContentLoaded', function () {
+let BodyString;
+let VelgenString;
+let KleurString;
+
+document.addEventListener('DOMContentLoaded', function () 
+    {
         const ScrollSpeed = 200;
         const CssSetting = false;
 
@@ -42,7 +46,6 @@ function build() {
             },
         });
     });
-};
 
 
 const KleurKnopPrev = () => {
@@ -89,10 +92,13 @@ const ChangeBody = (BodyWaarde) => {
 
     if (BodyWaarde === 1) {
         image.src = '/images/hatchback-02.png';
+        BodyString = 'hatchback';
     } else if (BodyWaarde === 2) {
         image.src = '/images/suv.png';
+        BodyString = 'suv';
     } else if (BodyWaarde === 3) {
         image.src = '/images/sportcar-02.png';
+        BodyString = 'coupe';
     }
 
 }
@@ -101,10 +107,13 @@ const ChangeVelg = (VelgenWaarde) => {
 
     if (VelgenWaarde === 1) {
         image.src = '/images/blue.png';
+        VelgenString = 'comfort';
     } else if (VelgenWaarde === 2) {
         image.src = '/images/red.png';
+        VelgenString = 'klassiek';
     } else if (VelgenWaarde === 3) {
         image.src = '/images/green.png';
+        VelgenString = 'sport';
     }
 }
 
@@ -112,12 +121,13 @@ const ChangeKleur = (KleurWaarde) => {
     let image = document.querySelector('#CarBody');
 
     if (KleurWaarde === 1) {
+        KleurString = 'rood';
         image.style.filter = 'invert(34%) sepia(49%) saturate(7485%) hue-rotate(345deg) brightness(115%) contrast(102%)';
     } else if (KleurWaarde === 2) {
-        console.log("green");
+        KleurString = 'groen';
         image.style.filter = 'invert(72%) sepia(74%) saturate(991%) hue-rotate(64deg) brightness(103%) contrast(101%)';
     } else if (KleurWaarde === 3) {
-        console.log("blue");
+        KleurString = 'blauw';
         image.style.filter = 'invert(51%) sepia(69%) saturate(6308%) hue-rotate(209deg) brightness(106%) contrast(101%)';
     }
 }
@@ -129,17 +139,22 @@ ChangeBody(BodyWaarde);
 
 // Navigeer naar de 'results' pagina via 'opslaan knop' op build pagina
 function navigateToResults() {
+    var BodyWaarde = encodeURIComponent(BodyString);
+    var VelgenWaarde = encodeURIComponent(VelgenString); 
+    var KleurWaarde = encodeURIComponent(KleurString); 
+
     try {
-        sessionStorage.setItem('Body', BodyWaarde);
-        sessionStorage.setItem('Velgen', VelgenWaarde);
-        sessionStorage.setItem('Kleur', KleurWaarde);
+        sessionStorage.setItem('Body', BodyString);
+        sessionStorage.setItem('Velgen', VelgenString);
+        sessionStorage.setItem('Kleur', KleurString);
         console.log("Data stored successfully in session storage.");
     } catch (error) {
         console.error("Error storing data in session storage:", error);
     }
 
-    // Navigeer naar de 'resultaten' pagina
-    window.location.href = '/results';
+    var url = `/results/?carrosserie=${BodyWaarde}&velgen=${VelgenWaarde}&kleur=${KleurWaarde}`;
+
+    window.location.href = url;
 }
 
 function showResults() {
