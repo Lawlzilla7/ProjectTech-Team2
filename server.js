@@ -382,12 +382,15 @@ async function deleteAccount(req, res) {
 			res.status(500).send('Er is een fout opgetreden bij het uitloggen.');
 		} else {
 			// Redirect de gebruiker naar de inlogpagina
-			res.redirect('/login');
+			res.render('pages/deleted');
 			console.log('Er is uitgelogd.')
 		}
 	});
 };
 // End functie voor account verwijderen: Sindy
+
+
+
 
 
 // Start functie voor het laten zien van de API: Esmé
