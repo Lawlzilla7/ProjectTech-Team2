@@ -18,7 +18,6 @@ app
   .use(express.urlencoded({ extended: true }))
   .use(express.static('static'))
   .get('/', onhome)
-  .get('/about/:name', onabout)
   .use(session({
 	resave: false,
 	saveUninitialized: true,
@@ -56,9 +55,6 @@ function onhome(req, res) {
 	res.render('pages/index')
 }
 
-function onabout(req, res) {
-	res.send(`<h1> About ${req.params.name} </h1>`)
-}
 
 //ESME
 // Rendert de inhoud van de pagina 'detail'
@@ -86,14 +82,14 @@ async function onBookmark(req, res) {
 	//Haal de gebruikersnaam op uit de sessie
 	const username = req.session.username;
 	// Als de gebruikersnaam niet in de sessie is opgeslagen, doorsturen naar de inlogpagina
-	if (!username) return res.redirect('/login');
+	if (!username) return res.redirect('/login')
 	// haal alle CarIds uit db:
-	const dbUsers = client.db('gebruikers');
-	const colBookmarks = dbUsers.collection('bookmarks');
+	const dbUsers = client.db('gebruikers')
+	const colBookmarks = dbUsers.collection('bookmarks')
 	const bookmarks = await colBookmarks.find({ username }).toArray()
 
-	const dbAutos = client.db('autolijst');
-	const colAuto = dbAutos.collection('auto');
+	const dbAutos = client.db('autolijst')
+	const colAuto = dbAutos.collection('auto')
 	const autos = []
 	for (id of bookmarks) {
 		const auto = await colAuto.findOne({_id: id.car})
@@ -122,12 +118,12 @@ async function addBookmark(req, res) {
 	}
 	//check of the auto wel bestaat:
 	const dbAutos = client.db('autolijst');
-	const colAuto = dbAutos.collection('auto');
+	const colAuto = dbAutos.collection('auto')
 	const auto = await colAuto.findOne({_id})
 	if (!auto) return res.redirect('/build')
 
-	const dbUsers = client.db('gebruikers');
-	const colBookmarks = dbUsers.collection('bookmarks');
+	const dbUsers = client.db('gebruikers')
+	const colBookmarks = dbUsers.collection('bookmarks')
 	const exisitingBookmark = await colBookmarks.findOne({username, car: _id})
 	if (exisitingBookmark) {
 		// bookmark bestaat al, prima
@@ -138,8 +134,8 @@ async function addBookmark(req, res) {
 		console.log('Favoriet succesvol toegevoegd met id:', result.insertedId);
 		return res.redirect('/bookmark')
 	} catch (error) {
-		console.error('Er is een fout opgetreden bij het toevoegen van de favoriet:', error);
-		res.status(500).send("Er is een fout opgetreden bij het toevoegen van de favoriet.");
+		console.error('Er is een fout opgetreden bij het toevoegen van de favoriet:', error)
+		res.status(500).send("Er is een fout opgetreden bij het toevoegen van de favoriet.")
 	}
 }
 //EIND bookmark toevoegen
@@ -165,13 +161,12 @@ async function removeBookmark(req, res) {
 	try {
 		await colBookmarks.deleteOne({car: _id})
 	} catch (error) {
-		console.error('Er is een fout opgetreden bij het verwijderen van de favoriet:', error);
-		res.status(500).send("Er is een fout opgetreden bij het verwijderen van de favoriet.");
+		console.error('Er is een fout opgetreden bij het verwijderen van de favoriet:', error)
+		res.status(500).send("Er is een fout opgetreden bij het verwijderen van de favoriet.")
 	}
 	return res.redirect('/bookmark')
 }
 //EIND bookmark verwijderen (favorieten verwijderen)
-
 
 
 
@@ -192,8 +187,8 @@ async function addAccount(req, res) {
 	// Wachtwoord hashen
 	bcrypt.hash(password, 10, async (err, hashedPassword) => {
 		{
-			const database = client.db('gebruikers');
-			const collection = database.collection('accounts');
+			const database = client.db('gebruikers')
+			const collection = database.collection('accounts')
 
 			const result = await collection.insertOne({
 				username: username,
@@ -202,8 +197,8 @@ async function addAccount(req, res) {
 			});
 
 			console.log('username:', username);
-			console.log('hashed password:', hashedPassword);
-			console.log(`Added with _id: ${result.insertedId}`);
+			console.log('hashed password:', hashedPassword)
+			console.log(`Added with _id: ${result.insertedId}`)
 		}
 	});
 	res.redirect('/login')
@@ -227,7 +222,7 @@ function onbuild(req, res) {
 
 	// Als de gebruikersnaam niet in de sessie is opgeslagen, doorsturen naar de inlogpagina
 	if (!username) {
-		res.redirect('/login');
+		res.redirect('/login')
 		return;
 	}
 	else {
@@ -247,7 +242,7 @@ function onstart(req, res) {
 
 	// Als de gebruikersnaam niet in de sessie is opgeslagen, doorsturen naar de inlogpagina
 	if (!username) {
-		res.redirect('/login');
+		res.redirect('/login')
 		return;
 	}
 	else {
@@ -263,22 +258,21 @@ async function findAccount(req, res) {
 	const username = xss(req.body.username)
 	const password = xss(req.body.password)
 
-	const database = client.db('gebruikers');
-	const collection = database.collection('accounts');
+	const database = client.db('gebruikers')
+	const collection = database.collection('accounts')
 
-	const result = await collection.findOne({ username: username });
+	const result = await collection.findOne({ username: username })
 
 	if (result && await bcrypt.compare(password, result.password)) {
-		req.session.username = username;
+		req.session.username = username
 		res.render('pages/loggedin');
-		console.log(`User with _id: ${result._id}`);
+		console.log(`User with _id: ${result._id}`)
 		console.log('Logged in with username:', username);
 	}
 	else {
-		res.render('pages/notloggedin');
+		res.render('pages/notloggedin')
 	}
 };
-
 // End account vinden in database: Sindy
 
 
@@ -301,16 +295,16 @@ async function onaccount(req, res) {
 
 	// Als de gebruikersnaam niet in de sessie is opgeslagen, doorsturen naar de inlogpagina
 	if (!username) {
-		res.redirect('/login');
+		res.redirect('/login')
 		return;
 	}
 
-	const database = client.db('gebruikers');
-	const collection = database.collection('accounts');
+	const database = client.db('gebruikers')
+	const collection = database.collection('accounts')
 
-	const result = await collection.findOne({ username: username });
+	const result = await collection.findOne({ username: username })
 
-	res.render('pages/myaccount', { user: result });
+	res.render('pages/myaccount', { user: result })
 
 	console.log('Sessie gestart met username:', username)
 }
@@ -326,20 +320,20 @@ async function addAvatar(req, res) {
 	const username = req.session.username;
 
 	const avatarPath = req.file.path;
-	const cleanAvatarPath = avatarPath.replace('static/', '');
+	const cleanAvatarPath = avatarPath.replace('static/', '')
 
-	const database = client.db('gebruikers');
-	const collection = database.collection('accounts');
+	const database = client.db('gebruikers')
+	const collection = database.collection('accounts')
 
 	const result = await collection.updateOne({ username: username },
-		{ $set: { avatar: cleanAvatarPath } });
+		{ $set: { avatar: cleanAvatarPath } })
 
 	if (result.modifiedCount === 1) {
-		console.log('Avatar succesvol toegevoegd aan het account van', username);
-		res.redirect('/myaccount');
+		console.log('Avatar succesvol toegevoegd aan het account van', username)
+		res.redirect('/myaccount')
 	} else {
-		console.log('Avatar NIET toegevoegd aan het account van', username);
-		res.status(404).send('Avatar niet toegevoegd.');
+		console.log('Avatar NIET toegevoegd aan het account van', username)
+		res.status(404).send('Avatar niet toegevoegd.')
 	}
 }
 // End functie voor avatar opslaan: Sindy
@@ -347,7 +341,7 @@ async function addAvatar(req, res) {
 
 // Start functie voor gebruikersnaam wijzigen: Sindy
 app.get('/update_username', (req, res) => {
-	res.render('pages/update_username');
+	res.render('pages/update_username')
 });
 
 app.post('/updated_username', updateUsername)
@@ -367,10 +361,10 @@ async function updateUsername(req, res) {
 
 	if (result.modifiedCount === 1) {
 		console.log('Gebruikersnaam succesvol bijgewerkt naar:', updatedUsername);
-		res.redirect('/login');
+		res.redirect('/login')
 
 	} else {
-		console.log('Gebruikersnaam niet bijgewerkt.');
+		console.log('Gebruikersnaam niet bijgewerkt.')
 		res.send(`<h1> Fout bij het bijwerken van gebruikersnaam.
 		 </h1>`)
 	}
@@ -380,7 +374,7 @@ async function updateUsername(req, res) {
 
 // Start functie voor wachtwoord wijzigen: Sindy
 app.get('/update_password', (req, res) => {
-	res.render('pages/update_password');
+	res.render('pages/update_password')
 });
 
 app.post('/updated_password', updatePassword)
@@ -398,14 +392,14 @@ async function updatePassword(req, res) {
 
 			const result = await collection.updateOne(
 				{ username: username },
-				{ $set: { password: hashedPassword } });
+				{ $set: { password: hashedPassword } })
 
 			if (result.modifiedCount === 1) {
-				console.log('Wachtwoord succesvol bijgewerkt');
-				res.redirect('/login');
+				console.log('Wachtwoord succesvol bijgewerkt')
+				res.redirect('/login')
 
 			} else {
-				console.log('Wachtwoord niet bijgewerkt.');
+				console.log('Wachtwoord niet bijgewerkt.')
 				res.send(`<h1> Fout bij het bijwerken van wachtwoord.
 		 </h1>`)
 			}
@@ -419,18 +413,18 @@ async function updatePassword(req, res) {
 
 // Start functie voor email wijzigen: Sindy
 app.get('/update_email', (req, res) => {
-	res.render('pages/update_email');
+	res.render('pages/update_email')
 });
 
 app.post('/updated_email', updateEmail)
 
 async function updateEmail(req, res) {
 
-	const database = client.db('gebruikers');
-	const collection = database.collection('accounts');
+	const database = client.db('gebruikers')
+	const collection = database.collection('accounts')
 
-	const username = req.session.username;
-	const updatedEmail = xss(req.body.updatedEmail);
+	const username = req.session.username
+	const updatedEmail = xss(req.body.updatedEmail)
 
 	const result = await collection.updateOne(
 		{ username: username },
@@ -438,11 +432,11 @@ async function updateEmail(req, res) {
 	);
 
 	if (result.modifiedCount === 1) {
-		console.log('Email succesvol bijgewerkt naar:', updatedEmail);
-		res.redirect('/myaccount');
+		console.log('Email succesvol bijgewerkt naar:', updatedEmail)
+		res.redirect('/myaccount')
 
 	} else {
-		console.log('Email niet bijgewerkt.');
+		console.log('Email niet bijgewerkt.')
 		res.send(`<h1> Fout bij het bijwerken van email.
 		 </h1>`)
 	}
@@ -455,8 +449,8 @@ app.get('/logout', (req, res) => {
 	// stop de sessie
 	req.session.destroy(err => {
 		if (err) {
-			console.error('Fout bij het uitloggen:', err);
-			res.status(500).send('Er is een fout opgetreden bij het uitloggen.');
+			console.error('Fout bij het uitloggen:', err)
+			res.status(500).send('Er is een fout opgetreden bij het uitloggen.')
 		} else {
 			// Redirect de gebruiker naar de inlogpagina
 			res.redirect('/login');
@@ -469,30 +463,30 @@ app.get('/logout', (req, res) => {
 
 // Start functie voor account verwijderen: Sindy
 app.get('/delete_account', (req, res) => {
-	res.render('pages/delete_account');
+	res.render('pages/delete_account')
 });
 
 app.post('/deleted_account', deleteAccount)
 
 async function deleteAccount(req, res) {
 
-	const database = client.db('gebruikers');
-	const collection = database.collection('accounts');
+	const database = client.db('gebruikers')
+	const collection = database.collection('accounts')
 
 	const username = req.session.username;
 
 	const result = await collection.deleteOne(
-		{ username: username });
+		{ username: username })
 
-	console.log('Account verwijderd');
+	console.log('Account verwijderd')
 
 	req.session.destroy(err => {
 		if (err) {
-			console.error('Fout bij het uitloggen:', err);
-			res.status(500).send('Er is een fout opgetreden bij het uitloggen.');
+			console.error('Fout bij het uitloggen:', err)
+			res.status(500).send('Er is een fout opgetreden bij het uitloggen.')
 		} else {
 			// Redirect de gebruiker naar de inlogpagina
-			res.render('pages/deleted');
+			res.render('pages/deleted')
 			console.log('Er is uitgelogd.')
 		}
 	});
@@ -510,9 +504,6 @@ async function filteredresults(req, res) {
 	res.render('pages/results', {autos, title: "Resultaten", mode: 'results'})
 }
 // Eind testfunctie voor het laten zien van de volledige API
-
-
-// End functie voor het laten zien van de API: Esmé
 
 
 // Start error handling
