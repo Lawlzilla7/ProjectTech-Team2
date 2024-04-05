@@ -402,8 +402,6 @@ async function alleResultaten(req, res) {
 // End functie voor het laten zien van de API: Esmé
 
 
-
-
 // Start error handling
 
 // Middleware to handle not found errors - error 404
