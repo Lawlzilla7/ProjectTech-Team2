@@ -11,6 +11,7 @@ const multer  = require('multer')
 const upload = multer({ dest: 'static/uploads/' }) 
 const path = require('node:path'); 
 
+//ESME en SINDY
 app
   .set('view engine', 'ejs')
   .set('views', 'views')
@@ -26,7 +27,7 @@ app
   .get('/detail/:id', onDetail)
 
 
-
+//ESME en SINDY
 // Connectie met MongoDB starten
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb')
 
@@ -49,7 +50,7 @@ client.connect()
 		console.log(`For uri - ${uri}`)
 	})
 
-// verwerkt een HTTP-verzoek en rendert de inhoud van de pagina 'index'.
+// Rendert de inhoud van de pagina 'index'.
 function onhome(req, res) {
   res.render('pages/index')
 }
@@ -58,7 +59,8 @@ function onabout(req, res) {
 	res.send(`<h1> About ${req.params.name} </h1>`)
 }
 
-// Rendert de inhoud van de pagina 'detail'.
+//ESME
+// Rendert de inhoud van de pagina 'detail'
 async function onDetail(req, res) {
 	let _id
 	try {
@@ -73,8 +75,11 @@ async function onDetail(req, res) {
 	const auto = await collection.findOne({_id})
 	return res.render('pages/detail', {auto})
 }
+//EIND detailpagina
 
-//favorieten toevoegen
+
+//ESME 
+//START favorieten toevoegen
 app.get('/bookmark', onBookmark) 
 async function onBookmark(req, res) {
 	//Haal de gebruikersnaam op uit de sessie
@@ -95,7 +100,10 @@ async function onBookmark(req, res) {
 	}
 	res.render('pages/results', {autos, title: "Favorieten", mode: 'favorites'})
 }
+//EIND favorieten toevoegen
 
+//ESME
+//START bookmarken (opslaan in favorieten)
 app.post('/bookmark', addBookmark)
 async function addBookmark(req, res) {
 	if (!req.session.username || !req.body.carId) {
@@ -124,7 +132,6 @@ async function addBookmark(req, res) {
 		// bookmark bestaat al, prima
 		return res.redirect('/bookmark')
 	}
-
 	try {
 		const result = await colBookmarks.insertOne({username, car: _id})
 		console.log('Favoriet succesvol toegevoegd met id:', result.insertedId);
@@ -134,8 +141,10 @@ async function addBookmark(req, res) {
 		res.status(500).send("Er is een fout opgetreden bij het toevoegen van de favoriet.");
 	}
 }
+//EIND bookmark toevoegen
 
-
+//ESME
+//START bookmark verwijderen (favorieten verwijderen)
 app.post('/remove-bookmark', removeBookmark)
 async function removeBookmark(req, res) {
 	if (!req.session.username || !req.body.carId) {
@@ -160,6 +169,7 @@ async function removeBookmark(req, res) {
 	}
 	return res.redirect('/bookmark')
 }
+//EIND bookmark verwijderen (favorieten verwijderen)
 
 
 // Functie voor toevoegen van account
@@ -466,12 +476,8 @@ async function deleteAccount(req, res) {
 	});
 };
 
-
-
-
-
-
-// Functie voor het laten zien van de API
+//ESME
+// Testfunctie voor het laten zien van de volledige API
 app.get('/results', filteredresults)
 
 async function filteredresults(req, res) {
@@ -480,9 +486,7 @@ async function filteredresults(req, res) {
 	const autos = await collection.find(req.query).toArray()
 	res.render('pages/results', {autos, title: "Resultaten", mode: 'results'})
 }
-
-
-//	
+// Eind testfunctie voor het laten zien van de volledige API
 
 
 
