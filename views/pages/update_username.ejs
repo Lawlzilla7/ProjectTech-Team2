@@ -1,43 +1,38 @@
-<!DOCTYPE html>
+<!-- HTML omgezet naar ejs en werkend gemaakt door Sindy -->
+
+<!DOCTYPE ejs>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogIn</title>
- 
+    <title>Wijzig gebruikersnaam</title>
+
     <link href="/styles/style.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="./images/project_tech_logo_1.png">
- 
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap" rel="stylesheet"> -->
 </head>
- 
+
 <body class="BodyUpdate">
-    
-    <%- include('../partials/navHeader'); %> 
 
-    <main class="update-wrapper">
- 
+    <%- include('../partials/navHeader'); %>
 
-        <section class="update-box">
-            <h2> Wijzig jouw gebruikersnaam </h2>
-<form id="updateUsername" action="/updated_username" method="POST" enctype="application/x-www-form-urlencoded"> 
-    <div class="update-input-box">
-    <input type="text" name="updatedUsername" placeholder="Gebruikersnaam" required>
-    </div>
-<input type="submit" value="Wijzig" class="btn">
-</form>
+        <main class="update-wrapper">
 
-</main>
+            <section class="update-box">
+                <h2> Wijzig jouw gebruikersnaam </h2>
+                <form id="updateUsername" action="/updated_username" method="POST"
+                    enctype="application/x-www-form-urlencoded">
+                    <div class="update-input-box">
+                        <input type="text" name="updatedUsername" placeholder="Gebruikersnaam" required>
+                    </div>
+                    <input type="submit" value="Wijzig" class="btn">
+                </form>
 
-<%- include('../partials/navFooter'); %> 
+        </main>
 
+        <%- include('../partials/navFooter'); %>
 
-<script defer src="/scripts/script.js"> </script>
+            <script defer src="/scripts/script.js"> </script>
 
 </body>
-
-</html>

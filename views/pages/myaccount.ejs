@@ -1,3 +1,5 @@
+<!-- HTML omgezet naar ejs en werkend gemaakt door Sindy -->
+
 <!DOCTYPE ejs>
 <html lang="en">
 
@@ -9,57 +11,57 @@
 
     <link href="/styles/style.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="./images/project_tech_logo_1.png">
-
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap" rel="stylesheet"> -->
 </head>
 
 <body class="BodyAccount">
 
-    <%- include('../partials/navHeader'); %> 
+    <%- include('../partials/navHeader'); %>
 
-    <main class="account-wrapper">
-        <h1>Welkom, <%= user.username %></h1>
-      
-        <img src="<%= user.avatar %>" width="115px" class="BodyAvatar">
+        <main class="account-wrapper">
+            <h1>Welkom, <%= user.username %>
+            </h1>
 
-        <form class="FormAvatar" id="uploadpicture" action="/myaccount" method="POST" enctype="multipart/form-data"> 
-            <label>Wijzig jouw profielfoto:</label>
-            <input type="file" name="avatar" accept="image/*">
-       <input type="submit" value="Voeg toe">
-       </form>
+            <img src="<%= user.avatar %>" width="115px" class="BodyAvatar">
 
-        <section class="account-box">
+            <form class="FormAvatar" id="uploadpicture" action="/myaccount" method="POST" enctype="multipart/form-data">
+                <label>Wijzig jouw profielfoto:</label>
+                <input type="file" name="avatar" accept="image/*">
+                <input type="submit" value="Voeg toe">
+            </form>
 
-            <h3> Gebruikersnaam: </h3>
+            <section class="account-box">
+
+                <h3> Gebruikersnaam: </h3>
                 <div class="account-input-box">
-                    <p> <%= user.username %> </p>
+                    <p>
+                        <%= user.username %>
+                    </p>
                     <button onclick="location.href = 'update_username';">Wijzig </button>
                 </div>
 
                 <h3> Email: </h3>
                 <div class="account-input-box">
-                    <p> <%= user.email %> </p>
+                    <p>
+                        <%= user.email %>
+                    </p>
                     <button onclick="location.href = 'update_email';">Wijzig</button>
                 </div>
 
-                <button class="AccountPasswordButton " onclick="location.href = 'update_password';">Wachtwoord wijzigen</button>
-        </section>
-        
-        <section class="account-box">
-        <form id="logoutbutton" action="/logout" method="GET"> 
-            <button> Log uit </button>
-         </form>
+                <button class="AccountPasswordButton " onclick="location.href = 'update_password';">Wachtwoord
+                    wijzigen</button>
+            </section>
 
-         <button onclick="location.href = 'delete_account';">Verwijder account</button>
+            <section class="account-box">
+                <form id="logoutbutton" action="/logout" method="GET">
+                    <button> Log uit </button>
+                </form>
 
-         </section>
+                <button onclick="location.href = 'delete_account';">Verwijder account</button>
 
-    </main>
+            </section>
 
-    <%- include('../partials/navFooter'); %> 
+        </main>
+
+        <%- include('../partials/navFooter'); %>
 
 </body>
-
-</html>
