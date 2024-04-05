@@ -1,65 +1,53 @@
 <!DOCTYPE ejs>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account</title>
-
     <link href="/styles/style.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
-
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap" rel="stylesheet"> -->
 </head>
-
 <body class="BodyAccount">
 
     <%- include('../partials/navHeader'); %> 
 
     <main class="account-wrapper">
         <h1>Welkom, <%= user.username %></h1>
-      
         <img src="<%= user.avatar %>" width="115px" class="BodyAvatar">
 
         <form class="FormAvatar" id="uploadpicture" action="/myaccount" method="POST" enctype="multipart/form-data"> 
             <label>Wijzig jouw profielfoto:</label>
             <input type="file" name="avatar" accept="image/*">
-       <input type="submit" value="Voeg toe">
-       </form>
+            <input type="submit" value="Voeg toe">
+        </form>
 
         <section class="account-box">
-
             <h3> Gebruikersnaam: </h3>
                 <div class="account-input-box">
                     <p> <%= user.username %> </p>
                     <button onclick="location.href = 'update_username';">Wijzig </button>
                 </div>
 
-                <h3> Email: </h3>
+                <h3>Email: </h3>
                 <div class="account-input-box">
                     <p> <%= user.email %> </p>
                     <button onclick="location.href = 'update_email';">Wijzig</button>
                 </div>
 
-                <button class="AccountPasswordButton " onclick="location.href = 'update_password';">Wachtwoord wijzigen</button>
+                <button class="account-button" onclick="location.href = 'update_password';">Wachtwoord wijzigen</button>
         </section>
         
         <section class="account-box">
         <form id="logoutbutton" action="/logout" method="GET"> 
-            <button> Log uit </button>
-         </form>
-
-         <button onclick="location.href = 'delete_account';">Verwijder account</button>
-
-         </section>
-
+            <button class="account-button">Log uit</button>
+        </form>
+        <button class="account-button" onclick="location.href = 'delete_account';">Verwijder account</button>
+        </section>
     </main>
-
     <%- include('../partials/navFooter'); %> 
-
 </body>
-
 </html>
