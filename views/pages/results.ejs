@@ -34,9 +34,9 @@
                     class="SearchResult" style="cursor: pointer; background-image: url(/images/auto/<%= auto.afbeelding %>)"
                     onclick="window.location='/detail/<%= auto._id %>'"
                 >
-                    <p>Brandstof: <%= auto.brandstof %></p>
-                    <p>Bouwjaar: <%= auto.Bouwjaar %></p>
-                    <p>KM Stand: <%= auto.kilometers %></p>
+                    <p class="Brandstof">Brandstof: <%= auto.brandstof %></p>
+                    <p class="Bouwjaar">Bouwjaar: <%= auto.Bouwjaar %></p>
+                    <p class="kilometers">KM Stand: <%= auto.kilometers %></p>
                     <h3 class="merk"><%= auto.merk %></h3>
                     <% if(mode && mode==='favorites') { %>
                         <form method="post" action="/remove-bookmark" onsubmit="return confirm('Bookmark verwijderen?')">
