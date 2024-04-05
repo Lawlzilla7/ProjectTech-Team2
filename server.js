@@ -20,7 +20,8 @@ app
 	.use(session({
 		resave: false,
 		saveUninitialized: true,
-		secret: process.env.SESSION_SECRET}))
+		secret: process.env.SESSION_SECRET}
+		))
 	.use('/api/auto', require('./routes/api/auto'))
 	.get('/', onhome)
 	.get('/detail', onDetail)
