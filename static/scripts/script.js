@@ -1,9 +1,6 @@
 let KleurWaarde = 1;
-console.log("Kleurwaarde = " + KleurWaarde);
 let VelgenWaarde = 1;
-console.log("velgen waarde = " + VelgenWaarde);
 let BodyWaarde = 1;
-console.log("body waarde = " + BodyWaarde);
 
 let BodyString;
 let VelgenString;
@@ -224,7 +221,9 @@ const OnLoadResults = () => {
     }
 }
 
-const LoadResults = () =>{
-    OnLoadResults();
+const LoadResults = () => {
+    console.log('LoadResults function called');
     showResults();
+    // OnLoadResults();
 }
+
