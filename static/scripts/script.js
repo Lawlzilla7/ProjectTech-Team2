@@ -103,13 +103,13 @@ const ChangeVelg = (VelgenWaarde) => {
 
     if (VelgenWaarde === 1) {
         image.src = '/images/blue.png';
-        VelgenString = 'comfort';
+        VelgenString = 'sport';
     } else if (VelgenWaarde === 2) {
         image.src = '/images/red.png';
         VelgenString = 'klassiek';
     } else if (VelgenWaarde === 3) {
         image.src = '/images/green.png';
-        VelgenString = 'sport';
+        VelgenString = 'confort';
     }
 }
 
@@ -180,9 +180,7 @@ function showResults() {
         var searchString = this.value.toLowerCase();
         carList.search(searchString);
     });
-}
 
-const OnLoadResults = () => {
     let image = document.querySelector('#CarBody');
     let image2 = document.querySelector('#CarVelgen');
 
@@ -209,6 +207,10 @@ const OnLoadResults = () => {
     } else if (sessionStorage.getItem("Kleur") == 3) {
         image.style.filter = 'invert(51%) sepia(69%) saturate(6308%) hue-rotate(209deg) brightness(106%) contrast(101%)';
     }
+}
+
+const OnLoadResults = () => {
+
 }
 
 const LoadResults = () => {
