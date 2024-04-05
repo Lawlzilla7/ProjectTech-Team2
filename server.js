@@ -402,22 +402,6 @@ async function alleResultaten(req, res) {
 // End functie voor het laten zien van de API: Esmé
 
 
-// Start code voor detailpagina aanmaken: Esmé
-async function onDetail(req, res) {
-	let _id
-	try {
-		_id = new ObjectId(req.params.id + '')
-	} catch (e) {
-		res.render('pages/detail', { auto: null })
-	}
-
-	const database = client.db('autolijst');
-	const collection = database.collection('auto');
-
-	const auto = await collection.findOne({ _id })
-	return res.render('pages/detail', { auto })
-}
-// End code voor detailpagina aanmaken: Esmé
 
 
 // Start error handling
