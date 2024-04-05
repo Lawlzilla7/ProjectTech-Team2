@@ -90,8 +90,8 @@ async function addAccount(req, res) {
 				email: email
 			});
 
-			console.log(`username ${xss(req.body.username)}`);
-			console.log(`hashed password ${xss(hashedPassword)}`);
+			console.log('username:', username);
+			console.log('hashed password:', hashedPassword);
 			console.log(`Added with _id: ${result.insertedId}`);
 		}
 	});
@@ -161,7 +161,7 @@ async function findAccount(req, res) {
 		req.session.username = username;
 		res.render('pages/loggedin');
 		console.log(`User with _id: ${result._id}`);
-		console.log(`Logged in with username ${xss(req.body.username)}`);
+		console.log('Logged in with username:', username);
 	}
 	else {
 		res.render('pages/notloggedin');
@@ -201,7 +201,7 @@ async function onaccount(req, res) {
 
 	res.render('pages/myaccount', { user: result });
 
-	console.log(`Sessie gestart met username: ${req.session.username}`)
+	console.log('Sessie gestart met username:', username)
 }
 // End functie voor mijn account: Sindy
 
@@ -247,7 +247,7 @@ async function updateUsername(req, res) {
 	const collection = database.collection('accounts');
 
 	const username = req.session.username;
-	const updatedUsername = req.body.updatedUsername;
+	const updatedUsername = xss(req.body.updatedUsername);
 
 	const result = await collection.updateOne(
 		{ username: username },
@@ -255,7 +255,7 @@ async function updateUsername(req, res) {
 	);
 
 	if (result.modifiedCount === 1) {
-		console.log('Gebruikersnaam succesvol bijgewerkt naar:', req.body.updatedUsername);
+		console.log('Gebruikersnaam succesvol bijgewerkt naar:', updatedUsername);
 		res.redirect('/login');
 
 	} else {
@@ -280,10 +280,9 @@ async function updatePassword(req, res) {
 	const collection = database.collection('accounts');
 
 	const username = req.session.username;
-	const updatedPassword = req.body.updatedPassword;
+	const updatedPassword = xss(req.body.updatedPassword);
 
 	bcrypt.hash(updatedPassword, 10, async (err, hashedPassword) => {
-
 		{
 
 			const result = await collection.updateOne(
@@ -320,7 +319,7 @@ async function updateEmail(req, res) {
 	const collection = database.collection('accounts');
 
 	const username = req.session.username;
-	const updatedEmail = req.body.updatedEmail;
+	const updatedEmail = xss(req.body.updatedEmail);
 
 	const result = await collection.updateOne(
 		{ username: username },
@@ -328,7 +327,7 @@ async function updateEmail(req, res) {
 	);
 
 	if (result.modifiedCount === 1) {
-		console.log('Email succesvol bijgewerkt naar:', req.body.updatedEmail);
+		console.log('Email succesvol bijgewerkt naar:', updatedEmail);
 		res.redirect('/myaccount');
 
 	} else {
@@ -350,7 +349,7 @@ app.get('/logout', (req, res) => {
 		} else {
 			// Redirect de gebruiker naar de inlogpagina
 			res.redirect('/login');
-			console.log(`Er is uitgelogd.`)
+			console.log('Er is uitgelogd.')
 		}
 	});
 });
@@ -383,7 +382,7 @@ async function deleteAccount(req, res) {
 		} else {
 			// Redirect de gebruiker naar de inlogpagina
 			res.redirect('/login');
-			console.log(`Er is uitgelogd.`)
+			console.log('Er is uitgelogd.')
 		}
 	});
 };
