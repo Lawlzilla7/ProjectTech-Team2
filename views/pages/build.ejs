@@ -1,4 +1,4 @@
-<!DOCTYPE ejs>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,7 +15,7 @@
 <body>
   <%- include('../partials/navHeader'); %> 
 
-  <main id="BuildPage" onload="build()">
+  <main id="BuildPage">
     <section class="BuildImg">
       <img src="./images/auditt.png" alt="" id="CarBody">
       <img src="./images/auditt.png" alt="" id="CarVelgen">
@@ -81,13 +81,16 @@
       <button class="OpslaanKnop" onclick="navigateToResults()">Opslaan</button>
 
     </section>
-
-
   </main>
 
   <%- include('../partials/navFooter'); %> 
   <script src="./scripts/script.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      build();
+    });
+  </script>
 </body>
 
 </html>
