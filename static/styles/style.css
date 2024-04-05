@@ -1149,22 +1149,6 @@ li {
 
 /* #endregion LikedPagina */
 
-.sort.asc,
-.sort.desc {
-    font-weight: bold;
-}
-
-.sort::after {
-    content: "(↑)";
-    padding-left: .25em;
-    font-weight: normal;
-  }
-  
-  .sort.desc::after {
-    content: "(↓)";
-  } */
-
-
 .SortingButtons
 {
     display: flex;

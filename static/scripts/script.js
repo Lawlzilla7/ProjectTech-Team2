@@ -6,43 +6,42 @@ let BodyString;
 let VelgenString;
 let KleurString;
 
-document.addEventListener('DOMContentLoaded', function () 
-    {
-        const ScrollSpeed = 200;
-        const CssSetting = false;
+document.addEventListener('DOMContentLoaded', function () {
+    const ScrollSpeed = 200;
+    const CssSetting = false;
 
-        var swiper1 = new Swiper('#swiper1', {
-            effect: "coverflow",
-            speed: ScrollSpeed,
-            cssMode: CssSetting,
-            allowTouchMove: false,
-            navigation: {
-                nextEl: '#swiper1 .swiper-button-next',
-                prevEl: '#swiper1 .swiper-button-prev',
-            },
-        });
-
-        var swiper2 = new Swiper('#swiper2', {
-            effect: "coverflow",
-            speed: ScrollSpeed,
-            cssMode: CssSetting,
-            allowTouchMove: false,
-            navigation: {
-                nextEl: '#swiper2 .swiper-button-next',
-                prevEl: '#swiper2 .swiper-button-prev',
-            },
-        });
-
-        var swiper3 = new Swiper('#swiper3', {
-            effect: "coverflow",
-            speed: ScrollSpeed,
-            cssMode: CssSetting,
-            navigation: {
-                nextEl: '#swiper3 .swiper-button-next',
-                prevEl: '#swiper3 .swiper-button-prev',
-            },
-        });
+    var swiper1 = new Swiper('#swiper1', {
+        effect: "coverflow",
+        speed: ScrollSpeed,
+        cssMode: CssSetting,
+        allowTouchMove: false,
+        navigation: {
+            nextEl: '#swiper1 .swiper-button-next',
+            prevEl: '#swiper1 .swiper-button-prev',
+        },
     });
+
+    var swiper2 = new Swiper('#swiper2', {
+        effect: "coverflow",
+        speed: ScrollSpeed,
+        cssMode: CssSetting,
+        allowTouchMove: false,
+        navigation: {
+            nextEl: '#swiper2 .swiper-button-next',
+            prevEl: '#swiper2 .swiper-button-prev',
+        },
+    });
+
+    var swiper3 = new Swiper('#swiper3', {
+        effect: "coverflow",
+        speed: ScrollSpeed,
+        cssMode: CssSetting,
+        navigation: {
+            nextEl: '#swiper3 .swiper-button-next',
+            prevEl: '#swiper3 .swiper-button-prev',
+        },
+    });
+});
 
 
 const KleurKnopPrev = () => {
@@ -137,8 +136,8 @@ ChangeBody(BodyWaarde);
 // Navigeer naar de 'results' pagina via 'opslaan knop' op build pagina
 function navigateToResults() {
     var BodyWaarde = encodeURIComponent(BodyString);
-    var VelgenWaarde = encodeURIComponent(VelgenString); 
-    var KleurWaarde = encodeURIComponent(KleurString); 
+    var VelgenWaarde = encodeURIComponent(VelgenString);
+    var KleurWaarde = encodeURIComponent(KleurString);
 
     try {
         sessionStorage.setItem('Body', BodyString);
@@ -155,7 +154,7 @@ function navigateToResults() {
 }
 
 function showResults() {
-   // Initialize List.js for sorting and searching
+    // Initialize List.js for sorting and searching
     var options = {
         valueNames: ['merk', 'kilometers', 'Brandstof', 'Bouwjaar']
     };
@@ -168,7 +167,9 @@ function showResults() {
             var sortBy = button.getAttribute('data-sort');
             var currentSortOrder = button.getAttribute('data-default-order') || 'asc';
 
-            carList.sort(sortBy, { order: currentSortOrder });
+            carList.sort(sortBy, {
+                order: currentSortOrder
+            });
             button.setAttribute('data-default-order', currentSortOrder === 'asc' ? 'desc' : 'asc');
         });
     });
@@ -210,8 +211,8 @@ const OnLoadResults = () => {
     }
 }
 
-const LoadResults = () =>{
-   
+const LoadResults = () => {
+
     showResults();
     OnLoadResults();
 }
