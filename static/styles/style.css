@@ -168,15 +168,11 @@ header button:active {
 header a {
     /* background-color: rgb(211, 211, 211); */
     padding: 1rem;
-
     padding: 1em;
     font-size: clamp(0.9375rem, 0.738rem + 0.8511vw, 1.3125rem);
     word-break: break-all;
 }
 
-header a:hover {
-    background-color: aquamarine;
-}
 
 /* #endregion header */
 
@@ -225,7 +221,7 @@ header a:hover {
     flex-direction: column;
     margin: 1rem;
     position: relative;
-    margin-top: 5rem;
+    margin-top: 10rem;
 }
 
 .StartImgText img {
@@ -240,6 +236,7 @@ header a:hover {
 .StartImgText>h1 {
     text-align: center;
     font-style: italic;
+    z-index: 1;
 }
 
 /* #endregion ZeroState */
@@ -599,9 +596,9 @@ li {
     margin-top: 0;
 }
 
-.ResultsHeading {
-    /* display: flex; */
-}
+/* .ResultsHeading {
+    display: flex;
+} */
 
 .ResultsHeading>img {
     margin-left: auto;
@@ -1185,3 +1182,154 @@ li {
 .SortingButtons button:active {
     opacity: 0.5;
 }
+
+/* #startregion delete account */
+
+.BodyAccountVerwijderen h1 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.accountverwijderen-box {
+    align-items: center;
+    justify-content: center;
+    background-color: #E7E7E7;
+    padding: 8%;
+    margin: 5%;
+    border-radius: 30px;
+    color: #a4a4a4;
+    margin-top: 20em;
+}
+
+.accountverwijderen-box label {
+    text-align: center;
+    margin-top: 20px;
+    color: #131313;
+    margin-bottom: 20px;
+    font-weight: 700;
+    /* font-size: 1em; */
+}
+
+.accountverwijderen-box img {
+    align-self: center;
+    justify-self: center;
+    margin: 80px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.accountverwijderen-wrapper .btn {
+    width: 71.5%;
+    height: 45px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 600;
+    margin-left: 14.5%;
+    margin-top: 25px;
+}
+
+
+.accountverwijderen-input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.accountverwijderen-input-box input{
+    width: 100px;
+    height: 50px;
+    border: none;
+    outline: auto;
+    outline-color: black;
+    outline-style: solid;
+    outline-width: 3.5px;
+    color: #000000;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+    font-weight: 600;
+  padding: 16px;
+    margin: 10px;
+}
+
+.accountverwijderen-input-box button {
+    width: 100px;
+    height: 50px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #FFF;
+    border-radius: 20px;
+    font-weight: 600;
+    padding: 20px;
+    margin: 10px;
+}
+
+/* #endregion delete account */
+
+/* #startregion deleted account */
+
+.BodyAccountIsVerwijderen h1 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.accountIsverwijderen-box {
+    align-items: center;
+    justify-content: center;
+    background-color: #E7E7E7;
+    padding: 12%;
+    margin: 5%;
+    border-radius: 30px;
+    color: #a4a4a4;
+}
+
+.accountIsverwijderen-box p {
+    text-align: center;
+    margin-top: 20px;
+    color: #131313;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.accountIsverwijderen-box img {
+    align-self: center;
+    justify-self: center;
+    margin: 80px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.accountisverwijderen-input-box a {
+    width: 50px;
+    height: 10px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #FFF;
+    border-radius: 20px;
+    font-weight: 600;
+    padding-left: 36px;
+    padding-right: 34px;
+    padding-top: 25px;
+    padding-bottom: 30px;
+    margin: 10px;
+    margin-left: 25%;
+}
+
+/* #endregion deleted account */
