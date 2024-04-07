@@ -1,42 +1,1335 @@
-
-main {
-    font-family: Arial, sans-serif;
-    background-color: rgb(152, 152, 255);
+* {
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+@font-face {
+    font-family: "Sonsie One";
+    src: url(../fonts/SonsieOne-Regular.ttf);
+}
+
+:root {
+    --Background-Colour: #4E4E4E;
+    --CallToAction: #FFA800;
+    --BoxColour: #D9C9D4;
+    --swiper-theme-color: #A24492 !important;
+    --swiper-navigation-size: 2rem !important;
+}
+
+body {
+    background-color: var(--Background-Colour);
+    /* background-image: url("../images/FlamingWheelsPattern.png");
+    background-repeat: repeat;
+    background-size: 110%; */
+
+    background:
+        linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+        linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+        linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+        linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+        linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+        linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+    margin-top: 6em;
+    margin-bottom: 8em;
+}
+
+a {
+    text-decoration: none;
 }
 
 h1 {
-    color: red;
+    color: white;
+    font-size: 3.5rem;
+    font-family: "Sonsie One", system-ui;
 }
 
-.container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+h2 {
+    color: white;
+    font-size: 2.5rem;
+    font-family: "Sonsie One", system-ui;
 }
 
-label {
-    display: block;
-    margin-bottom: 8px;
+.sonsie-one-regular {
+    font-family: "Sonsie One", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
-input {
+/* #region nav */
+
+.navigatie-header {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
+    height: 65px;
+    border-bottom-left-radius: 800px;
+    border-bottom-right-radius: 800px;
+    background: #575757;
+    box-shadow: 0px 0px 20px 15px #B859A2;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+
+.navigatie-header img {
+    /* margin-left: auto; */
+    justify-content: center;
+}
+
+.navigatie-header svg {
+    margin: 18px;
+}
+
+.navigatie-footer {
+    width: 100%;
+    height: 90px;
+    border-top-left-radius: 800px;
+    border-top-right-radius: 800px;
+    background: #575757;
+    box-shadow: 0px 0px 20px 15px #B859A2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.navigatie-footer a {
+    margin: 10px;
+}
+
+.navigatie-footer a:first-child {
+    margin-right: 50px;
+}
+
+.navigatie-footer a:last-child {
+    margin-left: 50px;
+}
+
+/* #end region nav */
+
+
+
+/* #region header */
+header {
+    background-color: transparent;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+header li {
+    text-decoration: none;
+    list-style: none;
+    align-self: center;
+    justify-content: space-between;
+    color: var(--CallToAction);
+    z-index: 1;
+}
+
+/* header li:first-child {
+    margin-right: auto;
+    align-self: flex-end;
+} */
+
+header img {
+    object-fit: contain;
+    height: clamp(2rem, 30vw, 4rem);
+}
+
+header button {
+    padding: 1rem;
+    align-self: center;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+header button:active {
+    opacity: .5;
+}
+
+header a {
+    /* background-color: rgb(211, 211, 211); */
+    padding: 1rem;
+    padding: 1em;
+    font-size: clamp(0.9375rem, 0.738rem + 0.8511vw, 1.3125rem);
+    word-break: break-all;
+}
+
+
+/* #endregion header */
+
+
+/* #region ZeroState */
+.StartButton,
+.OpslaanKnop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.625rem 3.75rem;
+
+    z-index: 99;
+
+    /* position: fixed; */
+    width: 50%;
+    border-radius: 4.0625rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: var(--CallToAction);
+    color: white;
+    font-size: larger;
+    border: none;
+    /* box-shadow: 0 1px 8px #000000; */
+}
+
+/* .OpslaanKnop {
+    margin-bottom: 4rem;
+} */
+
+.StartButton:active {
+    background-color: #db5bc6;
+}
+
+.StartButton {
+    margin-bottom: 5rem;
+}
+
+.StartImgText {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    position: relative;
+    margin-top: 10rem;
+}
+
+.StartImgText img {
+    position: relative;
+    object-fit: contain;
+    width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    top: -4rem;
+}
+
+.StartImgText>h1 {
+    text-align: center;
+    font-style: italic;
+    z-index: 1;
+}
+
+/* #endregion ZeroState */
+
+/* #region footer*/
+/* footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:50px; 
+    background-color: whitesmoke;
+} */
+
+/* #endregion footer */
+
+/* #region SamenStellen */
+.CarBuild {
+    background-color: var(--BoxColour);
+    border-radius: 31px;
+    width: 80vw;
+    height: auto;
+    position: relative;
+    margin: 2rem auto 0;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 2rem 0rem 2rem;
+}
+
+.CarBuild>h2 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.CarWithButtons {
+    position: relative;
+    width: 100%;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #000000;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.CarSliderCar img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
+
+button:focus {
+    outline: none;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.swiper-container {
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    max-width: 70%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.swiper-slide .swiper-slide-active {
+    display: flex;
+    align-self: center;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    content: "";
+    align-self: center;
+}
+
+#BuildPage {
+    display: flex;
+    flex-direction: column;
+}
+
+.BuildImg {
+    margin-top: 2rem;
+    position: relative;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BuildImg>img {
+
+    position: absolute;
+    object-fit: contain;
+    height: 100%;
+}
+
+
+@media screen and (min-width: 480px) {
+    .CarBuild {
+        width: 30rem;
+    }
+
+    .OpslaanKnop,
+    .StartButton {
+        width: 15rem;
+    }
+
+    #ResultsPage {
+        width: 30rem;
+    }
+
+    /* body {
+        background-size: 10%;
+    } */
+}
+
+/* #endregion SamenStellen */
+
+/* #region DetailPagina */
+.AutoAchtergrond {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('../images/auditt3.png'), lightgray 50%;
+    margin-top: -9em;
+    height: 400px;
+}
+
+.InfoBox {
+    display: flex;
+    width: 336px;
+    height: 132px;
+    border-radius: 29px;
+    flex-shrink: 0;
+    background: #E7E7E7;
+    margin-top: 25rem;
+}
+
+.InfoBox ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.InfoBox li {
+    display: flex;
+    margin: 10px;
+    padding: 1em;
+}
+
+/* #endregion DetailPagina */
+
+.BodyLogIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+}
+
+.LogInWrapper {
+    width: 380px;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px 10px;
+    /* margin-top: 180px; */
+    margin-left: 3.5%;
+}
+
+.LogInWrapper h1 {
+    color: #FFF;
+    text-align: center;
+    font-family: "Sonsie One", system-ui;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.LogInWrapper .input-box {
+    width: 83.5%;
+    height: 50px;
+    margin: 20px 0;
+}
+
+.LogInWrapper input::placeholder {
+    opacity: 60%;
+    color: #4E4E4E;
+}
+
+.input-box input {
+    width: 86%;
+    height: 60px;
+    background: #E7E7E7;
+    color: #4E4E4E;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+    margin-left: 17.2%;
+    margin-bottom: 6px;
+}
+
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50);
+    font-size: 20px;
+}
+
+.LogInWrapper .remember-forgot {
+    display: flex;
+    justify-content: center;
+    font-size: 14.5px;
+    margin: -2px 0 15px;
+    font-weight: 600;
+}
+
+.remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.LogInWrapper .btn {
+    width: 71.5%;
+    height: 45px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 600;
+    margin-left: 14.5%;
+    margin-bottom: 14px;
+    margin-top: 40px;
+}
+
+.LogInWrapper .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 10px 0 15px;
+    margin-top: 40px;
+}
+
+.register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: -500px;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+/* #endregion InlogPagina */
+
+
+/* #region SignInPagina */
+
+.BodySignIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+
+}
+
+/* #endregion SignInPagina */
+
+
+/* #region PasswordPagina */
+
+.BodyPassword {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+}
+
+.LogInWrapper .register-link-password-page {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 10px 0 15px;
+    margin-top: 10px;
+}
+
+.register-link-password-page p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: -500px;
+}
+
+.register-link-password-page p a:hover {
+    text-decoration: underline;
+}
+
+/* #endregion PasswordPagina */
+
+/* #region results */
+#ResultsPage {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto 0;
+    padding: 0 1rem 0 1rem;
+    justify-content: center;
+}
+
+#ResultsPage>.BuildImg {
+    margin-bottom: 2em;
+    margin-top: 0;
+}
+
+/* .ResultsHeading {
+    display: flex;
+} */
+
+.ResultsHeading>img {
+    margin-left: auto;
+}
+
+.ResultsHeading>img:active,
+.ResultsHeading>img:hover {
+    opacity: .5;
+}
+
+.SearchResult {
+    position: relative;
+    margin-top: 1rem;
+    border-radius: 31px;
+    height: 15rem;
+    /* background-image: url(../images/auditt3.jpg); */
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.SearchResult div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(235, 192, 218, 1) 10%, rgba(0, 0, 0, 0) 40%);
+    height: 15em;
+    width: 100%;
+    z-index: 1;
+    border-radius: 31px;
+}
+
+.SearchResult h3 {
+    /* position: absolute; */
+    bottom: 2em;
+    left: 1em;
+    font-weight: bolder;
+    font-style: italic;
+    color: white;
+    z-index: 2;
+}
+
+.SearchResult p {
+    /* position: absolute; */
+    bottom: 1em;
+    left: 1em;
+    font-style: italic;
+    color: var(--swiper-theme-color);
+    font-weight: 500;
+    z-index: 2;
+}
+
+.SearchResult button {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+}
+
+.SearchResult button:active {
+    filter: opacity(50%);
+}
+
+
+/* #endregion results */
+
+/* #region update */
+.BodyUpdate h1 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+
+.BodyUpdate h2 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 1em;
+}
+
+
+.BodyUpdate svg {
+    margin-left: 36.5%;
+}
+
+.update-box {
+    align-items: center;
+    justify-content: center;
+    background-color: #E7E7E7;
+    padding: 10%;
+    margin: 10%;
+    border-radius: 30px;
+    color: #a4a4a4;
+}
+
+.update-box p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.update-box img {
+    align-self: center;
+    justify-self: center;
+    margin: 80px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.update-wrapper .btn {
+    width: 71.5%;
+    height: 45px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 600;
+    margin-left: 14.5%;
+    margin-top: 25px;
+}
+
+.update-input-box input {
+    width: 80%;
+    height: 30%;
+    background: #E7E7E7;
+    color: #4E4E4E;
+    font-weight: 600;
+    border: none;
+    outline: auto;
+    outline-color: #4E4E4E;
+    outline-style: solid;
+    outline-width: 3px;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+    margin-bottom: 15px;
+}
+
+/* #endregion update */
+
+/* #region loggedin */
+.BodyLoggedIn h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.loggedin-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loggedin-box {
+    align-items: center;
+    justify-content: center;
+    background-color: #4E4E4E;
+    padding: 10%;
+    margin: 10%;
+    border-radius: 10px;
+    color: #a4a4a4;
+}
+
+.loggedin-box p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.loggedin-box img {
+    align-self: center;
+    justify-self: center;
+    margin: 80px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.loggedin-wrapper .btn {
+    width: 71.5%;
+    height: 45px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 600;
+    margin-left: 14.5%;
+    margin-top: 25px;
+}
+
+/* #endregion loggedin */
+
+/* #region account */
+
+.BodyAccount h1 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.BodyAccount h3 {
+    color: black;
+    font-size: 20px;
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
+
+.BodyAvatar {
+    margin-left: 35%;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    align-self: center;
+
+}
+
+.account-box {
+    align-items: center;
+    justify-content: center;
+    background-color: #E7E7E7;
+    padding: 8%;
+    margin: 5%;
+    border-radius: 30px;
+    color: #a4a4a4;
+}
+
+.account-box p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.account-box img {
+    align-self: center;
+    justify-self: center;
+    margin: 80px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.account-wrapper .btn {
+    width: 71.5%;
+    height: 45px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 600;
+    margin-left: 14.5%;
+    margin-top: 25px;
+}
+
+.account-input-box p {
+    width: 10em;
+    height: auto;
+    background: #E7E7E7;
+    color: #4E4E4E;
+    font-weight: 600;
+    border: none;
+    outline: auto;
+    outline-color: #4E4E4E;
+    outline-style: solid;
+    outline-width: 3px;
+    border-top-left-radius: 10px;
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+    margin-right: 6px;
+}
+
+.account-input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.account-box button {
+    width: auto;
+    height: 2em;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 600;
+    padding: 1.5em;
+    padding-bottom: 2.5em;
+}
+
+.AccountPasswordButton {
+    width: 100%;
+    height: 2em;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #FFF;
+    font-weight: 600;
+    padding: 10em;
+
+}
+
+.FormAvatar {
+    color: white;
+    text-align: center;
+}
+
+/* #endregion account */
+
+
+/* #region DetailPagina */
+.detail-body section {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.detail-background {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(0deg, #242424 4.72%, rgba(180, 180, 180, 0.00) 61.24%), 
+                url('../images/auditt.png'), lightgray 50%;
+    margin-top: -9em;
+    height: 400px;
+    background-size: cover;
+}
+
+.detail-icons {
+    display: flex;
+    flex-direction: column;
+    width: 22em;
+    height: 8.25em;
+    border-radius: 2em;
+    background: #E7E7E7;
+    margin-top: 25rem;
+}
+
+.detail-icons h2 {
+    color: #A24492;
+    text-align: center;
+    font-family: "Sonsie One";
+    font-size: 2em;
+    font-weight: 700;
+    padding: .2em;
+}
+
+.detail-body .car-name {
+    align-self: center;
+}
+
+.detail-icons ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.detail-icons li {
+    display: flex;
+    padding: 1em;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+}
+
+.detail-body .car-photos {
+    background: url('../images/auditt_1.png');
+    background-size: cover;
+    background-position: bottom;
+    margin-top: 6em;
+    height: 10em;
+    border-radius: 2em;
+    width: 22em;
+}
+
+.detail-body .car-info {
+    margin-top: 1.5em;
+    height: 10em;
+    font-weight: 300;
+    color: #FFF;
+    font-family: "Avenir Next";
+    line-height: 1.25em; 
+    width: 22em;
+}
+
+.detail-body .car-price {
+    display: flex;
+    margin-top: 1.5em;
+    width: 17em;
+    height: 2em;
+    padding: 1em 2em;
+    justify-content: space-between;
+    border-top: solid #E7E7E7;
+    border-bottom: solid #E7E7E7;
+
+}
+.detail-body .car-price p{
+    color: #FFF;
+    font-size: 1.5em;
+    font-weight: 500;
+    font-style: italic;
+}
+.detail-body .car-price button, .detail-body .car-map button {
+    background: #FFA800;
+    color: #FFF;
+    text-align: center;
+    font-family: "Avenir Next";
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 1em;
+    width: 8em;
+    height: 2em;
+    border: .1em solid #FFA800;
+}
+
+.detail-body .car-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-body .car-map img {
+    /* height: 11em; */
+    margin-top: 1.5em;
+    width: 20em;
+}
+
+.detail-body .car-map p {
+    margin-top: 1em;
+    height: 10em;
+    font-weight: 600;
+    color: #FFF;
+    font-family: "Avenir Next";
+    line-height: 1.25em; 
+    font-size: 1.25em;
+}
+/* #endregion DetailPagina */
+
+.liked-body {
+    display: flex;
+    margin: 2rem auto 0;
+    padding: 0 1rem 0 1rem;
+    justify-content: center;
+}
+
+#liked-main {
+    margin-top: 6em;
+}
+
+.liked-body h2 {
+    color: white;
+    font-size: 2.5em;
+    font-family: "Sonsie One", system-ui;
+}
+
+.liked-body section {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.liked-body #car-1 {
+    background: linear-gradient(180deg, rgba(68, 68, 68, 0.00) 21.7%, rgb(207 177 194 / 0%) 35.45%, #caa7bcd4 65.61%, #EBC0DA 100%), url(../images/auditt_1.png);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.liked-body #car-2 {
+    background: linear-gradient(180deg, rgba(68, 68, 68, 0.00) 21.7%, rgb(207 177 194 / 0%) 35.45%, #caa7bcd4 65.61%, #EBC0DA 100%), url(../images/auditt_1.png);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.liked-body #car-3 {
+    background: linear-gradient(180deg, rgba(68, 68, 68, 0.00) 21.7%, rgb(207 177 194 / 0%) 35.45%, #caa7bcd4 65.61%, #EBC0DA 100%), url(../images/auditt_1.png);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.liked-body .liked-cars {
+    position: relative;
+    margin-bottom: 2em;
+    height: 10em;
+    border-radius: 2em;
+    width: 24em;
+}
+
+.liked-body .liked-cars .car-name {
+    position: absolute;
+    bottom: 2em;
+    left: 1em;
+    font-weight: bolder;
+    font-style: italic;
+    color: white;
+    margin-bottom: .5em;
+}
+
+.liked-body .liked-cars .car-year {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    font-style: italic;
+    color: #A24492;
+    font-weight: 500;
+}
+
+.liked-body .liked-cars .car-price {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    font-style: italic;
+    color: #A24492;
+    font-weight: 500;
+}
+
+.liked-body .like-button {
+    position: absolute;
+    top: 1.5em;
+    right: 1.5em;
+    border: none;
+}
+
+/* #endregion LikedPagina */
+
+.SortingButtons
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.SortingButtons input {
+    width: 100%;
+    height: 2rem;
+    background: #E7E7E7;
+    color: #4E4E4E;
+    font-weight: 600;
+    border: none;
+
+    border-radius: 10px;
+    font-size: 1rem;
+    padding: 20px 45px 20px 20px;
+}
+
+.SortingButtons button {
+    height: 2rem;
+    text-align: center;
+    border-radius: 4.0625rem;
+    margin-top: 0.5em;
+    margin-right: 0.5rem;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+    font-size: large;
+    background-color: EBC0DA;
+    border: none;
+}
+
+.SortingButtons button:active {
+    opacity: 0.5;
+}
+
+/* #startregion delete account */
+
+.BodyAccountVerwijderen h1 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.accountverwijderen-box {
+    align-items: center;
+    justify-content: center;
+    background-color: #E7E7E7;
+    padding: 8%;
+    margin: 5%;
+    border-radius: 30px;
+    color: #a4a4a4;
+    margin-top: 20em;
+}
+
+.accountverwijderen-box label {
+    text-align: center;
+    margin-top: 20px;
+    color: #131313;
+    margin-bottom: 20px;
+    font-weight: 700;
+    /* font-size: 1em; */
+}
+
+.accountverwijderen-box img {
+    align-self: center;
+    justify-self: center;
+    margin: 80px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.accountverwijderen-wrapper .btn {
+    width: 71.5%;
+    height: 45px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 600;
+    margin-left: 14.5%;
+    margin-top: 25px;
+}
+
+
+.accountverwijderen-input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.accountverwijderen-input-box input{
+    width: 100px;
+    height: 50px;
+    border: none;
+    outline: auto;
+    outline-color: black;
+    outline-style: solid;
+    outline-width: 3.5px;
+    color: #000000;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+    font-weight: 600;
+  padding: 16px;
+    margin: 10px;
+}
+
+.accountverwijderen-input-box button {
+    width: 100px;
+    height: 50px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #FFF;
+    border-radius: 20px;
+    font-weight: 600;
+    padding: 20px;
+    margin: 10px;
+}
+
+/* #endregion delete account */
+
+/* #startregion deleted account */
+
+.BodyAccountIsVerwijderen h1 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.accountIsverwijderen-box {
+    align-items: center;
+    justify-content: center;
+    background-color: #E7E7E7;
+    padding: 12%;
+    margin: 5%;
+    border-radius: 30px;
+    color: #a4a4a4;
+}
+
+.accountIsverwijderen-box p {
+    text-align: center;
+    margin-top: 20px;
+    color: #131313;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.accountIsverwijderen-box img {
+    align-self: center;
+    justify-self: center;
+    margin: 80px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.accountisverwijderen-input-box a {
+    width: 50px;
+    height: 10px;
+    background: #FFA800;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #FFF;
+    border-radius: 20px;
+    font-weight: 600;
+    padding-left: 36px;
+    padding-right: 34px;
+    padding-top: 25px;
+    padding-bottom: 30px;
+    margin: 10px;
+    margin-left: 25%;
+}
+
+/* #endregion deleted account */
