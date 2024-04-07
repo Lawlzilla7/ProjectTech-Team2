@@ -61,6 +61,7 @@ h2 {
 }
 
 /* #region nav */
+/* #region nav */
 
 .navigatie-header {
     width: 100%;
@@ -72,14 +73,29 @@ h2 {
     position: fixed;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     top: 0;
     left: 0;
     z-index: 99;
 }
 
+.navigatie-header > div:first-child {
+    flex-shrink: 0; 
+    position: absolute;
+}
+
+.navigatie-header > div:nth-child(2) {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.navigatie-header svg {
+    margin: 18px; 
+}
+
 .navigatie-header img{
-    /* margin-left: auto; */
     justify-content: center;
 }
 
@@ -114,10 +130,7 @@ h2 {
 .navigatie-footer a:last-child{
     margin-left: 50px;
 }
-
 /* #end region nav */
-
-
 
 /* #region header */
 header {
@@ -818,7 +831,6 @@ li {
 /* #endregion loggedin */
 
 /* #region account */
-
 .BodyAccount h1 {
     display: flex;
     align-self: center;
@@ -832,7 +844,6 @@ li {
     margin-top: 1em;
     margin-bottom: 0;
 }
-
 
 .BodyAvatar {
     margin-left: 35%;
@@ -941,9 +952,7 @@ li {
     color: white;
     text-align: center;
 }
-
 /* #endregion account */
-
 
 /* #region DetailPagina */
 .detail-body {
