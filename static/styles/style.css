@@ -845,7 +845,7 @@ li {
     margin-top: 10px;
 }
 
-.account-box img {
+.account-box img{
     align-self: center;
     justify-self: center;
     margin: 80px;
@@ -880,21 +880,22 @@ li {
     outline-color: #4E4E4E;
     outline-style: solid;
     outline-width: 3px;
-    border-top-left-radius: 10px;
+    border-top-left-radius: .5em;
+    border-bottom-left-radius: .5em;
     font-size: 16px;
     padding: 20px 45px 20px 20px;
     margin-right: 6px;
+    margin-top: 0;
 }
 
 .account-input-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: .5em;
 }
 
 .account-box button {
-    width: auto;
     height: 2em;
     background: #FFA800;
     border: none;
@@ -902,27 +903,26 @@ li {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1em;
     color: #FFF;
     font-weight: 600;
     padding: 1.5em;
     padding-bottom: 2.5em;
 }
 
-.AccountPasswordButton {
+.account-button {
     width: 100%;
     height: 2em;
     background: #FFA800;
     border: none;
     outline: none;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: .5em;
     cursor: pointer;
     font-size: 16px;
     color: #FFF;
     font-weight: 600;
     padding: 10em;
-
+    margin-bottom: .5em;
 }
 
 .FormAvatar {
@@ -931,7 +931,6 @@ li {
 }
 
 /* #endregion account */
-
 
 /* #region DetailPagina */
 .detail-body section {
