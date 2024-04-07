@@ -75,7 +75,7 @@ async function onDetail(req, res) {
 
 
 //ESME 
-//START favorieten toevoegen
+//START favorieten laten zien
 app.get('/bookmark', onBookmark) 
 async function onBookmark(req, res) {
 	//Haal de gebruikersnaam op uit de sessie
