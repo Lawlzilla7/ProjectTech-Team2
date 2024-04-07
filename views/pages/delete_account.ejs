@@ -1,40 +1,22 @@
-<!-- HTML omgezet naar ejs en werkend gemaakt door Sindy -->
-
 <!DOCTYPE ejs>
 <html lang="en">
 
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account verwijderen</title>
-
-    <link href="/styles/style.css" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
-</head>
-
-<body class="BodyAccountVerwijderen">
+<body>
 
     <%- include('../partials/navHeader'); %> 
     
-    <main class="accountverwijderen-wrapper">
+    <main>
 
-
-    <section class="accountverwijderen-box">
-        <label>Wil je jouw account verwijderen? </label>
-          <div class="accountverwijderen-input-box">
 <form id="deleteAccount" action="/deleted_account" method="POST" enctype="application/x-www-form-urlencoded"> 
+    <label>Wil je jouw account verwijderen? </label>
 <input type="submit" name="yesDelete" value="Ja">
 </form>
+
 <button onclick="location.href = 'myaccount';"> Nee </button>
-</div>
 
-
-</section>
 </main>
 
-<%- include('../partials/navFooter'); %> 
+<footer> </footer>
 
 <script defer src="/scripts/script.js"> </script>
 

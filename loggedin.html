@@ -1,4 +1,4 @@
-<!DOCTYPE ejs>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LogIn</title>
 
-    <link href="/styles/style.css" rel="stylesheet">
+    <link href="styling/style.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
 
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,22 +16,16 @@
 </head>
 
 <body class="BodyLoggedIn">
-
-    <%- include('../partials/navHeader'); %> 
-
     <main>
         <section class="loggedin-wrapper">
             <div class="loggedin-box">
                 <img src="./images/check.png" alt="Checkmark" width="100px">
                 <h1>Ingelogd!</h1>
                 <p>Je bent succesvol ingelogd, druk op doorgaan om de site verder te ontdekken.</p>
-                <button onclick="location.href = 'build';" class="btn">Doorgaan</button>
+                <input type="submit" value="Doorgaan" class="btn">
             </div>
         </section>
     </main>
-
-    <%- include('../partials/navFooter'); %> 
-
 </body>
 
 </html>
