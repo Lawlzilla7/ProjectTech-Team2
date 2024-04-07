@@ -39,6 +39,8 @@ Dit project is opgezet als team opdracht voor het vak 'project tech' in blok 3 v
 - express-session
 - multer
 - mongodb
+- Swiper
+- ListJS
 
 ## Bijdragers
 Esmé Lindeman
@@ -51,7 +53,7 @@ Kenza
 Dit is de eerste versie van dit project, versie 1.0
 
 ## Licentie
-Dit project valt onder de [MIT-licentie](LICENSE).
+Dit project valt onder de [MPL-licentie](LICENSE).
 
   ### Auteur:
   Esmé Lindeman
