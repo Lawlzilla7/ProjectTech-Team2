@@ -1,42 +1,38 @@
-<!DOCTYPE html>
+<!-- HTML omgezet naar ejs en werkend gemaakt door Sindy -->
+
+<!DOCTYPE ejs>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogIn</title>
- 
+    <title>Wijzig email</title>
+
     <link href="/styles/style.css" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="https://placehold.co/100x100">
- 
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap" rel="stylesheet"> -->
+    <link rel="icon" type="image/svg+xml" href="./images/project_tech_logo_1.png">
 </head>
- 
+
 <body class="BodyUpdate">
-    
-    <%- include('../partials/navHeader'); %> 
 
-    <main class="update-wrapper">
- 
+    <%- include('../partials/navHeader'); %>
 
-        <section class="update-box">
-            <h2> Wijzig jouw email </h2>
-            <form id="updateEmail" action="/updated_email" method="POST" enctype="application/x-www-form-urlencoded"> 
- 
-                <div class="update-input-box">
-                    <input type="email" name="updatedEmail" placeholder="Nieuw emailadres" required>
-                </div>
- 
-                <input type="submit" value="Wijzig" class="btn">
+        <main class="update-wrapper">
+
+            <section class="update-box">
+                <h2> Wijzig jouw email </h2>
+                <form id="updateEmail" action="/updated_email" method="POST"
+                    enctype="application/x-www-form-urlencoded">
+
+                    <div class="update-input-box">
+                        <input type="email" name="updatedEmail" placeholder="Nieuw emailadres" required>
+                    </div>
+
+                    <input type="submit" value="Wijzig" class="btn">
                 </form>
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <%- include('../partials/navFooter'); %> 
+        <%- include('../partials/navFooter'); %>
 
 </body>
- 
-</html>
