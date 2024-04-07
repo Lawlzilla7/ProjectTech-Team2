@@ -220,7 +220,7 @@ header a {
     flex-direction: column;
     margin: 1rem;
     position: relative;
-    margin-top: 5rem;
+    margin-top: 10rem;
 }
 
 .StartImgText img {
@@ -235,6 +235,7 @@ header a {
 .StartImgText>h1 {
     text-align: center;
     font-style: italic;
+    z-index: 2;
 }
 
 /* #endregion ZeroState */
@@ -593,6 +594,10 @@ li {
 #ResultsPage>.BuildImg {
     margin-bottom: 2em;
     margin-top: 0;
+}
+
+.ResultsHeading {
+    /* display: flex; */
 }
 
 

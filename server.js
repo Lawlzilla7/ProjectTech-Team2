@@ -171,7 +171,7 @@ async function removeBookmark(req, res) {
 
 // Start functie voor toevoegen van account: Sindy
 app.get('/signup', onsignup)
-app.post('/add-account', addAccount) //Route to handle the post request to /add-movie
+app.post('/add-account', addAccount) 
 
 function onsignup(req, res) {
 	res.render('pages/signup.ejs')
