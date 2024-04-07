@@ -56,7 +56,7 @@ Dit is de eerste versie van dit project, versie 1.0
 Dit project valt onder de [MPL-licentie](LICENSE).
 
   ### Auteur:
-  Esmé Lindeman
+  Esmé Lindeman & Sindy de Jong
 
 
 ## Je website
